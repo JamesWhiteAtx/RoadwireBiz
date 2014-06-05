@@ -1,0 +1,20 @@
+﻿// Core variables and mixins
+@import "./../bootstrap/variables.less";
+@import "../bootstrap/mixins.less";
+
+body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.container {
+  @media (min-width: @screen-sm-min) {
+    width: ((720px + @grid-gutter-width));
+  }
+  @media (min-width: @screen-md-min) {
+    width: ((748px + @grid-gutter-width));
+  }
+  @media (min-width: @screen-lg-min) {
+    width: ((748px + @grid-gutter-width));
+  }
+}

@@ -1,0 +1,73 @@
+﻿@section styles{
+    @Styles.Render("~/Content/costco")
+}
+
+<div class="clearfix well">
+    <div id="sel-car" class="pull-left">
+        <h4 class="sel-caption">Find Your Vehicle</h4>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Makes" sec-name="Make" sec-model="make" slct-model="makeIdx" sec-list="makes" sec-id="slct-makes">
+            <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Makes...</div>
+            <select id="slct-makes"
+                    class="form-control">
+                <option value="" class="ng-binding">-- Select Make --</option>
+                <option value="0">ACURA</option>
+                <option value="1">AUDI</option>
+                <option value="2">BMW</option>
+                <option value="3">BUICK</option>
+                <option value="4">CADILLAC</option>
+                <option value="5">CHEVROLET</option>
+                <option value="6">CHRYSLER</option>
+                <option value="7">CODA</option>
+                <option value="8">DAEWOO</option>
+                <option value="9">DODGE</option>
+                <option value="10">EAGLE</option>
+                <option value="11">FIAT</option>
+                <option value="12">FORD</option>
+                <option value="13">GEO</option>
+                <option value="14">GMC</option>
+                <option value="15">HINO</option>
+                <option value="16">HONDA</option>
+                <option value="17">HUMMER</option>
+                <option value="18">HYUNDAI</option>
+                <option value="19">INFINITI</option>
+                <option value="20">ISUZU</option>
+                <option value="21">JEEP</option>
+                <option value="22">KIA</option>
+                <option value="23">LAND ROVER</option>
+                <option value="24">LEXUS</option>
+                <option value="25">LINCOLN</option>
+                <option value="26">MAZDA</option>
+                <option value="27">MERCEDES BENZ</option>
+                <option value="28">MERCURY</option>
+                <option value="29">MG</option>
+                <option value="30">MINI</option>
+                <option value="31">MITSUBISHI</option>
+                <option value="32">NISSAN</option>
+                <option value="33">OLDSMOBILE</option>
+                <option value="34">PLYMOUTH</option>
+                <option value="35">PONTIAC</option>
+                <option value="36">PORSCHE</option>
+                <option value="37">RAM</option>
+                <option value="38">SAAB</option>
+                <option value="39">SATURN</option>
+                <option value="40">SCION</option>
+                <option value="41">SMART</option>
+                <option value="42">SUBARU</option>
+                <option value="43">SUZUKI</option>
+                <option value="44">TOYOTA</option>
+                <option value="45">VOLKSWAGEN</option>
+                <option value="46">VOLVO</option>
+            </select>
+        </div>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Years" sec-name="Year" sec-model="year" slct-model="yearIdx" sec-list="years" sec-id="slct-years"> <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Years...</div><select id="slct-years" title="Year" ng-disabled="secModel.isLoading || secList.length == 0" ng-hide="(secModel.isLoading) || ((secHide) &amp;&amp; (secList.length < 2))" focus-it="secModel.shouldFocus" ng-model="slctModel" ng-options="i.slctId as i.name for i in secList" class="ng-valid ng-dirty"><option value="" class="ng-binding">-- Select Year --</option><option value="0">2014</option><option value="1">2013</option><option value="2">2012</option><option value="3">2011</option><option value="4">2010</option><option value="5">2009</option><option value="6">2008</option><option value="7">2007</option><option value="8">2006</option><option value="9">2005</option><option value="10">2004</option><option value="11">2003</option><option value="12">2002</option><option value="13">2001.5</option><option value="14">2001</option><option value="15">2000.5</option><option value="16">2000</option><option value="17">1999.5</option><option value="18">1999</option><option value="19">1998.5</option><option value="20">1998</option><option value="21">1997.5</option><option value="22">1997</option><option value="23">1996</option><option value="24">1995</option><option value="25">1994</option></select></div>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Models" sec-name="Model" sec-model="model" slct-model="modelIdx" sec-list="models" sec-id="slct-models"> <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Models...</div><select id="slct-models" title="Model" ng-disabled="secModel.isLoading || secList.length == 0" ng-hide="(secModel.isLoading) || ((secHide) &amp;&amp; (secList.length < 2))" focus-it="secModel.shouldFocus" ng-model="slctModel" ng-options="i.slctId as i.name for i in secList" class="ng-valid ng-dirty"><option value="" class="ng-binding">-- Select Model --</option><option value="0">CARAVAN</option><option value="1">DAKOTA</option><option value="2">DURANGO</option><option value="3">GRAND CARAVAN</option><option value="4">INTREPID</option><option value="5">NEON</option><option value="6">RAM</option><option value="7">STRATUS</option></select></div>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Bodies" sec-name="Body" sec-model="body" slct-model="bodyIdx" sec-list="bodys" sec-id="slct-bodys"> <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Bodies...</div><select id="slct-bodys" title="Body" ng-disabled="secModel.isLoading || secList.length == 0" ng-hide="(secModel.isLoading) || ((secHide) &amp;&amp; (secList.length < 2))" focus-it="secModel.shouldFocus" ng-model="slctModel" ng-options="i.slctId as i.name for i in secList" class="ng-pristine ng-valid"><option value="" class="ng-binding">-- Select Body --</option><option value="0" selected="selected">VAN</option></select></div>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Trims" sec-name="Trim" sec-model="trim" slct-model="trimIdx" sec-list="trims" sec-id="slct-trims"> <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Trims...</div><select id="slct-trims" title="Trim" ng-disabled="secModel.isLoading || secList.length == 0" ng-hide="(secModel.isLoading) || ((secHide) &amp;&amp; (secList.length < 2))" focus-it="secModel.shouldFocus" ng-model="slctModel" ng-options="i.slctId as i.name for i in secList" class="ng-valid ng-dirty"><option value="" class="ng-binding">-- Select Trim --</option><option value="0">*</option><option value="1">LX</option></select></div>
+        <div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Cars" sec-name="Car Option" sec-model="car" slct-model="carIdx" sec-list="cars" sec-id="slct-cars" sec-only-opts="true"> <div ng-show="secModel.isLoading" class="loading ng-binding" style="display: none;">Loading Cars...</div><select id="slct-cars" title="Car Option" ng-disabled="secModel.isLoading || secList.length == 0" ng-hide="(secModel.isLoading) || ((secHide) &amp;&amp; (secList.length < 2))" focus-it="secModel.shouldFocus" ng-model="slctModel" ng-options="i.slctId as i.name for i in secList" class="ng-valid ng-dirty"><option value="" class="ng-binding">-- Select Car Option --</option><option value="0">DOD 01-02 GRAND CARAVAN</option><option value="1">DOD 01-03 GRAND CARAVAN</option></select></div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/costco")
+}

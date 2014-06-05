@@ -134,6 +134,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CostcoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -144,6 +145,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\costco\costco.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\site\site.css" />
     <Content Include="favicon.ico" />
@@ -155,6 +157,7 @@
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js" />
     <Content Include="Scripts\angular\angular-route-1.2.16.js" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js" />
+    <Content Include="Scripts\costco\app.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -212,11 +215,16 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\site\site.less" />
+    <Content Include="Content\costco\costco.less" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\RoadwireBiz %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <Content Include="Scripts\angular\angular-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js.map" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\costco\controllers.js" />
+    <Content Include="Scripts\costco\services.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
@@ -237,6 +245,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
+    <Content Include="Views\Costco\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

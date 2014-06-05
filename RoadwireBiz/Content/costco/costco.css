@@ -1,0 +1,19 @@
+body {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 778px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 778px;
+  }
+}

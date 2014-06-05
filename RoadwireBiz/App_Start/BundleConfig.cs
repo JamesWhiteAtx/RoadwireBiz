@@ -25,9 +25,17 @@ namespace RoadwireBiz
                        "~/Scripts/angular/angular-route-{version}.js",
                        "~/Scripts/angular/angular-resource-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/costco").Include(
+                       "~/Scripts/costco/app.js",
+                       "~/Scripts/costco/controllers.js",
+                       "~/Scripts/costco/services.js"));
+
             bundles.Add(new StyleBundle("~/Content/style").Include(
                       "~/Content/bootstrap/bootstrap.css",
                       "~/Content/site/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/costco").Include(
+                      "~/Content/costco/costco.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

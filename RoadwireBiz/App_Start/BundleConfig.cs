@@ -9,16 +9,21 @@ namespace RoadwireBiz
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery/jquery-{version}.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/modernizr/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap/bootstrap.js",
+                      "~/Scripts/bootstrap/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                       "~/Scripts/angular/angular-{version}.js",
+                       "~/Scripts/angular/angular-route-{version}.js",
+                       "~/Scripts/angular/angular-resource-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
                       "~/Content/bootstrap/bootstrap.css",

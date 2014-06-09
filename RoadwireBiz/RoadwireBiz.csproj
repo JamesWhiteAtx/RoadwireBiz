@@ -224,12 +224,14 @@
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js.map" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />
+    <Content Include="Scripts\costco\directives.js" />
     <Content Include="Scripts\costco\services.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\bootstrap\respond.js" />
     <Content Include="Scripts\bootstrap\respond.min.js" />
+    <Content Include="Scripts\Roadwire\RwStore.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -246,6 +248,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.map" />
     <Content Include="Views\Costco\Index.cshtml" />
+    <Content Include="Views\Costco\Partials\Car.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

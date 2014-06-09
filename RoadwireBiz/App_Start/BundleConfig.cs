@@ -28,7 +28,8 @@ namespace RoadwireBiz
             bundles.Add(new ScriptBundle("~/bundles/costco").Include(
                        "~/Scripts/costco/app.js",
                        "~/Scripts/costco/controllers.js",
-                       "~/Scripts/costco/services.js"));
+                       "~/Scripts/costco/services.js",
+                       "~/Scripts/costco/directives.js"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
                       "~/Content/bootstrap/bootstrap.css",

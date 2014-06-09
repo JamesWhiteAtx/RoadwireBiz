@@ -13,5 +13,11 @@ namespace RoadwireBiz.Controllers
         {
             return View();
         }
+
+        public ActionResult Partial(string name)
+        {
+            return PartialView("Partials/" + name);
+        }
+
     }
 }

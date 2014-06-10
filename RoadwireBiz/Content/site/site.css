@@ -7,6 +7,48 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+.loading {
+  background: url('/Content/Images/loading.gif') no-repeat center center;
+}
+div .loading,
+span .loading {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 2px 2px;
+  position: relative;
+}
+div .loading:after,
+span .loading:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -2px;
+  left: 0px;
+}
+.loading_large {
+  background: url('/Content/Images/loading-large.gif') no-repeat center center;
+}
+div .loading_large,
+span .loading_large {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 2px 2px;
+  position: relative;
+}
+div .loading_large:after,
+span .loading_large:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -2px;
+  left: 0px;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

@@ -147,6 +147,8 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\costco\costco.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\loading-large.gif" />
+    <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\site\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

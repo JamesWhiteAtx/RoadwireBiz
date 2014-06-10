@@ -1,21 +1,15 @@
 ﻿        <div id="sel-car" class="pull-left">
             <h4 class="sel-caption">Find Your Vehicle</h4>
 
-
-            <div sel-car-select sec-model="make">
-            </div>
-            <div sel-car-select sec-model="year">
-            </div>
-            <div sel-car-select sec-model="model">
-            </div>
-            <div sel-car-select sec-model="body" sec-plural="Bodies">
-            </div>
-            <div sel-car-select sec-model="trim">
-            </div>
-            <div sel-car-select sec-model="car">
-            </div>
-
-            
+            <div sel-car-select sec-model="make"></div>
+            <div sel-car-select sec-model="year"></div>
+            <div sel-car-select sec-model="model"></div>
+            <div sel-car-select sec-model="body" sec-plural="Bodies" sec-only-opts="true"></div>
+            <div sel-car-select sec-model="trim" sec-name="Trim Level" sec-only-opts="true"></div>
+            <div sel-car-select sec-model="car" sec-only-opts="true"></div>
+            <div sel-car-select sec-model="ptrn" sec-name="Pattern" sec-only-opts="true"></div>
+            <div sel-car-select sec-model="int" sec-name="Interior Color" sec-only-opts="true"></div>
+            <div sel-car-select sec-model="kit" sec-name="Leather Color" sec-only-opts="true"></div>
 
 
             @*<div class="sel-select" ng-class="{selected: secModel.isSelected}" sel-car-select="" sec-title="Makes" sec-name="Make" sec-model="make" slct-model="makeIdx" sec-list="makes" sec-id="slct-makes">

@@ -18,7 +18,7 @@
         },
         template:
             '<div class="slctr-opt" ng-class="{selected: secModel.isSelected}" > ' +
-                '<div ng-show="secModel.isLoading" class="loading">Loading {{secPlural}}...</div>' +
+                '<div ng-show="secModel.isLoading"><span class="loading"></span>Loading {{secPlural}}...</div>' +
                 '<select id="slct-{{secId}}" title="{{secName}}" class="form-control"' +
                     'ng-disabled="secModel.isLoading || secModel.list.length == 0" ' +
                     'ng-hide="(secModel.isLoading) || ((secHide) && (secModel.list.length < 2))" ' +

@@ -222,3 +222,7 @@ fieldset[disabled] .slct-select {
 textarea.slct-select {
   height: auto;
 }
+img.slct-kit {
+  width: 200px;
+  height: 200px;
+}

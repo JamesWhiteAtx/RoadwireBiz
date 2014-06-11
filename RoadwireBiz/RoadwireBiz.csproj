@@ -219,7 +219,6 @@
     <Content Include="Content\site\site.less" />
     <Content Include="Content\costco\costco.less" />
     <None Include="Content\bootstrap\bootstrap.cssx.mapx" />
-    <None Include="Properties\PublishProfiles\RoadwireBiz %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <Content Include="Scripts\angular\angular-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js.map" />

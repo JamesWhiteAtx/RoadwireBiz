@@ -219,10 +219,10 @@
     <Content Include="Content\site\site.less" />
     <Content Include="Content\costco\costco.less" />
     <None Include="Content\bootstrap\bootstrap.cssx.mapx" />
-    <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <Content Include="Scripts\angular\angular-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js.map" />
+    <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />
     <Content Include="Scripts\costco\directives.js" />

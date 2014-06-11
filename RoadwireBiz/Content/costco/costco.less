@@ -1,20 +1,98 @@
 ﻿// Core variables and mixins
-@import "./../bootstrap/variables.less";
-@import "../bootstrap/mixins.less";
+/*@import "./../bootstrap/variables.less";*/
+/*@import "./../bootstrap/mixins.less";
+@import "./../bootstrap/theme.less";*/
+@import (reference) "./../bootstrap/bootstrap.less";
+
+@cc-pad-top: 5px;
+@cc-pad-bot: @cc-pad-top;
+
+@cc-bd-pad-top: @cc-pad-top;
+@cc-bd-pad-bot: @cc-pad-bot;
+
+@cc-cnt-pad-top: @cc-pad-top;
+@cc-cnt-pad-bot: @cc-pad-bot;
+
+@cc-cnt-bord: 2px;
+@cc-vw-bord: 1px;
+@cc-foot-bord: 1px;
+
+@cc-scrn-sm-ht: 500px;
+@cc-scrn-md-ht: @cc-scrn-sm-ht;
+@cc-scrn-lg-ht: @cc-scrn-sm-ht;
+
+@cc-foot-ht: 25px;
+@cc-view-ht: @cc-scrn-lg-ht - @cc-foot-ht - (@cc-bd-pad-top + @cc-bd-pad-bot) - (@cc-cnt-bord + @cc-vw-bord + @cc-foot-bord);
 
 body {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: @cc-bd-pad-top;
+    padding-bottom: @cc-bd-pad-bot;
 }
 
-.container {
-  @media (min-width: @screen-sm-min) {
-    width: ((720px + @grid-gutter-width));
+/*.body-content {
+  @media (min-width: @screen-sm-min)
+    max-width: ((720px + @grid-gutter-width));
   }
   @media (min-width: @screen-md-min) {
-    width: ((748px + @grid-gutter-width));
+    max-width: ((748px + @grid-gutter-width));
   }
   @media (min-width: @screen-lg-min) {
-    width: ((748px + @grid-gutter-width));
+    max-width: ((748px + @grid-gutter-width));
   }
+
+   border: 1px solid #c0c0c0;
+}*/
+
+#costco-container
+{
+    @media (min-width: @screen-sm-min) {
+        max-width: ((720px + @grid-gutter-width));
+    }
+    @media (min-width: @screen-md-min) {
+        max-width: ((748px + @grid-gutter-width));
+    }
+    @media (min-width: @screen-lg-min) {
+        max-width: ((748px + @grid-gutter-width));
+    }
+
+    .container;
+
+    padding-top: @cc-cnt-pad-top;
+    padding-bottom: @cc-cnt-pad-bot;
+
+    border: @cc-cnt-bord solid #808080;
+    border-radius: 4px;
+}
+
+#costco-view
+{
+    .clearfix;
+    /*.well;*/
+    height: @cc-view-ht;
+    border: @cc-vw-bord solid #0026ff;
+}
+
+.costco-footer {
+    height: @cc-foot-ht;
+    padding: 5px 0 5px 0;
+    border: @cc-foot-bord solid #ff6a00;
+}
+
+.slct-sect
+{
+    border: 1px solid #ff00dc;
+}
+
+.slctr-opt
+{
+    display:inline-block;
+    margin-right: 10px;
+
+    border: 1px solid #4cff00;
+}
+
+.slct-select {
+    .form-control;
+    display:inline-block;
+    width: auto;
 }

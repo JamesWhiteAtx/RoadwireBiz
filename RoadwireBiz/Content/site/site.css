@@ -28,19 +28,19 @@ span .loading:after {
   top: -2px;
   left: 0px;
 }
-.loading_large {
+.loading-large {
   background: url('/Content/Images/loading-large.gif') no-repeat center center;
 }
-div .loading_large,
-span .loading_large {
+div .loading-large,
+span .loading-large {
   display: inline-block;
   width: 30px;
   height: 30px;
   margin: 2px 2px;
   position: relative;
 }
-div .loading_large:after,
-span .loading_large:after {
+div .loading-large:after,
+span .loading-large:after {
   content: '';
   display: inline-block;
   width: 0;

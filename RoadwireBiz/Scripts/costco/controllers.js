@@ -10,9 +10,9 @@ costco
 }])
 .controller('CarCtrl', ['$scope', 'SlctLevel', 'SelectorList', function ($scope, SlctLevel, SelectorList) {
 
-    $scope.make = {
-        obj: {},
-        list: [{ name: "ac" }, { name: "hon" }, { name: "toy" }]
+    $scope.click = function () {
+        $scope.year.shouldFocus = true;
+        //angular.element('#slct-year').trigger('focus');
     };
 
     function isUndefinedOrNull(val) {

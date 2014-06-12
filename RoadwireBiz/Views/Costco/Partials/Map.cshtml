@@ -1,4 +1,36 @@
 ﻿<p>
-    {{map}}
+    Map
 </p>
+
 <div id="googleMap" class="cc-map"></div>
+
+@*<google-map center="map.center"
+            zoom="map.zoom"
+            draggable="true"
+            dragging="map.dragging"
+            bounds="map.bounds"
+            events="map.events"
+            options="map.options"
+            pan="true"
+            control="map.control">
+    <marker 
+            coords="searchLocationMarker.coords" 
+            options="searchLocationMarker.options" 
+            events="searchLocationMarker.events">
+    </marker>
+
+    <markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'"
+             fit='true'>
+
+        <windows show="'showWindow'" closeclick="'closeClick'" ng-cloak>
+            <div>
+                <p>Dynamic Marker created via a delay!</p>
+
+                <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
+
+                <p class="muted">My marker will stay open when the window is popped up!</p>
+            </div>
+        </windows>
+
+    </markers>
+</google-map>*@

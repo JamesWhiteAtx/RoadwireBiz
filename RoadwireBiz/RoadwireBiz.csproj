@@ -238,7 +238,7 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\site\site.less" />
     <Content Include="Content\costco\costco.less" />
-    <None Include="Content\bootstrap\bootstrap.cssx.mapx" />
+    <None Include="Content\bootstrap\bootstrap.css.mapx" />
     <Content Include="Scripts\angular\angular-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js.map" />
@@ -249,6 +249,8 @@
     <Content Include="Scripts\costco\services.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\maps\angular-google-maps.js" />
+    <Content Include="Scripts\maps\lodash.underscore.js" />
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\bootstrap\respond.js" />
     <Content Include="Scripts\bootstrap\respond.min.js" />

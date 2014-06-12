@@ -9,34 +9,38 @@ namespace RoadwireBiz
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery/jquery-{version}.js"));
+                "~/Scripts/jquery/jquery-{version}.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr/modernizr-*"));
+                "~/Scripts/modernizr/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap/bootstrap.js",
-                      "~/Scripts/bootstrap/respond.js"));
+                "~/Scripts/bootstrap/bootstrap.js",
+                "~/Scripts/bootstrap/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                       "~/Scripts/angular/angular-{version}.js",
-                       "~/Scripts/angular/angular-route-{version}.js",
-                       "~/Scripts/angular/angular-resource-{version}.js"));
+                "~/Scripts/angular/angular-{version}.js",
+                "~/Scripts/angular/angular-route-{version}.js",
+                "~/Scripts/angular/angular-resource-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/costco").Include(
-                       "~/Scripts/costco/app.js",
-                       "~/Scripts/costco/controllers.js",
-                       "~/Scripts/costco/services.js",
-                       "~/Scripts/costco/directives.js"));
+                "~/Scripts/costco/app.js",
+                "~/Scripts/costco/controllers.js",
+                "~/Scripts/costco/services.js",
+                "~/Scripts/costco/directives.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/maps").Include(
+                "~/Scripts/maps/lodash.underscore.js",
+                "~/Scripts/maps/angular-google-maps.js"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
-                      "~/Content/bootstrap/bootstrap.css",
-                      "~/Content/site/site.css"));
+                "~/Content/bootstrap/bootstrap.css",
+                "~/Content/site/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/costco").Include(
-                      "~/Content/costco/costco.css"));
+                "~/Content/costco/costco.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

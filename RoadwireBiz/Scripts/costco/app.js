@@ -3,7 +3,7 @@ Roadwire Costco
 (c) 2014 Roadwire, Inc.
 */
 
-var costco = angular.module('costco', ['ngRoute', 'costco.services', 'costco.directives'])
+var costco = angular.module('costco', ['ngRoute', 'costco.services', 'costco.directives', 'google-maps'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/car', {

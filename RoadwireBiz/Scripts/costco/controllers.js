@@ -62,7 +62,7 @@ costco
     $scope.make.loadLvl();
 }])
 
-.controller('MapCtrl', ['$scope', function ($scope) {
+.controller('MapCtrl', ['$scope', '$log', function ($scope, $log) {
     $scope.map = "the map goes here";
 
     var mapProp = {
@@ -75,8 +75,9 @@ costco
 
     var myCenter = new google.maps.LatLng(51.508742, -0.120850);
     var marker = new google.maps.Marker({
-        position: myCenter
+        position: myCenter,
         //animation: google.maps.Animation.BOUNCE
+        bonez: 'tugz'
     });
     marker.setMap(map);
 
@@ -94,6 +95,70 @@ costco
     google.maps.event.addListener(marker, 'click', function () {
         infowindow.open(map, marker);
     });
+
+    //////////////////////////////////////////////////////
+    //$scope.map = {
+    //    center: {
+    //        latitude: 38.50,
+    //        longitude: -93.40
+    //    },
+    //    zoom: 4,
+    //    markers: [
+    //    {
+    //        id: 1,
+    //        latitude: 45,
+    //        longitude: -74,
+    //        showWindow: false,
+    //        title: 'Marker 2'
+    //    },
+    //    {
+    //        id: 2,
+    //        latitude: 38.22433924449191,
+    //        longitude: -117.30624999999998,
+    //        showWindow: false,
+    //        title: 'Marker 2'
+    //    },
+    //    {
+    //        id: 3,
+    //        latitude: 37,
+    //        longitude: -122,
+    //        showWindow: false,
+    //        title: 'Plane'
+    //    }
+    //    ],
+    //};
+
+    //var onMarkerClicked = function (marker) {
+    //    marker.showWindow = true;
+    //    $scope.$apply();
+    //};
+
+    //_.each($scope.map.markers, function (marker) {
+    //    marker.closeClick = function () {
+    //        marker.showWindow = false;
+    //        $scope.$apply();
+    //    };
+    //    marker.onClicked = function () {
+    //        onMarkerClicked(marker);
+    //    };
+    //});
+
+    //$scope.searchLocationMarker = {
+    //    coords: {
+    //        latitude: 38.50,
+    //        longitude: -93.40
+    //    },
+    //    options: { draggable: true },
+    //    events: {
+    //        dragend: function (marker, eventName, args) {
+    //            $log.log('marker dragend');
+    //            $log.log(marker.getPosition().lat());
+    //            $log.log(marker.getPosition().lng());
+    //        }
+    //    }
+    //};
+
+
 
 }])
 

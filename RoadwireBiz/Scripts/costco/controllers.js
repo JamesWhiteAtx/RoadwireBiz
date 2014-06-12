@@ -52,9 +52,6 @@ costco
         return lvlDefn;
     };
 
-    //makeLevels($scope);
-    //assgnSlctLevel(
-
     var mkLvl = SelectorList();
     var lvl = mkLvl;
     while (lvl) {
@@ -63,6 +60,41 @@ costco
     };
 
     $scope.make.loadLvl();
+}])
+
+.controller('MapCtrl', ['$scope', function ($scope) {
+    $scope.map = "the map goes here";
+
+    var mapProp = {
+        center: new google.maps.LatLng(51.508742, -0.120850),
+        zoom: 5,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    var myCenter = new google.maps.LatLng(51.508742, -0.120850);
+    var marker = new google.maps.Marker({
+        position: myCenter
+        //animation: google.maps.Animation.BOUNCE
+    });
+    marker.setMap(map);
+
+    // Zoom to 9 when clicking on marker
+    //google.maps.event.addListener(marker,'click',function() {
+    //    map.setZoom(9);
+    //    map.setCenter(marker.getPosition());
+    //});
+
+    //Open an InfoWindow When Clicking on The Marker
+    var infowindow = new google.maps.InfoWindow({
+        content: "Big Ray's Trim Shop"
+    });
+
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+    });
 
 }])
+
 ;

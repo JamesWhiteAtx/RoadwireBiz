@@ -11,9 +11,6 @@
             attrName: "@secName",
             secMdName: "@secModel",  
             secModel: "=secModel",
-            //slctModel: "=slctModel",
-            //secList: "=secList",
-            //secId: "@secId",
             secHide: "@secOnlyOpts"
         },
         template:
@@ -21,7 +18,6 @@
                 '<div ng-show="secModel.isLoading"><span class="loading"></span>Loading {{secPlural}}...</div>' +
                 '<select id="slct-{{secId}}" title="{{secName}}" class="slct-select"' +
                     'ng-disabled="secModel.isLoading || secModel.list.length == 0" ' +
-                    //'ng-hide="(secModel.isLoading) || ((secHide) && (secModel.list.length < 2))" ' +
                     'ng-hide="(secModel.isLoading)" ' +
                     'focus-it="secModel.shouldFocus" ' +
                     'ng-model="secModel.obj" ' +

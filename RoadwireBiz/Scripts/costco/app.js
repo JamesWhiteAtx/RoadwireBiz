@@ -11,6 +11,11 @@ var costco = angular.module('costco', ['ngRoute', 'costco.services', 'costco.dir
             templateUrl: '/Partial/Costco/Car',
             controller: "CarCtrl"
         });
+        $routeProvider.when('/map', {
+            title: 'map',
+            templateUrl: '/Partial/Costco/Map',
+            controller: "MapCtrl"
+        });
 
         $routeProvider.otherwise({ redirectTo: '/car' });
     }])

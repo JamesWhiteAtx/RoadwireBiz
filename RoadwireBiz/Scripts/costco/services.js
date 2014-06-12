@@ -3,12 +3,38 @@
 angular.module('costco.services', ['ngResource'])
 .value('version', '0.1')
 
-.factory('Selector', ['$http', function ($http) {
-    var slctUrl = "https://forms.netsuite.com/app/site/hosting/scriptlet.nl?script=65&deploy=1&compid=801095&h=692d92024556819e1ec4&callback=JSON_CALLBACK";
+.factory('NsUrl', ['$http', function ($http) {
+    return function (type) {
+        return $http.get('/netsuite/' + type, { cache: true })
+            .then(function (result) {
+                var url = result.data.url;
+                return url;
+            }, function (reason) {
+                return reason;
+            });
+    };
+}])
 
+.factory('NsUrlJsonP', ['NsUrl', function (NsUrl) {
+    return function (type) {
+        return NsUrl(type)
+            .then(function (url) {
+                return url + "&callback=JSON_CALLBACK";
+            }, function (reason) {
+                return $q.reject(reason);
+            });
+    };
+}])
+
+.factory('Selector', ['$http', '$q', 'NsUrlJsonP', function ($http, $q, NsUrlJsonP) {
     return function (parmObj) {
-        return $http.jsonp(slctUrl, { params: parmObj });
-    }
+        return NsUrlJsonP('leaslctr')
+            .then(function (url) {
+                return $http.jsonp(url, { params: parmObj });
+            }, function (reason) {
+                return $q.reject(reason);
+            });
+    };
 }])
 
 .factory('SlctLevel', ['$http', 'Selector', function ($http, Selector) {
@@ -130,7 +156,7 @@ angular.module('costco.services', ['ngResource'])
     return makeSlctLevel;
 }])
 
-.factory('SelectorList', ['SlctLevel', function (SlctLevel) {
+.factory('SelectorList', ['SlctLevel', 'NsUrl', function (SlctLevel, NsUrl) {
 
     var defnParm = function (parm, name, prop) {
         return { parm: parm, name: name, prop: prop };
@@ -179,7 +205,12 @@ angular.module('costco.services', ['ngResource'])
                 return $.map(list, function (item) {
                     item.sku = item.name;
                     item.name = item.leacolorname;
-                    item.colorurl = 'https://system.netsuite.com' + item.swatchimgurl;
+                    NsUrl('imgbase')
+                        .then(function (url) {
+                            item.colorurl = url + item.swatchimgurl;
+                        }, function (reason) {
+                            item.colorurl = '/Content/Images/img_not_avail.png';
+                        });
                     return item;
                 });
             }

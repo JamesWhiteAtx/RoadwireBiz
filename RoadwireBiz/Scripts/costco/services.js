@@ -3,6 +3,17 @@
 angular.module('costco.services', ['ngResource'])
 .value('version', '0.1')
 
+.factory('installers', ['$http', function ($http) {
+    return function () {
+        return $http.get('/content/json.json')
+            .then(function (result) {
+                return result.data;
+            }, function (reason) {
+                return reason;
+            });
+    };
+}])
+
 .factory('NsUrl', ['$http', function ($http) {
     return function (type) {
         return $http.get('/netsuite/' + type, { cache: true })

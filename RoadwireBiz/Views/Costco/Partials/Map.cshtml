@@ -12,14 +12,15 @@
             <button class="btn" type="submit" ng-disabled="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required">
                 Find Locations <i class="icon-search"></i>
             </button>
+            
             <div class="pull-right"><button type="button" class="btn btn-default" ng-click="reset()">Reset</button></div>
+            <div class="pull-right"><button type="button" class="btn btn-default" ng-click="test()">Test</button></div>
         </div>
 
         <span class="text-warning" ng-show="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required"> Enter a valid zipcode </span>
 
     </form>
 </div>
-    {{search}}
 
 @*<div id="googleMap" class="cc-map"></div>*@
 

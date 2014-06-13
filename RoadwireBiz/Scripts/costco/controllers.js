@@ -72,7 +72,7 @@ costco
     $scope.make.loadLvl();
 }])
 
-.controller('MapCtrl', ['$scope', '$log', function ($scope, $log) {
+.controller('MapCtrl', ['$scope', '$log', 'installers', function ($scope, $log, installers) {
     //$scope.map = "the map goes here";
 
     //var mapProp = {
@@ -107,6 +107,7 @@ costco
     //});
 
     //////////////////////////////////////////////////////
+
     var allMarkers = [
         {
             title: 'Seattle',
@@ -207,6 +208,8 @@ costco
 
     ];
 
+    allMarkers = [];
+
     $scope.map = {
         control: {},
         center: {
@@ -218,6 +221,15 @@ costco
         markers: allMarkers,
         zipMarkers: []
     };
+
+    installers()
+    .then(function (markers) {
+        allMarkers = markers;
+        $scope.map.markers = allMarkers;
+        assignMarkers();
+    }, function (reason) {
+        var y = reason;
+    });
 
     var onMarkerClicked = function (marker) {
         marker.showWindow = true;
@@ -233,24 +245,26 @@ costco
         bonez: 'tugz'
     });
 
-    _.each($scope.map.markers, function (marker, idx) {
+    var assignMarkers = function () {
+        _.each($scope.map.markers, function (marker, idx) {
 
-        marker.id = idx;
-        marker.showWindow = false;
-        marker.distance = null;
-
-        marker.closeClick = function () {
+            marker.id = idx;
             marker.showWindow = false;
-            $scope.$apply();
-        };
-        marker.onClicked = function () {
-            $scope.map.fit = false;
-            onMarkerClicked(marker);
-            //var map = $scope.map.control.getGMap();
-            //infowindow.open(map, myMarker);
+            marker.distance = null;
 
-        };
-    });
+            marker.closeClick = function () {
+                marker.showWindow = false;
+                $scope.$apply();
+            };
+            marker.onClicked = function () {
+                $scope.map.fit = false;
+                onMarkerClicked(marker);
+                //var map = $scope.map.control.getGMap();
+                //infowindow.open(map, myMarker);
+
+            };
+        });
+    };
 
     var deci = function (num) {
         return parseFloat(Math.round(num * 100) / 100).toFixed(2);
@@ -323,6 +337,8 @@ costco
         //$scope.searchLocationMarker = null;
         $scope.map.markers = allMarkers;
         $scope.map.fit = true;
+    };
+    $scope.test = function () {
     };
 
 }])

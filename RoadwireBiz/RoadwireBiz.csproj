@@ -244,6 +244,7 @@
     <Content Include="Scripts\angular\angular-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js.map" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js.map" />
+    <Content Include="Content\json.json" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />

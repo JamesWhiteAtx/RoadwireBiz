@@ -1,0 +1,99 @@
+﻿[
+        {
+            "title": "Seattle",
+            "latitude": "47.62",
+            "longitude": "-122.36"
+        },
+        {
+            "title": "Portland",
+            "latitude": "45.54",
+            "longitude": "-122.67"
+        },
+        {
+            "title": "San Francisco",
+            "latitude": "37.67",
+            "longitude": "-122.40"
+        },
+        {
+            "title": "Los Angeles",
+            "latitude": "33.97",
+            "longitude": "-118.27"
+        },
+        {
+            "title": "Denver",
+            "latitude": "39.76",
+            "longitude": "-104.96"
+        },
+        {
+            "title": "Kansas City",
+            "latitude": "39.05",
+            "longitude": "-94.59"
+        },
+        {
+            "title": "Chicago",
+            "latitude": "41.86",
+            "longitude": "-87.56"
+        },
+
+        {
+            "title": "St Louis",
+            "latitude": "38.64",
+            "longitude": "-90.24"
+        },
+        {
+            "title": "Dallas",
+            "latitude": "32.72",
+            "longitude": "-96.83"
+        },
+        {
+            "title": "Austin",
+            "latitude": "30.26",
+            "longitude": "-97.71"
+        },
+        {
+            "title": "San Antonio",
+            "latitude": "29.41",
+            "longitude": "-98.48"
+        },
+        {
+            "title": "Houston",
+            "latitude": "29.79",
+            "longitude": "-95.44"
+        },
+        {
+            "title": "Midland",
+            "latitude": "31.99",
+            "longitude": "-102.08"
+        },
+        {
+            "title": "Pittsburgh",
+            "latitude": "40.41",
+            "longitude": "-79.96" 
+        },
+        {
+            "title": "Trenton",
+            "latitude": "40.25",
+            "longitude": "-74.75"
+        },
+        {
+            "title": "Atlanta",
+            "latitude": "33.73",
+            "longitude": "-84.42"
+        },
+        {
+            "title": "Orlando",
+            "latitude": "28.55",
+            "longitude": "-81.34"
+        },
+        {
+            "title": "Brimingham",
+            "latitude": "33.55",
+            "longitude": "-86.83"
+        },
+        {
+            "title": "Boston",
+            "latitude": "42.35",
+            "longitude": "-71.06"
+        }
+
+    ]

@@ -37,6 +37,11 @@ namespace RoadwireBiz.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.OK, UrlRespObj(_nsService.getUrlImageHost()));
             }
+            else if (typeStr == "installers")
+            {
+                var anonArray = new[] { new { name = "apple", diam = 4 }, new { name = "grape", diam = 1 } };
+                return Request.CreateResponse(HttpStatusCode.OK, anonArray);
+            }
             else
             {
                 return Request.CreateResponse(HttpStatusCode.NoContent, UrlRespObj(String.Empty));

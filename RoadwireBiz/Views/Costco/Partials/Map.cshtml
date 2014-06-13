@@ -1,10 +1,29 @@
-﻿<p>
-    Map
+﻿<p ng-show="false">
+    <button type="button" class="btn btn-default" ng-click="clicky()">click</button>
 </p>
 
-<div id="googleMap" class="cc-map"></div>
+<div id="zip-section" class="clearfix">
+    <form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
 
-@*<google-map center="map.center"
+        <label class="control-label" for="inputIcon"><strong>Enter Your Zipcode</strong></label>
+
+        <div class="input-append">
+            <input type="text" name="locZip" id="locZip" class="span2" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
+            <button class="btn" type="submit" ng-disabled="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required">
+                Find Locations <i class="icon-search"></i>
+            </button>
+            <div class="pull-right"><button type="button" class="btn btn-default" ng-click="reset()">Reset</button></div>
+        </div>
+
+        <span class="text-warning" ng-show="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required"> Enter a valid zipcode </span>
+
+    </form>
+</div>
+    {{search}}
+
+@*<div id="googleMap" class="cc-map"></div>*@
+
+<google-map center="map.center"
             zoom="map.zoom"
             draggable="true"
             dragging="map.dragging"
@@ -13,24 +32,24 @@
             options="map.options"
             pan="true"
             control="map.control">
-    <marker 
-            coords="searchLocationMarker.coords" 
-            options="searchLocationMarker.options" 
+
+    <marker icon="searchLocationMarker.icon"
+            coords="searchLocationMarker.coords"
+            options="searchLocationMarker.options"
             events="searchLocationMarker.events">
     </marker>
 
     <markers models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'"
-             fit='true'>
+             fit="map.fit">
 
         <windows show="'showWindow'" closeclick="'closeClick'" ng-cloak>
             <div>
-                <p>Dynamic Marker created via a delay!</p>
-
-                <p ng-non-bindable>This is an info window at {{ latitude | number:4 }}, {{ longitude | number:4 }}!</p>
-
-                <p class="muted">My marker will stay open when the window is popped up!</p>
+                <p ng-non-bindable>{{title}} Trim Shop of {{title}}</p>
+                <p>Address 1</p>
+                <p>Address 2</p>
+                <p ng-non-bindable>{{distance}}</p>
             </div>
         </windows>
 
     </markers>
-</google-map>*@
+</google-map>

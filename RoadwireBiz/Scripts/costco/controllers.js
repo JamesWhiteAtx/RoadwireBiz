@@ -10,6 +10,16 @@ costco
 }])
 .controller('CarCtrl', ['$scope', 'SlctLevel', 'SelectorList', function ($scope, SlctLevel, SelectorList) {
 
+    $scope.trimHasOpts = function () {
+        return ($scope.trim) && ($scope.trim.list) && ($scope.trim.list.length > 1)
+        || ($scope.car) && ($scope.car.list) && ($scope.car.list.length > 1)
+        || ($scope.ptrn) && ($scope.ptrn.list) && ($scope.ptrn.list.length > 1);
+    };
+
+    $scope.intHasOpts = function () {
+        return ($scope.int) && ($scope.int.list) && ($scope.int.list.length > 1);
+    };
+
     $scope.click = function () {
         $scope.year.shouldFocus = true;
         //angular.element('#slct-year').trigger('focus');

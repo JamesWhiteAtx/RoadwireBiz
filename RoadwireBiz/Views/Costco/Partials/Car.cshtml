@@ -1,4 +1,5 @@
-﻿    
+﻿<div id="sel-head" class="slct-sect">
+</div>
 <div id="sel-car" class="slct-sect">
     <h4 class="sel-caption">Find Your Vehicle</h4>
     <div sel-car-select sec-model="make"></div>
@@ -6,13 +7,13 @@
     <div sel-car-select sec-model="model"></div>
     <div sel-car-select sec-model="body" sec-plural="Bodies" sec-only-opts="true"></div>
 </div>
-<div id="sel-trim" class="slct-sect">
+<div id="sel-trim" class="slct-sect" ng-show="trimHasOpts()">
     <h4 class="sel-caption">Find Your Trim Level</h4>
     <div sel-car-select sec-model="trim" sec-name="Trim Level" sec-only-opts="true"></div>
     <div sel-car-select sec-model="car" sec-only-optsx="true"></div>
     <div sel-car-select sec-model="ptrn" sec-name="Configuration" sec-only-optsx="true"></div>
 </div>
-<div id="sel-int" class="slct-sect">
+<div id="sel-int" class="slct-sect" ng-show="intHasOpts()">
     <h4 class="sel-caption">Find Your Color</h4>
     <div sel-car-select sec-model="int" sec-name="Interior Color"></div>
 </div>

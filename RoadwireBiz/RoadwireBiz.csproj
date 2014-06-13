@@ -167,8 +167,10 @@
     <Content Include="Content\costco\costco.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\img_not_avail.png" />
+    <Content Include="Content\Images\leather_seats.png" />
     <Content Include="Content\Images\loading-large.gif" />
     <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\site\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

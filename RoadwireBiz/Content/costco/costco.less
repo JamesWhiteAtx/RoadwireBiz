@@ -14,8 +14,9 @@
 @cc-cnt-pad-bot: @cc-pad-bot;
 
 @cc-cnt-bord: 2px;
-@cc-vw-bord: 1px;
-@cc-foot-bord: 1px;
+@cc-bord: 1px;
+@cc-vw-bord: @cc-bord;
+@cc-foot-bord: @cc-bord;
 
 @cc-scrn-sm-ht: 500px;
 @cc-scrn-md-ht: @cc-scrn-sm-ht;
@@ -40,7 +41,7 @@ body {
     max-width: ((748px + @grid-gutter-width));
   }
 
-   border: 1px solid #c0c0c0;
+   border: @cc-bord solid #c0c0c0;
 }*/
 
 #costco-container
@@ -78,9 +79,28 @@ body {
     border: @cc-foot-bord solid #ff6a00;
 }
 
-.slct-sect
+.slct-sect 
 {
-    border: 1px solid #ff00dc;
+    border: @cc-bord solid #ff00dc;
+}
+
+h4.sel-caption
+{
+    font-weight: bold;
+}
+
+#sel-head 
+{
+    background: url('/Content/Images/logo.png') no-repeat left center;
+    background-repeat: no-repeat;
+    width: auto;
+    height: 30px;
+    border: 1px solid #ddd;
+    background-size: contain;
+}
+
+#sel-head:after {
+    content: " ";
 }
 
 .slctr-opt
@@ -88,13 +108,15 @@ body {
     display:inline-block;
     margin-right: 10px;
 
-    border: 1px solid #4cff00;
+    border: @cc-bord solid #4cff00;
 }
 
 .slct-select {
     .form-control;
     display:inline-block;
     width: auto;
+    font-size: @font-size-base;
+    font-weight: bold;
 }
 
 img.slct-kit

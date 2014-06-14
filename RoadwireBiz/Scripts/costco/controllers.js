@@ -75,21 +75,40 @@ costco
 .controller('MapCtrl', ['$scope', '$log', 'installers', function ($scope, $log, installers) {
     //$scope.map = "the map goes here";
 
-    //var mapProp = {
-    //    center: new google.maps.LatLng(51.508742, -0.120850),
-    //    zoom: 5,
-    //    mapTypeId: google.maps.MapTypeId.ROADMAP
-    //};
+    var mapProp = {
+        center: new google.maps.LatLng(38.50, -93.40),
+        zoom: 4,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
 
-    //var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-    //var myCenter = new google.maps.LatLng(51.508742, -0.120850);
-    //var marker = new google.maps.Marker({
-    //    position: myCenter,
-    //    //animation: google.maps.Animation.BOUNCE
-    //    bonez: 'tugz'
-    //});
-    //marker.setMap(map);
+    //Open an InfoWindow When Clicking on The Marker
+    var infowindow = new google.maps.InfoWindow({
+        content: "Big Ray's Trim Shop"
+    });
+
+    installers()
+    .then(function (locations) {
+        _.each(locations, function (location, idx) {
+
+            var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+            var marker = new google.maps.Marker({
+                position: latLng,
+                title: location.title
+            });
+            marker.setMap(map);
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.content = location.title;
+                infowindow.open(map, marker);
+            });
+
+        });
+    }, function (reason) {
+        alert(reason);
+    });
+
 
     // Zoom to 9 when clicking on marker
     //google.maps.event.addListener(marker,'click',function() {
@@ -97,17 +116,10 @@ costco
     //    map.setCenter(marker.getPosition());
     //});
 
-    //Open an InfoWindow When Clicking on The Marker
-    //var infowindow = new google.maps.InfoWindow({
-    //    content: "Big Ray's Trim Shop"
-    //});
 
-    //google.maps.event.addListener(marker, 'click', function () {
-    //    infowindow.open(map, marker);
-    //});
 
     //////////////////////////////////////////////////////
-
+/*
     var allMarkers = [
         {
             title: 'Seattle',
@@ -340,7 +352,7 @@ costco
     };
     $scope.test = function () {
     };
-
+*/
 }])
 
 ;

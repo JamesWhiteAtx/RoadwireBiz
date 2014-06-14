@@ -5,7 +5,7 @@ angular.module('costco.services', ['ngResource'])
 
 .factory('installers', ['$http', function ($http) {
     return function () {
-        return $http.get('/content/json.json')
+        return $http.get('/content/installers.json')
             .then(function (result) {
                 return result.data;
             }, function (reason) {

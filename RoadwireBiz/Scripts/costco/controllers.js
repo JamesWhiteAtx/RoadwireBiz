@@ -20,6 +20,10 @@ costco
         return ($scope.int) && ($scope.int.list) && ($scope.int.list.length > 1);
     };
 
+    $scope.kitHasOpts = function () {
+        return ($scope.kit) && ($scope.kit.list) && ($scope.kit.list.length > 0);
+    };
+
     $scope.click = function () {
         $scope.year.shouldFocus = true;
         //angular.element('#slct-year').trigger('focus');

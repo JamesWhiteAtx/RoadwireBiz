@@ -74,6 +74,11 @@
 #costco-container:after {
   clear: both;
 }
+/*@cc-ft-tot-ht: 25px;
+@cc-vw-tot-ht: @cc-tot-ht - @cc-ft-tot-ht;
+@cc-sel-hd-tot-ht: 30px;
+@cc-sel-bd-tot-ht: @cc-vw-tot-ht - @cc-sel-hd-tot-ht;
+@cc-sel-hd-ht: @cc-sel-hd-tot-ht - ()*/
 body {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -171,20 +176,29 @@ body {
 }
 .slct-sect {
   border: 1px solid #ff00dc;
+  background: rgba(0, 0, 0, 0.5);
 }
-h4.sel-caption {
+.slct-sect h4.sel-caption {
+  color: #ffffff;
   font-weight: bold;
 }
+.slct-sect span.loading {
+  color: #ffffff;
+}
 #sel-head {
-  background: url('/Content/Images/logo.png') no-repeat left center;
-  background-repeat: no-repeat;
   width: auto;
   height: 30px;
   border: 1px solid #ddd;
+  /*background: url('/Content/Images/logo.png') no-repeat left center;*/
   background-size: contain;
+  color: transparent;
 }
 #sel-head:after {
   content: " ";
+}
+#sel-body {
+  height: 100%;
+  background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
 }
 .slctr-opt {
   display: inline-block;

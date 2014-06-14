@@ -165,7 +165,9 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\costco\costco.css" />
+    <Content Include="Content\costco\StyleSheet1.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\carbkgrnd.jpg" />
     <Content Include="Content\Images\img_not_avail.png" />
     <Content Include="Content\Images\leather_seats.png" />
     <Content Include="Content\Images\loading-large.gif" />
@@ -247,6 +249,7 @@
     <Content Include="Content\json.json" />
     <Content Include="Content\convertcsv.json" />
     <Content Include="Content\installers.json" />
+    <Content Include="Content\costco\StyleSheet1.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />

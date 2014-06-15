@@ -8,6 +8,12 @@ costco
         $location.path('/car');
     };
 }])
+
+.controller('TestCtrl', ['$scope', function ($scope) {
+    $scope.test = "test";
+}])
+
+
 .controller('CarCtrl', ['$scope', 'SlctLevel', 'SelectorList', function ($scope, SlctLevel, SelectorList) {
 
     $scope.trimHasOpts = function () {

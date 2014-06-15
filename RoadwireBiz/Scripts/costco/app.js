@@ -6,6 +6,12 @@ Roadwire Costco
 var costco = angular.module('costco', ['ngRoute', 'costco.services', 'costco.directives', 'google-maps'])
 
     .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/test', {
+            title: 'test',
+            templateUrl: '/Partial/Costco/Test',
+            controller: "TestCtrl"
+        });
+
         $routeProvider.when('/car', {
             title: 'car',
             templateUrl: '/Partial/Costco/Car',

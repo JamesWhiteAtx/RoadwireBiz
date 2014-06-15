@@ -166,6 +166,7 @@
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\costco\costco.css" />
     <Content Include="Content\costco\StyleSheet1.css" />
+    <Content Include="Content\costco\test.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\carbkgrnd.jpg" />
     <Content Include="Content\Images\img_not_avail.png" />
@@ -250,6 +251,7 @@
     <Content Include="Content\convertcsv.json" />
     <Content Include="Content\installers.json" />
     <Content Include="Content\costco\StyleSheet1.less" />
+    <Content Include="Content\costco\costco_old.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />
@@ -281,6 +283,7 @@
     <Content Include="Views\Costco\Index.cshtml" />
     <Content Include="Views\Costco\Partials\Car.cshtml" />
     <Content Include="Views\Costco\Partials\Map.cshtml" />
+    <Content Include="Views\Costco\Partials\Test.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

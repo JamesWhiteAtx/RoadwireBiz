@@ -7,47 +7,31 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-.loading {
-  background: url('/Content/Images/loading.gif') no-repeat center center;
+span.loading {
+  margin-left: 5px;
 }
-div .loading,
-span .loading {
-  display: inline-block;
+span.loading:before {
+  content: "";
+  display: block;
+  background: url('/Content/Images/loading.gif') no-repeat;
   width: 15px;
   height: 15px;
-  margin: 2px 2px;
-  position: relative;
+  float: left;
+  margin: 0 6px 0 0;
 }
-div .loading:after,
-span .loading:after {
-  content: '';
+span.loading-large {
+  margin-left: 5px;
   display: inline-block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: -2px;
-  left: 0px;
+  min-height: 35px;
 }
-.loading-large {
-  background: url('/Content/Images/loading-large.gif') no-repeat center center;
-}
-div .loading-large,
-span .loading-large {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin: 2px 2px;
-  position: relative;
-}
-div .loading-large:after,
-span .loading-large:after {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: -2px;
-  left: 0px;
+span.loading-large:before {
+  content: "";
+  display: block;
+  background: url('/Content/Images/loading-large.gif') no-repeat;
+  width: 35px;
+  height: 35px;
+  float: left;
+  margin: 0 6px 0 0;
 }
 /* Set width on the form input elements since they're 100% wide by default */
 input,

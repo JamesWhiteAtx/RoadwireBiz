@@ -45,6 +45,10 @@ body {
   max-height: 449px;
 }
 #costco-view #sel-head {
+  border-style: solid;
+  border-color: #ddd;
+}
+#costco-view #sel-head {
   margin-top: 0;
   margin-bottom: 0;
   border-width: 1px;
@@ -57,25 +61,24 @@ body {
   background-size: contain;
   color: transparent;
 }
-#costco-view #sel-head {
+#costco-view #sel-body {
   border-style: solid;
-  border-color: #ddd;
+  border-color: #ffd800;
 }
-#costco-view .sel-sect {
-  border-style: solid;
-  border-color: #ff00dc;
-}
-#costco-view .sel-sect {
+#costco-view #sel-body {
   margin-top: 0;
   margin-bottom: 0;
   border-width: 1px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 66px;
-  max-height: 66px;
-  background: rgba(0, 0, 0, 0.5);
+  height: 419px;
+  max-height: 419px;
+  width: auto;
+  /*background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;*/
+  background-size: contain;
+  color: transparent;
 }
-#costco-view .sel-sect h4 {
+#costco-view .sel-caption {
   margin-top: 5px;
   margin-bottom: 5px;
   border-width: 0px;
@@ -85,11 +88,25 @@ body {
   color: #ffffff;
   font-weight: bold;
 }
-#costco-view .sel-sect .slctr-opt {
+#costco-view .sel-opt-sect {
+  border-style: solid;
+  border-color: #ff00dc;
+}
+#costco-view .sel-opt-sect {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 66px;
+  max-height: 66px;
+  background: rgba(0, 0, 0, 0.5);
+}
+#costco-view .sel-opt-sect .sel-opt {
   border-style: solid;
   border-color: #4cff00;
 }
-#costco-view .sel-sect .slctr-opt {
+#costco-view .sel-opt-sect .sel-opt {
   margin-top: 0;
   margin-bottom: 0;
   border-width: 1px;
@@ -98,6 +115,20 @@ body {
   height: 34px;
   display: inline-block;
   margin-right: 10px;
+}
+#costco-view .sel-chc-sect {
+  border-style: solid;
+  border-color: #ff00dc;
+}
+#costco-view .sel-chc-sect {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 1px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 215px;
+  max-height: 215px;
+  background: rgba(0, 0, 0, 0.5);
 }
 .costco-footer {
   margin-top: 0;

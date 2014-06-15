@@ -14,9 +14,9 @@
             secHide: "@secOnlyOpts"
         },
         template:
-            '<div class="slctr-opt" ng-class="{selected: secModel.isSelected}" ng-hide="((secHide) && (secModel.list.length < 2))" > ' +
-                '<div ng-show="secModel.isLoading"><span class="loading"></span>Loading {{secPlural}}...</div>' +
-                '<select id="slct-{{secId}}" title="{{secName}}" class="slct-select"' +
+            '<div class="sel-opt" ng-class="{selected: secModel.isSelected}" ng-hide="((secHide) && (secModel.list.length < 2))" > ' +
+                '<div ng-show="secModel.isLoading"><span class="loading">Loading {{secPlural}}...</span></div>' +
+                '<select id="slct-{{secId}}" title="{{secName}}" class="sel-slct"' +
                     'ng-disabled="secModel.isLoading || secModel.list.length == 0" ' +
                     'ng-hide="(secModel.isLoading)" ' +
                     'focus-it="secModel.shouldFocus" ' +

@@ -1,0 +1,13 @@
+#map-canvas {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  width: 100%;
+  background: #d4d0d0;
+}
+footer {
+  position: fixed;
+  height: 40px;
+  bottom: 5px;
+  background: #ffd800;
+}

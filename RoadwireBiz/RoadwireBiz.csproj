@@ -179,6 +179,7 @@
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\site\site.css" />
+    <Content Include="Content\utils\map.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -188,6 +189,7 @@
     <Content Include="Scripts\angular\angular-resource-1.2.16.min.js" />
     <Content Include="Scripts\angular\angular-route-1.2.16.js" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js" />
+    <Content Include="Scripts\angular\route-styles.js" />
     <Content Include="Scripts\costco\app.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -257,6 +259,7 @@
     <Content Include="Content\costco\StyleSheet1.less" />
     <Content Include="Content\costco\costco_old.less" />
     <Content Include="Content\costco\animation.less" />
+    <Content Include="Content\utils\map.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />
@@ -270,6 +273,8 @@
     <Content Include="Scripts\bootstrap\respond.js" />
     <Content Include="Scripts\bootstrap\respond.min.js" />
     <Content Include="Scripts\Roadwire\RwStore.js" />
+    <Content Include="Scripts\Utils\app.js" />
+    <Content Include="Scripts\Utils\controllers.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -290,6 +295,8 @@
     <Content Include="Views\Costco\Partials\Map.cshtml" />
     <Content Include="Views\Costco\Partials\Test.cshtml" />
     <Content Include="Views\Utils\Index.cshtml" />
+    <Content Include="Views\Utils\Partials\Map.cshtml" />
+    <Content Include="Views\Utils\Partials\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

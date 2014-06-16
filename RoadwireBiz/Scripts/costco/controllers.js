@@ -99,8 +99,10 @@ costco
 .controller('MapCtrl', ['$scope', '$log', 'installers', function ($scope, $log, installers) {
     //$scope.map = "the map goes here";
 
+    var ltlgCenter = new google.maps.LatLng(38.50, -93.40);
+
     var mapProp = {
-        center: new google.maps.LatLng(38.50, -93.40),
+        center: ltlgCenter,
         zoom: 4,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -112,9 +114,22 @@ costco
         content: "Big Ray's Trim Shop"
     });
 
+    var locMarker = new google.maps.Marker({
+        position: ltlgCenter,
+        title: 'location marker',
+        icon: 'http://maps.google.com/mapfiles/ms/icons/yellow.png'
+    });
+    
+    google.maps.event.addListener(locMarker, 'click', function () {
+        infowindow.content = 'Your current position';
+        infowindow.open(map, locMarker);
+    });
+
+    $scope.locations = [];
     installers()
-    .then(function (locations) {
-        _.each(locations, function (location, idx) {
+    .then(function (locs) {
+        $scope.locations = locs;
+        _.each($scope.locations, function (location, idx) {
 
             var latLng = new google.maps.LatLng(location.latitude, location.longitude);
             var marker = new google.maps.Marker({
@@ -123,8 +138,16 @@ costco
             });
             marker.setMap(map);
 
+            location.marker = marker;
+
             google.maps.event.addListener(marker, 'click', function () {
-                infowindow.content = location.title;
+                var html = '<div><p>'+marker.title+'</p>';
+                if (marker.distance) {
+                    html += '<p>' + marker.distance + '</p>';
+                };
+                html += '</div>';
+
+                infowindow.content = html;
                 infowindow.open(map, marker);
             });
 
@@ -132,15 +155,66 @@ costco
     }, function (reason) {
         alert(reason);
     });
-
-
+    
     // Zoom to 9 when clicking on marker
     //google.maps.event.addListener(marker,'click',function() {
     //    map.setZoom(9);
     //    map.setCenter(marker.getPosition());
     //});
 
+    var deci = function (num) {
+        return parseFloat(Math.round(num * 100) / 100).toFixed(2);
+    };
 
+    $scope.zipcode = null;
+    $scope.loadInstallers = function () {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: $scope.zipcode },
+            function (results_array, status) {
+                if (status != "OK") {
+                    alert("Sorry - error");
+                };
+
+                var ltlgZip = new google.maps.LatLng(
+                    results_array[0].geometry.location.lat(),
+                    results_array[0].geometry.location.lng());
+
+                locMarker.setPosition(ltlgZip);
+                locMarker.setMap(map);
+
+                _.each($scope.locations, function (location, idx) {
+                    var marker = location.marker;
+
+                    var ltlgShop = marker.position;
+                    var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween(ltlgZip, ltlgShop);
+                    var proximitymiles = proximitymeter * 0.000621371192;
+
+                    marker.proximitymiles = proximitymiles;
+                    marker.distance = 'distance: ' + deci(proximitymiles) + ' miles';
+                });
+
+                $scope.locations.sort(function (a, b) { return a.marker.proximitymiles - b.marker.proximitymiles });
+
+                var bounds = new google.maps.LatLngBounds();
+                _.each($scope.locations, function (location, idx) {
+                    if (idx < 5) {
+                        location.marker.setMap(map);
+                        bounds.extend(location.marker.position);
+                    } else {
+                        location.marker.setMap(null);
+                    };
+                });
+                map.fitBounds(bounds);
+            });
+    };
+
+    $scope.reset = function () {
+        _.each($scope.locations, function (location, idx) {
+            location.marker.setMap(map);
+            map.setCenter(ltlgCenter);
+            map.setZoom(4);
+        });
+    };
 
     //////////////////////////////////////////////////////
 /*

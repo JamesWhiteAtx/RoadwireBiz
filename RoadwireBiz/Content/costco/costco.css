@@ -199,6 +199,7 @@ body #costco-container #costco-view #sel-body .sel-caption {
 }
 body #costco-container #costco-view #sel-body .sel-sect {
   padding-left: 5px;
+  padding-right: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-sect .sel-caption {
@@ -223,6 +224,7 @@ body #costco-container #costco-view #sel-body .sel-opt-sect {
   padding-bottom: 6px;
   height: 65px;
   padding-left: 5px;
+  padding-right: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-opt-sect .sel-caption {
@@ -308,6 +310,7 @@ body #costco-container #costco-view #sel-body .sel-chc-sect {
   padding-bottom: 3px;
   height: 226px;
   padding-left: 5px;
+  padding-right: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect .sel-caption {
@@ -325,7 +328,7 @@ body #costco-container #costco-view #sel-body .sel-chc-sect span {
   font-weight: bold;
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect ul {
-  margin: 0 10px;
+  margin-left: 1px;
   background: rgba(255, 255, 255, 0.75);
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect ul img.sel-kit {
@@ -335,6 +338,7 @@ body #costco-container #costco-view #sel-body .sel-chc-sect ul img.sel-kit {
 body #costco-container #costco-view #sel-body .sel-chc-sect ul .select-box {
   color: #000;
   font-weight: bold;
+  text-align: center;
 }
 body #costco-container .costco-footer {
   margin-top: 0;
@@ -343,4 +347,13 @@ body #costco-container .costco-footer {
   padding-top: 5px;
   padding-bottom: 5px;
   height: 25px;
+}
+.cc-map,
+.angular-google-map-container {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transform: translateZ(0px);
+  background-color: #e5e3df;
 }

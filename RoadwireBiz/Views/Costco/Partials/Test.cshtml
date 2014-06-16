@@ -1,4 +1,19 @@
-﻿<div id="sel-head" class="sel-sect">
+﻿<div>
+    Click me: <input type="checkbox" ng-model="checked"><br />
+    <div>
+        Show:
+        <div class="check-element animate-show" ng-show="checked">
+            <span class="glyphicon glyphicon-thumbs-up"></span> I show up when your checkbox is checked.
+        </div>
+    </div>
+    <div>
+        Hide:
+        <div class="check-element animate-show" ng-hide="checked">
+            <span class="glyphicon glyphicon-thumbs-down"></span> I hide when your checkbox is checked.
+        </div>
+    </div>
+</div>
+<div id="sel-head" class="sel-sect">
     Roadwire
 </div>
 
@@ -6,7 +21,7 @@
     <div id="sel-car" class="sel-opt-sect">
         <h4 class="sel-caption">Find Your Vehicle</h4>
 
-        <div class="sel-opt">
+        @*<div class="sel-opt">
             <div>
                 <span class="loading">Loading...</span>
             </div>
@@ -25,38 +40,48 @@
                 <option value="1">opt 1</option>
                 <option value="1">opt 1</option>
             </select>
-        </div>
-    </div>
-    <div id="sel-trim" class="sel-opt-sect">
-        <h4 class="sel-caption">Find Your Trim Level</h4>
-        <div class="sel-opt">
-            <div>
-                <span class="loading"></span>
-            </div>
-            <select id="slct-make" class="sel-slct">
-                <option value="" class="ng-binding">-- Select --</option>
-                <option value="1">opt 1</option>
-                <option value="1">opt 1</option>
-            </select>
-        </div>
-    </div>
-    
-    <div id="sel-int" class="sel-opt-sect">
-        <h4 class="sel-caption">Select Interior Color</h4>
-        <div class="sel-opt">
-            <div>
-                <span class="loading"></span>
-            </div>
-            <select id="slct-make" class="sel-slct">
-                <option value="" class="ng-binding">-- Select --</option>
-                <option value="1">opt 1</option>
-                <option value="1">opt 1</option>
-            </select>
-        </div>
+        </div>*@
+        <button class="btn" ng-click="toggle2()">
+            Toggle 2 <i class="icon-search"></i>
+        </button>
     </div>
 
-    <div id="sel-color" class="sel-chc-sect">
-        <h4 class="sel-caption">Select Your Color</h4>
+    <div id="sel-trim" class="sel-opt-sect check-element animate-show" ng-show="show2">
+        <h4 class="sel-caption">Find Your Trim Level {{show2}}</h4>
+        @*<div class="sel-opt">
+                <div>
+                    <span class="loading"></span>
+                </div>
+                <select id="slct-make" class="sel-slct">
+                    <option value="" class="ng-binding">-- Select --</option>
+                    <option value="1">opt 1</option>
+                    <option value="1">opt 1</option>
+                </select>
+            </div>*@
+        <button class="btn" ng-click="toggle3()">
+            Toggle 3 <i class="icon-search"></i>
+        </button>
+    </div>
+    
+    <div id="sel-int" class="sel-opt-sect check-element animate-show" ng-show="show3">
+        <h4 class="sel-caption">Select Interior Color  {{show3}}</h4>
+        @*<div class="sel-opt">
+                <div>
+                    <span class="loading"></span>
+                </div>
+                <select id="slct-make" class="sel-slct">
+                    <option value="" class="ng-binding">-- Select --</option>
+                    <option value="1">opt 1</option>
+                    <option value="1">opt 1</option>
+                </select>
+            </div>*@
+        <button class="btn" ng-click="toggle4()">
+            Toggle 4 <i class="icon-search"></i>
+        </button>
+    </div>
+
+    <div id="sel-color" class="sel-chc-sect check-element animate-show" ng-show="show4">
+        <h4 class="sel-caption">Select Your Color  {{show4}}</h4>
         @*<span class="loading-large">Loading...</span>*@
     </div>
 </div>

@@ -11,6 +11,20 @@ costco
 
 .controller('TestCtrl', ['$scope', function ($scope) {
     $scope.test = "test";
+
+    $scope.show2 = false;
+    $scope.show3 = false;
+    $scope.show4 = false;
+
+    $scope.toggle2 = function () {
+        $scope.show2 = !$scope.show2;
+    };
+    $scope.toggle3 = function () {
+        $scope.show3 = !$scope.show3;
+    };
+    $scope.toggle4 = function () {
+        $scope.show4 = !$scope.show4;
+    };
 }])
 
 

@@ -198,6 +198,7 @@ body #costco-container #costco-view #sel-body .sel-caption {
   height: 22px;
 }
 body #costco-container #costco-view #sel-body .sel-sect {
+  padding-left: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-sect .sel-caption {
@@ -221,6 +222,7 @@ body #costco-container #costco-view #sel-body .sel-opt-sect {
   padding-top: 3px;
   padding-bottom: 6px;
   height: 65px;
+  padding-left: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-opt-sect .sel-caption {
@@ -305,6 +307,7 @@ body #costco-container #costco-view #sel-body .sel-chc-sect {
   padding-top: 3px;
   padding-bottom: 3px;
   height: 226px;
+  padding-left: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect .sel-caption {
@@ -319,6 +322,18 @@ body #costco-container #costco-view #sel-body .sel-chc-sect .sel-caption {
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect span {
   color: #ffffff;
+  font-weight: bold;
+}
+body #costco-container #costco-view #sel-body .sel-chc-sect ul {
+  margin: 0 10px;
+  background: rgba(255, 255, 255, 0.75);
+}
+body #costco-container #costco-view #sel-body .sel-chc-sect ul img.sel-kit {
+  width: 150px;
+  height: 150px;
+}
+body #costco-container #costco-view #sel-body .sel-chc-sect ul .select-box {
+  color: #000;
   font-weight: bold;
 }
 body #costco-container .costco-footer {

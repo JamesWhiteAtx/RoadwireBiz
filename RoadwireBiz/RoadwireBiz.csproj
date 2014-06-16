@@ -164,6 +164,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\costco\animation.css" />
     <Content Include="Content\costco\costco.css" />
     <Content Include="Content\costco\StyleSheet1.css" />
     <Content Include="Content\costco\test.css" />
@@ -252,6 +253,7 @@
     <Content Include="Content\installers.json" />
     <Content Include="Content\costco\StyleSheet1.less" />
     <Content Include="Content\costco\costco_old.less" />
+    <Content Include="Content\costco\animation.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />

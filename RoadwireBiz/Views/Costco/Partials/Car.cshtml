@@ -16,7 +16,7 @@
         <div sel-car-select sec-model="ptrn" sec-name="Configuration" sec-only-opts="true"></div>
     </div>
     <div id="sel-int" class="sel-opt-sect" ng-show="intHasOpts() || int.isLoading">
-        <h4 class="sel-caption">Find Your Color</h4>
+        <h4 class="sel-caption">Interior Color of Your Vehicle</h4>
         <div sel-car-select sec-model="int" sec-name="Interior Color"></div>
     </div>
     <div ng-show="kit.isLoading" class="loading-large"></div>
@@ -25,7 +25,7 @@
         <ul class="list-inline">
             <li ng-repeat="col in kit.list" ng-click="pickColor($index)" title="{{col.name}}">
                 <div class="select-box" ng-class="{selected: col.id == leaCol.id}">
-                    <div class="box-descr">{{col.leacolorname}} - {{col.sku}}</div>
+                    <div class="box-descr">{{col.leacolorname}}</div>
                     <div>
                         <img id="{{col.name}}" ng-src="{{col.colorurl}}" alt="{{col.name}}" class="sel-kit">
                     </div>

@@ -6,13 +6,19 @@ using System.Web.Mvc;
 
 namespace RoadwireBiz.Controllers
 {
-    public class CostcoController : BaseController
+    public class UtilsController : BaseController
     {
-        // GET: Costco
+        //
+        // GET: /Utils/
         public ActionResult Index()
         {
             return View();
         }
 
-    }
+        // GET: /Utils/Map
+        public ActionResult Map(string id)
+        {
+            return RedirectToHashActId(id);
+        }
+	}
 }

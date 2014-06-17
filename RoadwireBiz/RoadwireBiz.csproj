@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CostcoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NetSuiteController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UtilsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -297,6 +298,7 @@
     <Content Include="Views\Utils\Index.cshtml" />
     <Content Include="Views\Utils\Partials\Map.cshtml" />
     <Content Include="Views\Utils\Partials\Menu.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

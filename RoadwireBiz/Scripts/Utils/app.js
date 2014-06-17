@@ -21,16 +21,14 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles'])
     }])
 ;
 
-//utils.run(['$location', '$rootScope', function ($location, $rootScope) {
-//    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-//        if (current.$$route) {
-//            $rootScope.heading = null;
-//            $rootScope.loading = false;
-//            $rootScope.title = current.$$route.title;
-//            document.title = $rootScope.title;
-//        }
-//    });
-//}])
+utils.run(['$location', '$rootScope', function ($location, $rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        if (current.$$route) {
+            $rootScope.title = current.$$route.title;
+            document.title = $rootScope.title;
+        }
+    });
+}])
 ;
 
 

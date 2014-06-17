@@ -1,17 +1,17 @@
 ﻿@*Utils Index*@
 
 @section styles{
+    @Styles.Render("~/Content/style")
     @*@Styles.Render("~/Content/utils")*@
 }
 
-<div id="utils-container" class="utils-container" ng-app="utils" ng-controller="UtilsCtrl" zb-route-styles>
-    <div ng-view id="utils-view" class="utils-view"></div>
-    <footer class="utils-footer">
-        &copy; @DateTime.Now.Year - Roadwire LLC
-    </footer>
+<div id="app-container" class="app-container" ng-app="utils" ng-controller="UtilsCtrl" zb-route-styles>
+    <div ng-view id="page-view" class="page-view"></div>
 </div>
 
 @section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/utils")
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvV2XB3ToYVHeUNMbTrr2Otq7ngt5pHD8&sensor=true&libraries=geometry"> </script>

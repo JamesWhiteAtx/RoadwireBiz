@@ -1,19 +1,36 @@
-﻿
-@gutter: 5px;
-@foot-ht: 40px;
-
-#map-canvas {
-    position: fixed;
-    top: 50px;
-    bottom: @foot-ht + (@gutter * 2);
-    width: 100%;    
-
-    background: #d4d0d0;
+﻿html, body, .app-container, .page-view {
+    height: 100%;
+    margin: 0px;
+    //padding: 0px;
 }
 
-footer {
-    position: fixed;
-    height: @foot-ht;
-    bottom: @gutter;
-    background: #ffd800;
+.bord(@color, @bord: 1px) {
+    padding: 1px;
+    border: 1px solid @color;
+}
+
+html {
+    .bord(black);
+}
+
+body {
+    .bord(red);
+}
+
+.app-container {
+    .bord(green);
+}
+
+.page-view {
+    .bord( blue);
+}
+
+.map-foot, .map-head {
+    .bord(gray)
+}
+
+#map-canvas {
+    height: 100%;
+    .bord(red, 2px);
+    background: #e0dada;
 }

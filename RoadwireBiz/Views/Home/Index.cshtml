@@ -1,5 +1,9 @@
 ﻿@*Home Index*@
 
+@section styles{
+    @Styles.Render("~/Content/style")
+}
+
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -46,3 +50,7 @@
     </div>
 </div>
 
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}

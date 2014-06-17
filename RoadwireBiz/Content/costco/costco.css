@@ -77,8 +77,7 @@ body {
   border-width: 0;
   padding-top: 5px;
   padding-bottom: 5px;
-  height: 500;
-  cc-bdy-cnt-ht: 490px;
+  height: 500px;
 }
 body #costco-container {
   border-style: solid;
@@ -90,13 +89,13 @@ body #costco-container {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  max-width: 778px;
   margin-top: 0;
   margin-bottom: 0;
   border-width: 2px;
   padding-top: 5px;
   padding-bottom: 5px;
   height: 490px;
-  cc-cont-cnt-ht: 476px;
 }
 @media (min-width: 768px) {
   body #costco-container {
@@ -125,47 +124,7 @@ body #costco-container > .navbar-collapse {
     margin-left: 0;
   }
 }
-@media (min-width: 768px) {
-  body #costco-container {
-    max-width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  body #costco-container {
-    max-width: 778px;
-  }
-}
-@media (min-width: 1200px) {
-  body #costco-container {
-    max-width: 778px;
-  }
-}
-body #costco-container #costco-view {
-  margin-top: 0;
-  margin-bottom: 0;
-  border-width: 0;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  height: 451px;
-  cc-view-cnt-ht: 451px;
-}
-body #costco-container #costco-view:before,
-body #costco-container #costco-view:after {
-  content: " ";
-  display: table;
-}
-body #costco-container #costco-view:after {
-  clear: both;
-}
-body #costco-container #costco-view:before,
-body #costco-container #costco-view:after {
-  content: " ";
-  display: table;
-}
-body #costco-container #costco-view:after {
-  clear: both;
-}
-body #costco-container #costco-view #sel-head {
+body #costco-container #cc-head {
   margin-top: 0;
   margin-bottom: 0;
   border-width: 0;
@@ -177,6 +136,30 @@ body #costco-container #costco-view #sel-head {
   background-size: contain;
   color: transparent;
 }
+body #costco-container #costco-view {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 451px;
+}
+body #costco-container #costco-view:before,
+body #costco-container #costco-view:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view:after {
+  clear: both;
+}
+body #costco-container #costco-view:before,
+body #costco-container #costco-view:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view:after {
+  clear: both;
+}
 body #costco-container #costco-view #sel-body {
   margin-top: 0;
   margin-bottom: 0;
@@ -184,18 +167,8 @@ body #costco-container #costco-view #sel-body {
   padding-top: 0px;
   padding-bottom: 0px;
   height: 421px;
-  cc-sel-body-cnt-ht: 421px;
   width: auto;
   background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
-  cc-sel-chc-sect-tot-ht: 226px;
-}
-body #costco-container #costco-view #sel-body .sel-caption {
-  margin-top: 0px;
-  margin-bottom: 3px;
-  border-width: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  height: 22px;
 }
 body #costco-container #costco-view #sel-body .sel-sect {
   padding-left: 5px;
@@ -203,12 +176,12 @@ body #costco-container #costco-view #sel-body .sel-sect {
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-sect .sel-caption {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 3px;
   border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 15px;
+  height: 22px;
   color: #ffffff;
   font-weight: bold;
 }
@@ -228,12 +201,12 @@ body #costco-container #costco-view #sel-body .sel-opt-sect {
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-opt-sect .sel-caption {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 3px;
   border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 15px;
+  height: 22px;
   color: #ffffff;
   font-weight: bold;
 }
@@ -302,6 +275,9 @@ fieldset[disabled] body #costco-container #costco-view #sel-body .sel-opt-sect .
 textareabody #costco-container #costco-view #sel-body .sel-opt-sect .sel-opt .sel-slct {
   height: auto;
 }
+body #costco-container #costco-view #sel-body .sel-opt-sect .sel-opt .sel-slct:focus {
+  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.075), 0 0 8px rgba(13, 12, 12, 0.97);
+}
 body #costco-container #costco-view #sel-body .sel-chc-sect {
   margin-top: 0;
   margin-bottom: 0;
@@ -314,12 +290,12 @@ body #costco-container #costco-view #sel-body .sel-chc-sect {
   background: rgba(0, 0, 0, 0.5);
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect .sel-caption {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 3px;
   border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 15px;
+  height: 22px;
   color: #ffffff;
   font-weight: bold;
 }
@@ -328,17 +304,41 @@ body #costco-container #costco-view #sel-body .sel-chc-sect span {
   font-weight: bold;
 }
 body #costco-container #costco-view #sel-body .sel-chc-sect ul {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  height: 195px;
   margin-left: 1px;
   background: rgba(255, 255, 255, 0.75);
 }
-body #costco-container #costco-view #sel-body .sel-chc-sect ul img.sel-kit {
-  width: 150px;
-  height: 150px;
+body #costco-container #costco-view #sel-body .sel-chc-sect ul > li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-body #costco-container #costco-view #sel-body .sel-chc-sect ul .select-box {
+body #costco-container #costco-view #sel-body .sel-chc-sect ul li {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 193px;
+  background: rgba(255, 255, 255, 0.85);
   color: #000;
   font-weight: bold;
   text-align: center;
+  margin-right: 1px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+body #costco-container #costco-view #sel-body .sel-chc-sect ul li img.sel-kit {
+  width: 144px;
+  height: 144px;
 }
 body #costco-container .costco-footer {
   margin-top: 0;
@@ -350,9 +350,9 @@ body #costco-container .costco-footer {
 }
 .sel-sect-fade.ng-hide-add,
 .sel-sect-fade.ng-hide-remove {
-  display: block!important;
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
+  display: block!important;
   opacity: 1;
 }
 .sel-sect-fade.ng-hide {

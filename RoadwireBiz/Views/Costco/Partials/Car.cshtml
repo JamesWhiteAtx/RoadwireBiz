@@ -1,7 +1,4 @@
-﻿<div id="sel-head" class="sel-sect">
-    Roadwire
-</div>
-<div id="sel-body">
+﻿<div id="sel-body">
     <div id="sel-car" class="sel-opt-sect sel-sect-fade">
         <h4 class="sel-caption">Find Your Vehicle</h4>
         <div sel-car-select sec-model="make"></div>
@@ -10,34 +7,31 @@
         <div sel-car-select sec-model="body" sec-plural="Bodies" sec-only-opts="true"></div>
     </div>
     
-    <div class="loading-large" ng-show="trimIsLoading() && !trimHasOpts()"></div>
-    <div id="sel-trim" class="sel-opt-sect  sel-sect-fade" ng-show="trimHasOpts()">
+    <div class="loading-large" ng-show="trimShowLoading()"></div>
+    <div id="sel-trim" class="sel-opt-sect  sel-sect-fade" ng-show="trimShowOpts()">
         <h4 class="sel-caption">Find Your Trim Level</h4>
         <div sel-car-select sec-model="trim" sec-name="Trim Level" sec-only-opts="true"></div>
         <div sel-car-select sec-model="car" sec-only-opts="true"></div>
         <div sel-car-select sec-model="ptrn" sec-name="Configuration" sec-only-opts="true"></div>
     </div>
     
-    <div class="loading-large" ng-show="intIsLoading() && !intHasOpts()"></div>
-    <div id="sel-int" class="sel-opt-sect  sel-sect-fade" ng-show="intHasOpts()">
+    <div class="loading-large" ng-show="intShowLoading()"></div>
+    <div id="sel-int" class="sel-opt-sect sel-sect-fade" ng-show="intShowOpts()">
         <h4 class="sel-caption">Interior Color of Your Vehicle</h4>
         <div sel-car-select sec-model="int" sec-name="Interior Color"></div>
     </div>
     
-    <div class="loading-large" ng-show="kit.isloading && !kitHasOpts()"></div>
-    <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="kitHasOpts() || kit.isloading">
+    <div class="loading-large" ng-show="kitShowLoading()"></div>
+    
+    <div class="sel-opt-sect sel-sect-fade" ng-show="kitShowOpts() && !kitShowLoading() && (!trimShowOpts() || !intShowOpts())"></div>
+
+    <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="kitShowOpts()">
         <h4 class="sel-caption">Select Your Color</h4>
         <ul class="list-inline">
-            <li ng-repeat="col in kit.list" ng-click="pickColor($index)" title="{{col.name}}">
-                <div class="select-box" ng-class="{selected: col.id == leaCol.id}">
-                    <div class="box-descr">{{col.leacolorname}}</div>
-                    <div>
-                        <img id="{{col.name}}" ng-src="{{col.colorurl}}" alt="{{col.name}}" class="sel-kit">
-                    </div>
-                    <div>
-                        {{col.rectype}}
-                    </div>
-                </div>
+            <li ng-repeat="col in kit.list" ng-click="pickKit($index)" title="{{col.name}}">
+                <div class="box-descr">{{col.leacolorname}}</div>
+                <img id="{{col.name}}" ng-src="{{col.colorurl}}" alt="{{col.name}}" class="sel-kit">
+                <div>{{col.rectype}}</div>
             </li>
         </ul>
     </div>    

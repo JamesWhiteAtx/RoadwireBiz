@@ -5,7 +5,6 @@
 <div id="sel-body">
     <div id="sel-car" class="sel-opt-sect ">
         <h4 class="sel-caption">Find Your Vehicle</h4>
-
         @*<div class="sel-opt">
             <div>
                 <span class="loading">Loading...</span>
@@ -29,6 +28,12 @@
         <button class="btn" ng-click="toggle2()">
             Toggle 2 <i class="icon-search"></i>
         </button>
+        <button class="btn" ng-click="toggle3()">
+            Toggle 3 <i class="icon-search"></i>
+        </button>
+        <button class="btn" ng-click="toggle4()">
+            Toggle 4 <i class="icon-search"></i>
+        </button>
     </div>
 
     <div id="sel-trim" class="sel-opt-sect sel-sect-fade" ng-show="show2">
@@ -43,9 +48,6 @@
                     <option value="1">opt 1</option>
                 </select>
             </div>*@
-        <button class="btn" ng-click="toggle3()">
-            Toggle 3 <i class="icon-search"></i>
-        </button>
     </div>
     
     <div id="sel-int" class="sel-opt-sect sel-sect-fade" ng-show="show3">
@@ -60,10 +62,9 @@
                     <option value="1">opt 1</option>
                 </select>
             </div>*@
-        <button class="btn" ng-click="toggle4()">
-            Toggle 4 <i class="icon-search"></i>
-        </button>
     </div>
+
+    <div class="sel-opt-sect sel-sect-fade" ng-show="show4 && !show3"> </div>
 
     <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="show4">
         <h4 class="sel-caption">Select Your Color  {{show4}}</h4>

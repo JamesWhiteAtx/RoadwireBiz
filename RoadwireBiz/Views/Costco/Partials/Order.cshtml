@@ -1,0 +1,13 @@
+﻿<h1>Order</h1>
+
+
+<dl>
+    <dt ng-repeat-start="(name, defn) in items">{{name}}</dt>
+    <dd ng-repeat-end>{{defn}}</dd>
+</dl>
+
+<ul class="list-unstyled">
+    <li ng-repeat="item in items">
+        <span class="item-name">{{item.name}}</span> <span class="item-defn">{{item.defn}}</span>
+    </li>
+</ul>

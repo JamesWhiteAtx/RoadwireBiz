@@ -23,7 +23,11 @@
     height: @css-ht;
 }
 
-@cc-tot-ht: 500;
+@cc-tot-ht: 500px;
+@cc-tot-wi: 778px;
+@cc-head-tot-ht: floor(@cc-tot-ht * 0.06);
+@cc-sel-opt-sect-tot-ht: 65px;
+
 @wire-frame-bord: 0;
 @wire-frame-marg: 1px;
 
@@ -32,7 +36,7 @@
 body {
     .heighttot(@cc-tot-ht, 0, 0, 0, @cc-bdy-padt, @cc-bdy-padb);
     @cc-bdy-cnt-ht: @content-ht;
-    cc-bdy-cnt-ht: @cc-bdy-cnt-ht;
+    //cc-bdy-cnt-ht: @cc-bdy-cnt-ht;
 
     @cc-cont-bord: 2px;
     @cc-cont-padt: 5px;
@@ -46,20 +50,11 @@ body {
     #costco-container
     {
         .container();
-
-        @media (min-width: @screen-sm-min) {
-            max-width: ((720px + @grid-gutter-width));
-        }
-        @media (min-width: @screen-md-min) {
-            max-width: ((748px + @grid-gutter-width));
-        }
-        @media (min-width: @screen-lg-min) {
-            max-width: ((748px + @grid-gutter-width));
-        }
+        max-width: @cc-tot-wi;
 
         .heighttot(@cc-bdy-cnt-ht, 0, 0, @cc-cont-bord, @cc-cont-padb, @cc-cont-padt);
         @cc-cont-cnt-ht: @content-ht;
-        cc-cont-cnt-ht: @cc-cont-cnt-ht;
+        //cc-cont-cnt-ht: @cc-cont-cnt-ht;
 
         @cc-foot-tot-ht: 25px;
         @cc-foot-bord: @wire-frame-bord;
@@ -69,6 +64,21 @@ body {
         @cc-view-bord: @wire-frame-bord;
         @cc-view-tot-ht:  @cc-cont-cnt-ht - @cc-foot-tot-ht;
         
+        // Costco Header
+        @cc-head-bord: @wire-frame-bord;
+        #cc-head when (@cc-head-bord > 0) {
+            border-style: solid;
+            border-color: #ddd;
+        }
+        #cc-head
+        {
+            .heighttot(@cc-head-tot-ht, 0, 0, @cc-head-bord);
+            width: auto;
+            background: url('/Content/Images/logo.png') no-repeat left center;
+            background-size: contain;
+            color: transparent;
+        }
+
         // costco View 
         #costco-view when (@cc-view-bord > 0) {
             border-style: solid;
@@ -79,27 +89,10 @@ body {
             .clearfix;
             .heighttot(@cc-view-tot-ht, 0, 0, @cc-view-bord);
             @cc-view-cnt-ht: @content-ht;
-            cc-view-cnt-ht: @cc-view-cnt-ht;
-
-            // Selector Header
-            @cc-sel-head-tot-ht: 30px;
-            @cc-sel-head-bord: @wire-frame-bord;
-            
-            #sel-head when (@cc-sel-head-bord > 0) {
-                border-style: solid;
-                border-color: #ddd;
-            }
-            #sel-head
-            {
-                .heighttot(@cc-sel-head-tot-ht, 0, 0, @cc-sel-head-bord);
-                width: auto;
-                background: url('/Content/Images/logo.png') no-repeat left center;
-                background-size: contain;
-                color: transparent;
-            }
+            //cc-view-cnt-ht: @cc-view-cnt-ht;
 
             //Selector Body
-            @cc-sel-body-tot-ht: @cc-view-cnt-ht - @cc-sel-head-tot-ht;
+            @cc-sel-body-tot-ht: @cc-view-cnt-ht - @cc-head-tot-ht;
             @cc-sel-body-bord: @wire-frame-bord;
 
             #sel-body when (@cc-sel-body-bord > 0) {
@@ -110,7 +103,7 @@ body {
             {
                 .heighttot(@cc-sel-body-tot-ht, 0, 0, @cc-sel-body-bord);
                 @cc-sel-body-cnt-ht: @content-ht;
-                cc-sel-body-cnt-ht: @cc-sel-body-cnt-ht;
+                //cc-sel-body-cnt-ht: @cc-sel-body-cnt-ht;
                 width: auto;
                 background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
 
@@ -118,9 +111,6 @@ body {
 
                 @cc-sel-sect-cap-tot-ht: 25px;
                 @cc-sel-sect-cap-marg-ht: 3px;
-                .sel-caption {
-                    .heighttot(@cc-sel-sect-cap-tot-ht, 0px, @cc-sel-sect-cap-marg-ht);
-                }
 
                 .sel-sect
                 {
@@ -128,7 +118,7 @@ body {
                     padding-right: 5px;
                     background: rgba(0,0,0,0.5);
                     .sel-caption {
-                        .heighttot(@cc-sel-sect-cap-tot-ht, 5px, 5px);
+                        .heighttot(@cc-sel-sect-cap-tot-ht, 0px, @cc-sel-sect-cap-marg-ht);
                         @cc-sel-opt-sect-cap-ht: @content-ht;
                         color: #ffffff;
                         font-weight: bold;
@@ -141,7 +131,6 @@ body {
 
                 // Seletor Option Section
 
-                @cc-sel-opt-sect-tot-ht: 65px;
                 @cc-sel-opt-sect-bord: @wire-frame-bord;
                 @cc-sel-opt-sect-padt: 3px;
                 @cc-sel-opt-sect-padb: 6px;
@@ -180,11 +169,14 @@ body {
                             max-height: @cc-sel-opt-cnt-ht;
                             padding: 3px 12px;
                         }
+                        .sel-slct:focus {
+                            box-shadow: inset 0 5px 5px rgba(0,0,0,.075), 0 0 8px rgba(13, 12, 12, 0.97);
+                        }
                     }
                 }
 
                 @cc-sel-chc-sect-tot-ht: @cc-sel-body-cnt-ht - (@cc-sel-opt-sect-tot-ht * 3);
-                cc-sel-chc-sect-tot-ht: @cc-sel-chc-sect-tot-ht;
+                //cc-sel-chc-sect-tot-ht: @cc-sel-chc-sect-tot-ht;
                 @cc-sel-chc-sect-bord: @wire-frame-bord;
                 @cc-sel-chc-sect-pad: 3px;
                 .sel-chc-sect when (@cc-sel-chc-sect-bord > 0) {
@@ -193,21 +185,46 @@ body {
                 }
                 .sel-chc-sect {
                     .heighttot(@cc-sel-chc-sect-tot-ht, 0, 0, @cc-sel-chc-sect-bord, @cc-sel-chc-sect-pad, @cc-sel-chc-sect-pad);
-                    @cc-sel-opt-sect-ht: @content-ht;
+                    @cc-sel-chc-sect-cnt-ht: @content-ht;
+                    //cc-sel-chc-sect-cnt-ht: @cc-sel-chc-sect-cnt-ht;
 
                     .sel-sect();
 
+                    @cc-chc-ul-tot-ht: @cc-sel-chc-sect-cnt-ht - @cc-sel-sect-cap-tot-ht;
+
                     ul {
+                        .list-inline;
+                        .heighttot(@cc-chc-ul-tot-ht, 0, 0, 0, 1px, 1px);
+                        @cc-chc-ul-cnt-ht: @content-ht;
+                        //cc-chc-ul-cnt-ht: @cc-chc-ul-cnt-ht;
+
                         margin-left: 1px;
                         background: rgba(255, 255, 255, 0.75);
-                        img.sel-kit
-                        {
-                            .size(150px; 150px);
+
+                        @cc-li-bord: @wire-frame-bord;
+                        li when (@cc-li-bord > 0) {
+                            border-style: solid;
+                            border-color: #ff00dc;
                         }
-                        .select-box {
+                        li {
+                            .heighttot(@cc-chc-ul-cnt-ht, 0, 0, @cc-li-bord);
+                            @cc-chc-li-cnt-ht: @content-ht;
+
+                            background: rgba(255, 255, 255, 0.85);
                             color: #000;
                             font-weight: bold;
                             text-align:center;
+                            margin-right: 1px;
+                            padding: 0 10px;
+
+                            cursor: pointer;
+
+                            @img-dim: floor(@cc-chc-li-cnt-ht * 0.75);
+                            img.sel-kit
+                            {
+                                .size(@img-dim, @img-dim);
+                            }
+
                         }
                     }
                 }
@@ -229,9 +246,8 @@ body {
 
 .sel-sect-fade.ng-hide-add, 
 .sel-sect-fade.ng-hide-remove {
+    .transition(@transition: all linear 0.5s);
 	display:block!important;
-    -webkit-transition: all linear 0.5s; 
-    transition: all linear 0.5s;
     opacity:1;
 }
 .sel-sect-fade.ng-hide {

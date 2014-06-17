@@ -17,6 +17,11 @@ var costco = angular.module('costco', ['ngRoute', 'ngAnimate', 'costco.services'
             templateUrl: '/Partial/Costco/Car',
             controller: "CarCtrl"
         });
+        $routeProvider.when('/order', {
+            title: 'order',
+            templateUrl: '/Partial/Costco/Order',
+            controller: "OrderCtrl"
+        });
         $routeProvider.when('/map', {
             title: 'map',
             templateUrl: '/Partial/Costco/Map',

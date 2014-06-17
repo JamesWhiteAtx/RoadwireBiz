@@ -167,6 +167,16 @@ angular.module('costco.services', ['ngResource'])
     return makeSlctLevel;
 }])
 
+.factory('Share', function () {
+    var mkLvl;
+    return function () {
+        if (!mkLvl) {
+            mkLvl = { x: "1" };
+        };
+        return mkLvl;
+    };
+})
+
 .factory('SelectorList', ['SlctLevel', 'NsUrl', function (SlctLevel, NsUrl) {
 
     var defnParm = function (parm, name, prop) {
@@ -192,7 +202,7 @@ angular.module('costco.services', ['ngResource'])
     var intParms = ptParms.concat([defnParm('ptrnid', ptrnNm, 'id')]);
     var kitParms = intParms.concat([defnParm('intcolid', intNm, 'id')]);
 
-    return function () {
+    var makeLevels = function () {
         var mkLvl = SlctLevel({ name: makeNm, title: 'Make', type: 'makes', list: 'makes' });
         var lvl = mkLvl.makeNext({ name: yearNm, title: 'Year', type: 'years', list: 'years', parms: yrParms });
         lvl = lvl.makeNext({ name: modelNm, title: 'Model', type: 'models', list: 'models', parms: mdParms });
@@ -228,6 +238,45 @@ angular.module('costco.services', ['ngResource'])
         });
 
         return mkLvl;
+    };
+
+    var rootLvl;
+    return function () {
+        if (!rootLvl) {
+            rootLvl = makeLevels();
+        };
+        return rootLvl;
+    };
+}])
+
+.factory('WidgetData', ['SelectorList', function (SelectorList) {
+    var data;
+    return function () {
+        if (!data) {
+            data = {};
+        };
+        if (!data.rootLvl) {
+            data.rootLvl = SelectorList();
+        };
+        
+        data.walkLevels = function (fcn) {
+            var lvl = data.rootLvl;
+            while (lvl) {
+                if (angular.isFunction(fcn)) {
+                    fcn(lvl);
+                };
+                lvl = lvl.getNextLvl();
+            };
+        };
+
+        if (!data.selector) {
+            data.selector = {};
+            data.walkLevels(function (lvlDefn) {
+                data.selector[lvlDefn.name] = lvlDefn;
+            });
+        };
+
+        return data;
     };
 }])
 

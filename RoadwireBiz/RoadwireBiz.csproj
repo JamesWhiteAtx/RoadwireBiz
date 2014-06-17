@@ -299,6 +299,7 @@
     <Content Include="Views\Utils\Partials\Map.cshtml" />
     <Content Include="Views\Utils\Partials\Menu.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Costco\Partials\Order.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

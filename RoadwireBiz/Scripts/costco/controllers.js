@@ -7,6 +7,9 @@ costco
     $scope.routeCar = function () {
         $location.path('/car');
     };
+    $scope.routeOrder = function () {
+        $location.path('/order');
+    };
 }])
 
 .controller('TestCtrl', ['$scope', function ($scope) {
@@ -27,9 +30,7 @@ costco
     };
 }])
 
-
-.controller('CarCtrl', ['$scope', 'SlctLevel', 'SelectorList', function ($scope, SlctLevel, SelectorList) {
-
+.controller('CarCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
     $scope.trimIsLoading = function () {
         return (($scope.trim) && ($scope.trim.isLoading))
         || (($scope.car) && ($scope.car.isLoading))
@@ -40,6 +41,13 @@ costco
         || (($scope.car) && ($scope.car.list) && ($scope.car.list.length > 1))
         || (($scope.ptrn) && ($scope.ptrn.list) && ($scope.ptrn.list.length > 1));
     };
+    $scope.trimShowLoading = function () {
+        return $scope.trimIsLoading() && !$scope.trimHasOpts();
+    };
+    $scope.trimShowOpts = function () {
+        return $scope.trimHasOpts();
+    };
+
 
     $scope.intIsLoading = function () {
         return ($scope.int) && (($scope.int.isLoading));
@@ -47,14 +55,27 @@ costco
     $scope.intHasOpts = function () {
         return ($scope.int) && (($scope.int.list) && ($scope.int.list.length > 1));
     };
+    $scope.intShowLoading = function () {
+        return $scope.intIsLoading() && !$scope.intHasOpts();
+    };
+    $scope.intShowOpts = function () {
+        return $scope.intHasOpts();
+    };
 
     $scope.kitHasOpts = function () {
         return ($scope.kit) && (($scope.kit.list) && ($scope.kit.list.length > 0));
     };
 
-    $scope.click = function () {
-        $scope.year.shouldFocus = true;
-        //angular.element('#slct-year').trigger('focus');
+    $scope.kitShowLoading = function () {
+        $scope.kit.isloading && !$scope.kitHasOpts();
+    };
+    $scope.kitShowOpts = function () { 
+        return $scope.kitHasOpts() || $scope.kit.isloading;
+    };
+
+    $scope.pickKit = function (idx) {
+        $scope.kit.obj = $scope.kit.list[idx];
+        $scope.routeOrder();
     };
 
     function isUndefinedOrNull(val) {
@@ -65,15 +86,15 @@ costco
         return (newVal === oldVal) || (isUndefinedOrNull(newVal) && isUndefinedOrNull(oldVal));
     };
 
-    $scope.levelChanged = function () {
-        if ($scope.kit.obj) {
-            $scope.kitsAvailable = true;
-            $scope.ebaylisturl = $scope.kit.obj.ebaylisturl;
-        } else {
-            $scope.kitsAvailable = false;
-            $scope.ebaylisturl = undefined;
-        }
-    };
+    //$scope.levelChanged = function () {
+    //    if ($scope.kit.obj) {
+    //        $scope.kitsAvailable = true;
+    //        $scope.ebaylisturl = $scope.kit.obj.ebaylisturl;
+    //    } else {
+    //        $scope.kitsAvailable = false;
+    //        $scope.ebaylisturl = undefined;
+    //    }
+    //};
 
     var assgnSlctLevel = function (lvlDefn) {
         $scope[lvlDefn.name] = lvlDefn;
@@ -87,21 +108,31 @@ costco
             } else {
                 lvlDefn.clearNextLvl();
             };
-
-            $scope.levelChanged();
+            //$scope.levelChanged();
         });
 
         return lvlDefn;
     };
 
-    var mkLvl = SelectorList();
-    var lvl = mkLvl;
-    while (lvl) {
-        assgnSlctLevel(lvl);
-        lvl = lvl.getNextLvl();
+    var data = WidgetData();
+
+    data.walkLevels(assgnSlctLevel);
+
+    if ($scope.make.list.length < 1) {
+        $scope.make.loadLvl();
+    };
+}])
+
+.controller('OrderCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
+    var data = WidgetData();
+    $scope.items = [];
+    
+    var addItm = function (name, defn) {
+        $scope.items.push({name: name, defn: defn});
     };
 
-    $scope.make.loadLvl();
+    addItm("Vehicle", data.selector.make.obj.name);
+    addItm("Sku", data.selector.kit.obj.sku);
 }])
 
 .controller('MapCtrl', ['$scope', '$log', 'installers', function ($scope, $log, installers) {

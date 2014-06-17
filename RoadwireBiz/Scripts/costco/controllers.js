@@ -30,18 +30,26 @@ costco
 
 .controller('CarCtrl', ['$scope', 'SlctLevel', 'SelectorList', function ($scope, SlctLevel, SelectorList) {
 
+    $scope.trimIsLoading = function () {
+        return (($scope.trim) && ($scope.trim.isLoading))
+        || (($scope.car) && ($scope.car.isLoading))
+        || (($scope.ptrn) && ($scope.ptrn.isLoading));
+    }
     $scope.trimHasOpts = function () {
-        return ($scope.trim) && ($scope.trim.list) && ($scope.trim.list.length > 1)
-        || ($scope.car) && ($scope.car.list) && ($scope.car.list.length > 1)
-        || ($scope.ptrn) && ($scope.ptrn.list) && ($scope.ptrn.list.length > 1);
+        return (($scope.trim) && ($scope.trim.list) && ($scope.trim.list.length > 1))
+        || (($scope.car) && ($scope.car.list) && ($scope.car.list.length > 1))
+        || (($scope.ptrn) && ($scope.ptrn.list) && ($scope.ptrn.list.length > 1));
     };
 
+    $scope.intIsLoading = function () {
+        return ($scope.int) && (($scope.int.isLoading));
+    };
     $scope.intHasOpts = function () {
-        return ($scope.int) && ($scope.int.list) && ($scope.int.list.length > 1);
+        return ($scope.int) && (($scope.int.list) && ($scope.int.list.length > 1));
     };
 
     $scope.kitHasOpts = function () {
-        return ($scope.kit) && ($scope.kit.list) && ($scope.kit.list.length > 0);
+        return ($scope.kit) && (($scope.kit.list) && ($scope.kit.list.length > 0));
     };
 
     $scope.click = function () {

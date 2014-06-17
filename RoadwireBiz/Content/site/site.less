@@ -38,6 +38,20 @@ span.loading-large:before {
     margin: 0 6px 0 0;
 }
 
+div.loading-large {
+    margin-left: 5px;
+    min-height: @loading-large-dim;
+}
+div.loading-large:before {
+    content: "";
+    display: block;
+    background: url('/Content/Images/loading-large.gif') no-repeat;
+    width: @loading-large-dim;
+    height: @loading-large-dim;
+    float: left;
+    margin: 0 6px 0 0;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,

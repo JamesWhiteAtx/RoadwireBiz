@@ -1,92 +1,16 @@
 ﻿@*Test Index*@
 
 @section styles{
-<link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet" />
-<style>
-    
-    *.my-show-hide-animation.ng-hide-add,
-    .my-show-hide-animation.ng-hide-remove {
-      -webkit-transition:0.5s linear all;
-      transition:0.5s linear all;
-      display:block!important;
-      opacity:1;
-    }
-    .my-show-hide-animation.ng-hide {
-      opacity:0;
-    }
+@Styles.Render("~/Content/style")
+@Styles.Render("~/Content/costco")
 
-    /*
-    .stuff-to-show {
-        position: relative;
-        height: 100px;
-        -webkit-transition:top linear 1.5s;
-        transition:top linear 1.5s;
-        top: 0;
-    }
-
-    .stuff-to-show.ng-hide {
-	    top: -100px;
-    }
-
-    .stuff-to-show.ng-hide-add, .stuff-to-show.ng-hide-remove {
-	    display:block!important;
-    }
-    */
-    .sel-sect {
-        padding: 1px;
-        background: rgba(182, 179, 179, 0.40);
-        height: 100px;
-    }
-
-    /*.sel-sect.ng-hide-add, 
-    .sel-sect.ng-hide-remove {
-	    display:block!important;
-        -webkit-transition:opacity linear 0.5s;
-        transition:opacity linear 0.5s;
-        opacity:1;
-    }
-    .sel-sect.ng-hide {
-	    opacity:0;
-    }*/
-
-    /*.sel-sect.ng-hide-add, 
-    .sel-sect.ng-hide-remove {
-	    display:block!important;
-        -webkit-transition: height linear 0.5s; 
-        transition: height linear 0.5s;
-    }
-    .sel-sect.ng-hide {
-        height: 1px;
-    }*/
-
-    .sel-sect.ng-hide-add, 
-    .sel-sect.ng-hide-remove {
-	    display:block!important;
-        -webkit-transition: all linear 0.5s; 
-        transition: all linear 0.5s;
-        opacity:1;
-    }
-    .sel-sect.ng-hide {
-        height: 1px;
-	    opacity:0;
-    }
-
-
-    /*.sel-sect.ng-hide-add *, 
-    .sel-sect.ng-hide-remove * {
-	    display:block!important;
-        -webkit-transition:opacity linear 0.5s;
-        transition:opacity linear 0.5s;
-        opacity:1;
-    }
-    .sel-sect.ng-hide * {
-	    opacity:0;
-    }*/
-
-
-</style>
+    <style>
+        .sel-sect-fade {
+            padding: 1px;
+            background: rgba(182, 179, 179, 0.40);
+        }
+    </style>
 }
-
 @{
     ViewBag.Title = "Test";
 }
@@ -120,13 +44,13 @@
             <button ng-click="show2=!show2">show2</button>
             <button ng-click="show3=!show3">show3</button>
         </div>
-        <div class="sel-sect" ng-show="show1">
+        <div class="sel-sect-fade" ng-show="show1">
             <h1>now showing 1.</h1>
         </div>
-        <div class="sel-sect" ng-show="show2">
+        <div class="sel-sect-fade" ng-show="show2">
             <h1>now showing 2.</h1>
         </div>
-        <div class="sel-sect" ng-show="show3">
+        <div class="sel-sect-fade" ng-show="show3">
             <h1>now showing 3.</h1>
         </div>
     </div>
@@ -136,13 +60,15 @@
 @section scripts{
 
     @*1.2.16*@
-@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/angular")*@
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/costco")
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
-@*<script type="text/javascript" src="angularjs-1.2.0-animate-app.js"></script>*@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvV2XB3ToYVHeUNMbTrr2Otq7ngt5pHD8&sensor=true&libraries=geometry"> </script>
+@Scripts.Render("~/bundles/maps")
 
     <script>
         //var myApp = angular.module("MyApp", ["ngAnimate"]);

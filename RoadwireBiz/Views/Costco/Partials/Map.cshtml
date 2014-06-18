@@ -1,23 +1,28 @@
-﻿<div id="zip-section" class="clearfix">
-    <form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
+﻿<div id="map-body" class="map-body">
 
-        <label class="control-label" for="inputIcon"><strong>Enter Your Zipcode</strong></label>
+    <div id="inst-lookup">
+        @*<form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
 
-        <div class="input-append">
-            <input type="text" name="locZip" id="locZip" class="span2" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
-            <button class="btn" type="submit" ng-disabled="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required">
-                Find Locations <i class="icon-search"></i>
-            </button>
-            
-            <div class="pull-right"><button type="button" class="btn btn-default" ng-click="reset()">Reset</button></div>
-        </div>
+            <label class="control-label" for="inputIcon"><strong>Enter Your Zipcode</strong></label>
 
-        <span class="text-warning" ng-show="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required"> Enter a valid zipcode </span>
+            <div class="input-append">
+                <input type="text" name="locZip" id="locZip" class="span2" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
+                <button class="btn" type="submit" ng-disabled="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required">
+                    Find Locations <i class="icon-search"></i>
+                </button>
 
-    </form>
+                <div class="pull-right"><button type="button" class="btn btn-default" ng-click="reset()">Reset</button></div>
+            </div>
+
+            <span class="text-warning" ng-show="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required"> Enter a valid zipcode </span>
+
+        </form>*@
+        
+    </div>
+
+    <div id="map-canvas"></div>
+
 </div>
-
-<div id="map-canvas" class="cc-map"></div>
 
 @*<google-map center="map.center"
             zoom="map.zoom"

@@ -127,7 +127,7 @@ body #costco-container > .navbar-collapse {
 body #costco-container #cc-head {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   height: 42px;
@@ -139,10 +139,10 @@ body #costco-container #cc-head {
 body #costco-container #costco-view {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 651px;
+  height: 609px;
 }
 body #costco-container #costco-view:before,
 body #costco-container #costco-view:after {
@@ -163,7 +163,7 @@ body #costco-container #costco-view:after {
 body #costco-container #costco-view #lea-body {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   height: 609px;
@@ -192,7 +192,7 @@ body #costco-container #costco-view #lea-body .sel-sect span {
 body #costco-container #costco-view #lea-body .sel-opt-sect {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 3px;
   padding-bottom: 6px;
   height: 65px;
@@ -217,7 +217,7 @@ body #costco-container #costco-view #lea-body .sel-opt-sect span {
 body #costco-container #costco-view #lea-body .sel-opt-sect .sel-opt {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   height: 31px;
@@ -281,7 +281,7 @@ body #costco-container #costco-view #lea-body .sel-opt-sect .sel-opt .sel-slct:f
 body #costco-container #costco-view #lea-body .sel-chc-sect {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 3px;
   padding-bottom: 3px;
   height: 414px;
@@ -324,7 +324,7 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul > li {
 body #costco-container #costco-view #lea-body .sel-chc-sect ul li {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
   height: 381px;
@@ -361,16 +361,57 @@ body #costco-container #costco-view #ord-body ul.ord-sum label {
 body #costco-container #costco-view #ord-body ul.ord-sum label:after {
   content: ": ";
 }
+body #costco-container #costco-view #map-body {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 609px;
+}
+body #costco-container #costco-view #map-body #inst-lookup {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 75px;
+}
+body #costco-container #costco-view #map-body #inst-lookup:before,
+body #costco-container #costco-view #map-body #inst-lookup:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #map-body #inst-lookup:after {
+  clear: both;
+}
+body #costco-container #costco-view #map-body #inst-lookup:before,
+body #costco-container #costco-view #map-body #inst-lookup:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #map-body #inst-lookup:after {
+  clear: both;
+}
+body #costco-container #costco-view #map-body #map-canvas {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 534px;
+  overflow: hidden;
+  -webkit-transform: translateZ(0px);
+}
 body #costco-container .costco-footer {
   margin-top: 0;
   margin-bottom: 0;
-  border-width: 0;
+  border-width: 0px;
   padding-top: 5px;
   padding-bottom: 5px;
   height: 25px;
 }
-.cc-map,
-.angular-google-map-container {
+.cc-map {
   width: 100%;
   height: 380px;
   position: relative;

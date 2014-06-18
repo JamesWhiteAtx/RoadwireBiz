@@ -28,8 +28,8 @@
 @cc-head-tot-ht: floor(@cc-tot-ht * 0.06);
 @cc-sel-opt-sect-tot-ht: 65px;
 
-@wire-frame-bord: 0;
-@wire-frame-marg: 1px;
+@wire-frame-bord: 0px;
+@wire-frame-marg: 0px;
 
 @cc-bdy-padt: 5px;
 @cc-bdy-padb: @cc-bdy-padt;
@@ -62,7 +62,7 @@ body {
         @cc-foot-padb: @cc-foot-padt;
 
         @cc-view-bord: @wire-frame-bord;
-        @cc-view-tot-ht:  @cc-cont-cnt-ht - @cc-foot-tot-ht;
+        @cc-view-tot-ht:  @cc-cont-cnt-ht - (@cc-head-tot-ht + @cc-foot-tot-ht);
         
         // Costco Header
         @cc-head-bord: @wire-frame-bord;
@@ -85,14 +85,13 @@ body {
             border-color: #0026ff;
         }
         #costco-view
-        {
+        { 
             .clearfix;
             .heighttot(@cc-view-tot-ht, 0, 0, @cc-view-bord);
             @cc-view-cnt-ht: @content-ht;
-            //cc-view-cnt-ht: @cc-view-cnt-ht;
 
             //Selector Body
-            @cc-lea-body-tot-ht: @cc-view-cnt-ht - @cc-head-tot-ht;
+            @cc-lea-body-tot-ht: @cc-view-cnt-ht;
             @cc-lea-body-bord: @wire-frame-bord;
 
             #lea-body when (@cc-lea-body-bord > 0) {
@@ -253,6 +252,45 @@ body {
                     }
                 }
             }
+
+            @cc-map-body-bord: @wire-frame-bord;
+            #map-body when (@cc-map-body-bord > 0) {
+                border-style: solid;
+                border-color: red;
+            }
+            #map-body {
+                .heighttot(@cc-view-cnt-ht, 0, 0, @cc-map-body-bord);
+                @cc-map-body-cnt-ht: @content-ht;
+
+                @cc-map-inst-tot-ht: 75px;
+                @cc-map-cnv-tot-ht: @cc-map-body-cnt-ht - @cc-map-inst-tot-ht;
+
+                @cc-map-inst-bord: @wire-frame-bord;
+                #inst-lookup when (@cc-map-inst-bord > 0) {
+                    border-style: solid;
+                    border-color: #4cff00;
+                }
+                #inst-lookup {
+                    .heighttot(@cc-map-inst-tot-ht, 0, 0, @cc-map-inst-bord);
+                    @cc-map-body-cnt-ht: @content-ht;
+
+                    .clearfix;
+                }
+
+                @cc-map-cnv-bord: @wire-frame-bord;
+                #map-canvas when (@cc-map-cnv-bord > 0) {
+                    border-style: solid;
+                    border-color: #ffd800;
+                }
+                #map-canvas {
+                    .heighttot(@cc-map-cnv-tot-ht, 0, 0, @cc-map-cnv-bord);
+                    @cc-map-cnv-cnt-ht: @content-ht;
+                    
+                    overflow: hidden; 
+                    -webkit-transform: translateZ(0px); 
+                }
+            }
+
         }
     
         // costco Footer
@@ -268,7 +306,7 @@ body {
 }
 
 // Map
-.cc-map, .angular-google-map-container 
+.cc-map
 {
     width: 100%; 
     height: 380px; 

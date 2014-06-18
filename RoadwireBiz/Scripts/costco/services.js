@@ -14,7 +14,7 @@ angular.module('costco.services', ['ngResource'])
     };
 }])
 
-.factory('InstMarkers', ['$http', 'Installers', function ($http, Installers) {
+.factory('InstMarkers', ['Installers', function (Installers) {
     var markers;
 
     var makeMarkers = function (fcn) {
@@ -62,7 +62,7 @@ angular.module('costco.services', ['ngResource'])
 
 }])
 
-.factory('MarkersProx', ['$http', function ($http) {
+.factory('MarkersProx', [function() {
 
     var deci = function (num) {
         return parseFloat(Math.round(num * 100) / 100).toFixed(2);
@@ -101,7 +101,7 @@ angular.module('costco.services', ['ngResource'])
     };
 }])
 
-.factory('InstMap', ['$http', function ($http) {
+.factory('UsaMap', [function() {
     return function (mapDiv) {
         var map;
 
@@ -133,13 +133,68 @@ angular.module('costco.services', ['ngResource'])
             infowindow.open(map, locMarker);
         });
 
-        var reset = function () {
+        var recenter = function () {
             map.setCenter(ltlgCenter);
             map.setZoom(zoom);
         }
 
         map.infowindow = infowindow;
         map.locMarker = locMarker;
+        map.recenter = recenter;
+
+        return map;
+    };
+}])
+
+.factory('InstMap', ['UsaMap', 'InstMarkers', 'MarkersProx', function (UsaMap, InstMarkers, MarkersProx) {
+    return function (mapDiv) {
+        var map = UsaMap(mapDiv);
+
+        var markers = InstMarkers(function (marker) {
+            marker.setMap(map);
+
+            google.maps.event.addListener(marker, 'click', function () {
+                var html = '<div><p>' + marker.title + '</p>';
+                if (marker.distance) {
+                    html += '<p>' + marker.distance + '</p>';
+                };
+                html += '</div>';
+
+                marker.infowindow.content = html;
+                marker.infowindow.open(map, marker, map.locMarker);
+            });
+        });
+
+        var proxInstallers = function (addr) {
+            MarkersProx(addr, markers, function (markers, ltlgAddr) {
+
+                map.locMarker.setPosition(ltlgAddr);
+                map.locMarker.setVisible(true);
+
+                var bounds = new google.maps.LatLngBounds();
+                angular.forEach(markers, function (marker, idx) {
+                    if (idx < 5) {
+                        marker.setVisible(true);
+                        bounds.extend(marker.position);
+                    } else {
+                        marker.setVisible(false);
+                    };
+                });
+                bounds.extend(map.locMarker.position);
+
+                map.fitBounds(bounds);
+            });
+        };
+
+        var reset = function () {
+            angular.forEach(markers, function (marker) {
+                marker.setVisible(true);
+            });
+            map.recenter();
+        };
+
+        map.proxInstallers = proxInstallers;
+        map.markers = markers;
         map.reset = reset;
 
         return map;

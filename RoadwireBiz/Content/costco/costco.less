@@ -8,7 +8,7 @@
     margin-bottom: @botm;
     border-width: @bord;
     padding-top: @topp;
-    padding-bottom: @botp;
+    padding-bottom: @botp; 
 }
 
 .heightvar(@tot, @topm: 0px, @botm: 0px, @bord: 0px, @topp: 0px, @botp: 0px) {
@@ -23,8 +23,8 @@
     height: @css-ht;
 }
 
-@cc-tot-ht: 500px;
-@cc-tot-wi: 778px;
+@cc-tot-ht: 700px;
+@cc-tot-wi: 850px;
 @cc-head-tot-ht: floor(@cc-tot-ht * 0.06);
 @cc-sel-opt-sect-tot-ht: 65px;
 
@@ -92,18 +92,18 @@ body {
             //cc-view-cnt-ht: @cc-view-cnt-ht;
 
             //Selector Body
-            @cc-sel-body-tot-ht: @cc-view-cnt-ht - @cc-head-tot-ht;
-            @cc-sel-body-bord: @wire-frame-bord;
+            @cc-lea-body-tot-ht: @cc-view-cnt-ht - @cc-head-tot-ht;
+            @cc-lea-body-bord: @wire-frame-bord;
 
-            #sel-body when (@cc-sel-body-bord > 0) {
+            #lea-body when (@cc-lea-body-bord > 0) {
                 border-style: solid;
                 border-color: #ffd800;
             }
-            #sel-body
+            #lea-body
             {
-                .heighttot(@cc-sel-body-tot-ht, 0, 0, @cc-sel-body-bord);
-                @cc-sel-body-cnt-ht: @content-ht;
-                //cc-sel-body-cnt-ht: @cc-sel-body-cnt-ht;
+                .heighttot(@cc-lea-body-tot-ht, 0, 0, @cc-lea-body-bord);
+                @cc-lea-body-cnt-ht: @content-ht;
+                //cc-lea-body-cnt-ht: @cc-lea-body-cnt-ht;
                 width: auto;
                 background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
 
@@ -175,7 +175,7 @@ body {
                     }
                 }
 
-                @cc-sel-chc-sect-tot-ht: @cc-sel-body-cnt-ht - (@cc-sel-opt-sect-tot-ht * 3);
+                @cc-sel-chc-sect-tot-ht: @cc-lea-body-cnt-ht - (@cc-sel-opt-sect-tot-ht * 3);
                 //cc-sel-chc-sect-tot-ht: @cc-sel-chc-sect-tot-ht;
                 @cc-sel-chc-sect-bord: @wire-frame-bord;
                 @cc-sel-chc-sect-pad: 3px;
@@ -222,13 +222,36 @@ body {
                             @img-dim: floor(@cc-chc-li-cnt-ht * 0.75);
                             img.sel-kit
                             {
-                                .size(@img-dim, @img-dim);
+                                height: @img-dim;
                             }
 
                         }
                     }
                 }
 
+                .sel-sect-fade.ng-hide-add, 
+                .sel-sect-fade.ng-hide-remove {
+                    .transition(@transition: all linear 0.5s);
+	                display:block!important;
+                    opacity:1;
+                }
+                .sel-sect-fade.ng-hide {
+                    height: 1px;
+	                opacity:0;
+                }
+            }
+
+            #ord-body {
+                ul.ord-sum {
+                    .list-unstyled;
+                    label {
+                        color: red;
+                        min-width: 75px;
+                    }
+                    label:after {
+                        content: ": "
+                    }
+                }
             }
         }
     
@@ -242,17 +265,6 @@ body {
         }
     }
 
-}
-
-.sel-sect-fade.ng-hide-add, 
-.sel-sect-fade.ng-hide-remove {
-    .transition(@transition: all linear 0.5s);
-	display:block!important;
-    opacity:1;
-}
-.sel-sect-fade.ng-hide {
-    height: 1px;
-	opacity:0;
 }
 
 // Map

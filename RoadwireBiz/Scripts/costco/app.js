@@ -3,7 +3,7 @@ RoadwireBiz Costco
 (c) 2014 Roadwire, Inc.
 */
 
-var costco = angular.module('costco', ['ngRoute', 'ngAnimate', 'costco.services', 'costco.directives', 'google-maps'])
+var costco = angular.module('costco', ['ngRoute', 'ngAnimate', 'costco.services', 'costco.directives'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/test', {
@@ -12,10 +12,15 @@ var costco = angular.module('costco', ['ngRoute', 'ngAnimate', 'costco.services'
             controller: "TestCtrl"
         });
 
-        $routeProvider.when('/car', {
-            title: 'car',
-            templateUrl: '/Partial/Costco/Car',
-            controller: "CarCtrl"
+        $routeProvider.when('/leather', {
+            title: 'leather',
+            templateUrl: '/Partial/Costco/Leather',
+            controller: "LeaCtrl"
+        });
+        $routeProvider.when('/install', {
+            title: 'install',
+            templateUrl: '/Partial/Costco/install',
+            controller: "InstCtrl"
         });
         $routeProvider.when('/order', {
             title: 'order',
@@ -28,19 +33,14 @@ var costco = angular.module('costco', ['ngRoute', 'ngAnimate', 'costco.services'
             controller: "MapCtrl"
         });
 
-        $routeProvider.otherwise({ redirectTo: '/car' });
+        $routeProvider.otherwise({ redirectTo: '/leather' });
     }])
 ;
 
 costco.run(['$location', '$rootScope', function ($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         if (current.$$route) {
-            $rootScope.heading = null;
-
-            $rootScope.loading = false;
-
-            $rootScope.title = current.$$route.title;
-            document.title = $rootScope.title;
+            document.title = current.$$route.title;
         }
     });
 

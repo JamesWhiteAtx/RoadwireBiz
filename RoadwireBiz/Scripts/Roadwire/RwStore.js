@@ -226,7 +226,7 @@ Roadwire eBay Store v1.0.2
         });
         $scope[ptrnNm].makeNext($scope, $http, { name: intNm, title: 'Interior Color', type: 'carintcols', list: 'intColors', parms: intParms });
         $scope[intNm].makeNext($scope, $http, {
-            name: kitNm, title: 'Leather Color', type: 'ptrnrecs', list: 'kits', parms: kitParms,
+            name: kitNm, title: 'Leather Color', type: 'ptrnrecsebay', list: 'kits', parms: kitParms,
             listFcn: function (list) {
                 return $.map(list, function (item) {
                     item.sku = item.name;

@@ -61,11 +61,11 @@ body {
   background-size: contain;
   color: transparent;
 }
-#costco-view #sel-body {
+#costco-view #lea-body {
   border-style: solid;
   border-color: #ffd800;
 }
-#costco-view #sel-body {
+#costco-view #lea-body {
   margin-top: 0;
   margin-bottom: 0;
   border-width: 1px;

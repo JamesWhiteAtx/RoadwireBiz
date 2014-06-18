@@ -1,8 +1,4 @@
-﻿<p ng-show="false">
-    <button type="button" class="btn btn-default" ng-click="clicky()">click</button>
-</p>
-
-<div id="zip-section" class="clearfix">
+﻿<div id="zip-section" class="clearfix">
     <form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
 
         <label class="control-label" for="inputIcon"><strong>Enter Your Zipcode</strong></label>
@@ -21,7 +17,7 @@
     </form>
 </div>
 
-<div id="googleMap" class="cc-map"></div>
+<div id="map-canvas" class="cc-map"></div>
 
 @*<google-map center="map.center"
             zoom="map.zoom"

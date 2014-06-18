@@ -41,8 +41,8 @@
 @cc-sel-head-tot-ht: 30px;
 @cc-sel-head-bord: @wire-frame-bord;
 
-@cc-sel-body-tot-ht: @cc-view-tot-ht - @cc-sel-head-tot-ht;
-@cc-sel-body-bord: @wire-frame-bord;
+@cc-lea-body-tot-ht: @cc-view-tot-ht - @cc-sel-head-tot-ht;
+@cc-lea-body-bord: @wire-frame-bord;
 
 @cc-sel-opt-sect-tot-ht: 68px;
 @cc-sel-opt-sect-bord: @wire-frame-bord;
@@ -50,7 +50,7 @@
 
 @cc-sel-sect-cap-tot-ht: 30px;
 
-@cc-sel-chc-sect-tot-ht: @cc-sel-body-tot-ht - (@cc-sel-opt-sect-tot-ht * 3);
+@cc-sel-chc-sect-tot-ht: @cc-lea-body-tot-ht - (@cc-sel-opt-sect-tot-ht * 3);
 @cc-sel-chc-sect-bord: @wire-frame-bord;
 
 body {
@@ -106,15 +106,15 @@ body {
     }
 
 
-    #sel-body when (@cc-sel-body-bord > 0) {
+    #lea-body when (@cc-lea-body-bord > 0) {
         border-style: solid;
         border-color: #ffd800;
     }
-    #sel-body
+    #lea-body
     {
-        .heighttot(@cc-sel-body-tot-ht, 0, 0, @cc-sel-body-bord);
-        @cc-sel-body-ht: @height;
-        max-height: @cc-sel-body-ht;
+        .heighttot(@cc-lea-body-tot-ht, 0, 0, @cc-lea-body-bord);
+        @cc-lea-body-ht: @height;
+        max-height: @cc-lea-body-ht;
         width: auto;
         /*background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;*/
         background-size: contain;

@@ -3,14 +3,146 @@
 angular.module('costco.services', ['ngResource'])
 .value('version', '0.1')
 
-.factory('installers', ['$http', function ($http) {
+.factory('Installers', ['$http', function ($http) {
     return function () {
-        return $http.get('/content/installers.json')
+        return $http.get('/content/installers.json', { cache: true })
             .then(function (result) {
                 return result.data;
             }, function (reason) {
                 return reason;
             });
+    };
+}])
+
+.factory('InstMarkers', ['$http', 'Installers', function ($http, Installers) {
+    var markers;
+
+    var makeMarkers = function (fcn) {
+        var markers = [];
+        var infowindow = new google.maps.InfoWindow({
+            content: "Installer Location"
+        });
+
+        Installers()
+        .then(function (locs) {
+            angular.forEach(locs, function (location) {
+                var latLng = new google.maps.LatLng(location.latitude, location.longitude);
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    title: location.title
+                });
+
+                markers.push(marker);
+                marker.location = location;
+                marker.infowindow = infowindow;
+
+                if (angular.isFunction(fcn)) {
+                    fcn(marker);
+                }
+            });
+        }, function (reason) {
+            alert(reason);
+        });
+
+        return markers
+    }
+
+    return function (fcn) {
+        if (!markers) {
+            markers = makeMarkers(fcn);
+        } else {
+            if (angular.isFunction(fcn)) {
+                angular.forEach(markers, function (marker) {
+                    fcn(marker);
+                });
+            };
+        };
+        return markers;
+    };
+
+}])
+
+.factory('MarkersProx', ['$http', function ($http) {
+
+    var deci = function (num) {
+        return parseFloat(Math.round(num * 100) / 100).toFixed(2);
+    };
+
+    return function (address, markers, fcn) {
+
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address },
+            function (results_array, status) {
+                if (status != "OK") {
+                    alert("Sorry - error");
+                    return;
+                };
+
+                var ltlgAddr = new google.maps.LatLng(
+                    results_array[0].geometry.location.lat(),
+                    results_array[0].geometry.location.lng());
+
+                angular.forEach(markers, function (marker, idx) {
+                    var ltlgShop = marker.position;
+                    var proximitymeter = google.maps.geometry.spherical.computeDistanceBetween(ltlgAddr, ltlgShop);
+                    var proximitymiles = proximitymeter * 0.000621371192;
+
+                    marker.proximitymiles = proximitymiles;
+                    marker.distance = 'distance: ' + deci(proximitymiles) + ' miles';
+                });
+
+                markers.sort(function (a, b) { return a.proximitymiles - b.proximitymiles });
+
+                if (angular.isFunction(fcn)) {
+                    fcn(markers, ltlgAddr);
+                };
+                
+            });
+    };
+}])
+
+.factory('InstMap', ['$http', function ($http) {
+    return function (mapDiv) {
+        var map;
+
+        var ltlgCenter = new google.maps.LatLng(38.50, -93.40);
+        var zoom = 4;
+
+        var mapProp = {
+            center: ltlgCenter,
+            zoom: 4,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById(mapDiv), mapProp);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: "Location"
+        });
+
+        var locMarker = new google.maps.Marker({
+            position: ltlgCenter,
+            title: 'location marker',
+            icon: 'http://maps.google.com/mapfiles/ms/icons/yellow.png',
+            visible: false
+        });
+        locMarker.setMap(map);
+
+        google.maps.event.addListener(locMarker, 'click', function () {
+            infowindow.content = 'Your current position';
+            infowindow.open(map, locMarker);
+        });
+
+        var reset = function () {
+            map.setCenter(ltlgCenter);
+            map.setZoom(zoom);
+        }
+
+        map.infowindow = infowindow;
+        map.locMarker = locMarker;
+        map.reset = reset;
+
+        return map;
     };
 }])
 
@@ -221,16 +353,34 @@ angular.module('costco.services', ['ngResource'])
         });
         lvl = lvl.makeNext({ name: intNm, title: 'Interior Color', type: 'carintcols', list: 'intColors', parms: intParms });
         lvl = lvl.makeNext({
-            name: kitNm, title: 'Leather Color', type: 'ptrnrecs', list: 'kits', parms: kitParms,
+            name: kitNm, title: 'Leather Color', type: 'ptrnrecscostco', list: 'kits', parms: kitParms,
             listFcn: function (list) {
+
+                var ntAvlUrl = '/Content/Images/img_not_avail.png';
+                var imgUrl = function (base, rest) {
+                    if ((base) && (rest)) {
+                        return base + rest;
+                    } else {
+                        return ntAvlUrl;
+                    }
+                };
+
                 return $.map(list, function (item) {
                     item.sku = item.name;
                     item.name = item.leacolorname;
                     NsUrl('imgbase')
                         .then(function (url) {
-                            item.colorurl = url + item.swatchimgurl;
+                            item.mainimgurl = imgUrl(url, item.storeimgurl);
+                            item.colorurl = imgUrl(url, item.swatchimgurl);
+                            if (item.storeimgurl) {
+                                item.displayUrl = item.mainimgurl;
+                            } else {
+                                item.displayUrl = item.colorurl;
+                            }
                         }, function (reason) {
-                            item.colorurl = '/Content/Images/img_not_avail.png';
+                            item.mainimgurl = imgUrl(false);
+                            item.colorurl = imgUrl(false);
+                            item.displayUrl = imgUrl(false);
                         });
                     return item;
                 });

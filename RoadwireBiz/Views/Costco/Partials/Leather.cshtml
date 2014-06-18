@@ -1,4 +1,4 @@
-﻿<div id="sel-body">
+﻿<div id="lea-body">
     <div id="sel-car" class="sel-opt-sect sel-sect-fade">
         <h4 class="sel-caption">Find Your Vehicle</h4>
         <div sel-car-select sec-model="make"></div>
@@ -29,8 +29,8 @@
         <h4 class="sel-caption">Select Your Color</h4>
         <ul class="list-inline">
             <li ng-repeat="col in kit.list" ng-click="pickKit($index)" title="{{col.name}}">
-                <div class="box-descr">{{col.leacolorname}}</div>
-                <img id="{{col.name}}" ng-src="{{col.colorurl}}" alt="{{col.name}}" class="sel-kit">
+                <div class="box-descr">{{col.leacolorname}} {{col.sku}}</div>
+                <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">
                 <div>{{col.rectype}}</div>
             </li>
         </ul>

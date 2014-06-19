@@ -3,18 +3,27 @@ RoadwireBiz Utils App
 (c) 2014 Roadwire, Inc.
 */
 
-var utils = angular.module('utils', ['ngRoute', 'routeStyles'])
+var utils = angular.module('utils', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/menu', {
             title: 'menu',
             templateUrl: '/Partial/Utils/Menu',
-            controller: 'MenuCtrl'
+            controller: 'MenuCtrl',
+            resolve: {
+                one: function ($q) {
+                    var deferred = $q.defer();
+                    deferred.resolve(11);
+                    return deferred.promise;
+                },
+                two: function ($q) {
+                    return 2;
+                }
+            }
         });
         $routeProvider.when('/map', {
             title: 'map',
             templateUrl: '/Partial/Utils/Map',
-            controller: 'MapCtrl',
-            css: '/content/utils/map.css'
+            controller: 'MapCtrl'
         });
 
         $routeProvider.otherwise({ redirectTo: '/menu' });

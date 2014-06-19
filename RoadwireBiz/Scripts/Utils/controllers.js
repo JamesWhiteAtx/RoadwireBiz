@@ -10,6 +10,8 @@ utils
 }])
 
 .controller('MenuCtrl', ['$scope', function ($scope) {
+    //$scope.aa = one;
+    //$scope.bb = two;
 }])
 
 .controller('MapCtrl', ['$scope', function ($scope) {

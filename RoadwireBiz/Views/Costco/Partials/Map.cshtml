@@ -1,22 +1,29 @@
 ﻿<div id="map-body" class="map-body">
 
     <div id="inst-lookup">
-        @*<form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
+        <form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
 
             <label class="control-label" for="inputIcon"><strong>Enter Your Zipcode</strong></label>
 
-            <div class="input-append">
+            @*<div class="input-append">
                 <input type="text" name="locZip" id="locZip" class="span2" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
                 <button class="btn" type="submit" ng-disabled="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required">
                     Find Locations <i class="icon-search"></i>
                 </button>
 
                 <div class="pull-right"><button type="button" class="btn btn-default" ng-click="reset()">Reset</button></div>
-            </div>
+            </div>*@
+
+            <div class="input-group">
+                <input type="text" name="locZip" id="locZip" class="form-control" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Find Locations </button>
+                </span>
+            </div><!-- /input-group -->
 
             <span class="text-warning" ng-show="zipForm.locZip.$error.pattern || zipForm.locZip.$error.required"> Enter a valid zipcode </span>
 
-        </form>*@
+        </form>
         
     </div>
 

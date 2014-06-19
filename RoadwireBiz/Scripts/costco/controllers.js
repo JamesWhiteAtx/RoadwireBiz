@@ -145,7 +145,7 @@ costco
 }])
 
 .controller('MapCtrl', ['$scope', 'InstMap', function ($scope, InstMap) {
-    
+    /*
     var map = InstMap("map-canvas");
     $scope.zipcode = null;
     $scope.loadInstallers = function () {
@@ -154,7 +154,7 @@ costco
     $scope.reset = function () {
         map.reset();
     };
-    
+    */
 }])
 
 ;

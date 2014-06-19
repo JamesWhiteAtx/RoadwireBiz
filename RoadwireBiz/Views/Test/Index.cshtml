@@ -1,85 +1,30 @@
 ﻿@*Test Index*@
 
 @section styles{
-@Styles.Render("~/Content/style")
-@Styles.Render("~/Content/costco")
-
-    <style>
-        .sel-sect-fade {
-            padding: 1px;
-            background: rgba(182, 179, 179, 0.40);
-        }
-    </style>
+<link href="/Content/bootstrap/bootstrap.css" rel="stylesheet">
+<link href="/Content/site/site.css" rel="stylesheet">
 }
-@{
-    ViewBag.Title = "Test";
-}
-<h2>Test</h2>
 
+<h4>test</h4>
 
-<div ng-app="MyApp">
-    <div>
-        <h3>opacity</h3>
-        <div ng-init="isHidden=false">
-            <button ng-click="isHidden=!isHidden">Show / Hide Element</button>
-            <div class="my-show-hide-animation" ng-hide="isHidden">
-                I am visible!
-            </div>
-        </div>
-    </div>
-
-    @*<div>
-        <h3>slide</h3>
-        <div class="stuff-to-show" ng-show="show">
-            <h1>now showing.</h1>
-        </div>
-        <div style="position: absolute; top: 100px;">
-            <button ng-click="show=!show">Toggle show</button>
-        </div>
-    </div>*@
-    <div>
-        <h3>slide</h3>
-        <div>
-            <button ng-click="show1=!show1">show1</button>
-            <button ng-click="show2=!show2">show2</button>
-            <button ng-click="show3=!show3">show3</button>
-        </div>
-        <div class="sel-sect-fade" ng-show="show1">
-            <h1>now showing 1.</h1>
-        </div>
-        <div class="sel-sect-fade" ng-show="show2">
-            <h1>now showing 2.</h1>
-        </div>
-        <div class="sel-sect-fade" ng-show="show3">
-            <h1>now showing 3.</h1>
-        </div>
-    </div>
-
-</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+            <input type="text" class="form-control">
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+    <div class="col-lg-6">
+        <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
 @section scripts{
-
-    @*1.2.16*@
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/angular")
-@Scripts.Render("~/bundles/costco")
-
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvV2XB3ToYVHeUNMbTrr2Otq7ngt5pHD8&sensor=true&libraries=geometry"> </script>
-@Scripts.Render("~/bundles/maps")
-
-    <script>
-        //var myApp = angular.module("MyApp", ["ngAnimate"]);
-        angular.module('MyApp', ['ngAnimate']).run(function ($rootScope) {
-            console.log($rootScope);
-            $rootScope.show1 = true;
-            $rootScope.show2 = true;
-            $rootScope.show3 = true;
-        });
-    </script>
-
 }
-
-

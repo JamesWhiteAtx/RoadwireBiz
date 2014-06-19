@@ -31,6 +31,9 @@ namespace RoadwireBiz
             bundles.Add(new ScriptBundle("~/bundles/angstyles").Include(
                 "~/Scripts/angular/route-styles.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/rwutils").Include(
+                "~/Scripts/roadwire/rwservices.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/costco").Include(
                 "~/Scripts/costco/app.js",
                 "~/Scripts/costco/controllers.js",
@@ -39,7 +42,8 @@ namespace RoadwireBiz
 
             bundles.Add(new ScriptBundle("~/bundles/utils").Include(
                 "~/Scripts/utils/app.js",
-                "~/Scripts/utils/controllers.js"));
+                "~/Scripts/utils/controllers.js",
+                "~/Scripts/utils/services.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
                 "~/Scripts/maps/lodash.underscore.js"));

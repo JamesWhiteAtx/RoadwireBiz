@@ -275,9 +275,11 @@
     <Content Include="Scripts\modernizr\modernizr-2.6.2.js" />
     <Content Include="Scripts\bootstrap\respond.js" />
     <Content Include="Scripts\bootstrap\respond.min.js" />
-    <Content Include="Scripts\Roadwire\RwStore.js" />
-    <Content Include="Scripts\Utils\app.js" />
-    <Content Include="Scripts\Utils\controllers.js" />
+    <Content Include="Scripts\roadwire\rwservices.js" />
+    <Content Include="Scripts\roadwire\RwStore.js" />
+    <Content Include="Scripts\utils\app.js" />
+    <Content Include="Scripts\utils\controllers.js" />
+    <Content Include="Scripts\utils\services.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

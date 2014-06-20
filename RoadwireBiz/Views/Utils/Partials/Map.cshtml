@@ -1,10 +1,75 @@
 ﻿@*Utils Partials Map*@
-<div class="map-head">
+<style>
+    html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .ggl-ctrl-cnt {
+        margin-top: 16px;
+    }
+
+    .input-group-btn {
+        width: auto;
+    }
+
+.ggl-ctrl; {
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+    #loc-zip {
+        background-color: #fff;
+        padding: 0 11px 0 13px;
+        width: 200px;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        text-overflow: ellipsis;
+    }
+
+    #loc-zip:focus {
+        border-color: #4d90fe;
+        margin-left: -1px;
+        padding-left: 14px; /* Regular padding-left + 1. */
+        width: 201px;
+    }
+
+</style>
+@*<div class="map-head">
     <button class="btn btn-default" type="button" ng-click="bound()"><span class="glyphicon glyphicon-search"></span> Find Locations </button>
     <button class="btn btn-default" type="button" ng-click="reset()"><span class="glyphicon glyphicon-refresh"></span> Reset </button>
 </div>
-{{zipcode}}
-<div id="map-canvas" class="cc-map" style="height: 800px;"></div>
+{{zipcode}}*@
+<div id="ctrlx" class="ggl-ctrl-cnt">
+
+    <form ng-submit="loadInstallers()" name="zipForm" class="form-inline" novalidate="novalidate">
+        <div class="input-group">
+            <input type="text" name="locZip" id="locZip" class="form-control" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Find Locations </button>
+            </span>
+        </div><!-- /input-group -->
+    </form>
+        @*<input class="ggl-ctrl" type="text" name="locZip" id="loc-zip" ng-model="zipcode" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" required />
+            <input type="text" />
+            <button  type="button">
+                <span class="glyphicon glyphicon-search"></span>
+                Find Locations
+            </button>*@
+
+
+</div><!-- /input-group -->
+
+
+<div id="map-canvas" class="cc-map" style="height: 800px;">
+</div>
 @*<div class="map-foot">
     <h4>Foot</h4>
 </div>*@

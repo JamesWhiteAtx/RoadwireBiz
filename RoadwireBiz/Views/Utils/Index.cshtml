@@ -5,7 +5,7 @@
 @*@Styles.Render("~/Content/utils")*@
 }
 
-<div id="app-container" class="app-container" ng-app="utils" ng-controller="UtilsCtrl">
+<div id="app-container" class="app-container" ng-app="utils" ng-controller="UtilsCtrl" zb-route-styles>
     <div ng-view id="page-view" class="page-view"></div>
 </div>
 
@@ -13,6 +13,7 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angstyles")
 @Scripts.Render("~/bundles/rwutils")
 @Scripts.Render("~/bundles/utils")
 }

@@ -27,11 +27,12 @@ angular.module('roadwire.services', []) // 'ngResource'
                 $window.gglsrvccallback = undefined;
             };
             // thanks to Emil Stenström: http://friendlybit.com/js/lazy-loading-asyncronous-javascript/
-            if ($window.attachEvent) {
-                $window.attachEvent('onload', load_script);
-            } else {
-                $window.addEventListener('load', load_script, false);
-            }
+            //if ($window.attachEvent) {
+            //    $window.attachEvent('onload', load_script);
+            //} else {
+            //    $window.addEventListener('load', load_script, false);
+            //}
+            load_script();
             return deferred.promise;
         }
 
@@ -40,9 +41,7 @@ angular.module('roadwire.services', []) // 'ngResource'
         } else if ($window.google && $window.google.maps) {
             return $q.when($window.google.maps);
         } else {
-            return lazyLoadApi().then(function (gglMps) {
-                return gglMps;
-            });
+            return lazyLoadApi();
         };
 
     };
@@ -124,14 +123,12 @@ angular.module('roadwire.services', []) // 'ngResource'
                     alert("Sorry - error");
                     return;
                 };
-
-                var ltlgAddr = new gglMps.LatLng(
-                    results_array[0].geometry.location.lat(),
-                    results_array[0].geometry.location.lng());
+                //var ltlgAddr = new gglMps.LatLng(results_array[0].geometry.location.lat(),results_array[0].geometry.location.lng());
+                var result = results_array[0];
 
                 angular.forEach(markers, function (marker, idx) {
                     var ltlgShop = marker.position;
-                    var proximitymeter = gglMps.geometry.spherical.computeDistanceBetween(ltlgAddr, ltlgShop);
+                    var proximitymeter = gglMps.geometry.spherical.computeDistanceBetween(result.geometry.location, ltlgShop);
                     var proximitymiles = proximitymeter * 0.000621371192;
 
                     marker.proximitymiles = proximitymiles;
@@ -141,7 +138,7 @@ angular.module('roadwire.services', []) // 'ngResource'
                 markers.sort(function (a, b) { return a.proximitymiles - b.proximitymiles });
 
                 if (angular.isFunction(fcn)) {
-                    fcn(markers, ltlgAddr);
+                    fcn(markers, result);
                 };
                 deferred.resolve(markers);
             });
@@ -183,10 +180,6 @@ angular.module('roadwire.services', []) // 'ngResource'
 
         map = new gglMps.Map(document.getElementById(mapDiv), mapProp);
 
-        var infowindow = new gglMps.InfoWindow({
-            content: "Location"
-        });
-
         var locMarker = new gglMps.Marker({
             position: ltlgCenter,
             title: 'location marker',
@@ -195,9 +188,20 @@ angular.module('roadwire.services', []) // 'ngResource'
         });
         locMarker.setMap(map);
 
+        locMarker.infowindow = new gglMps.InfoWindow({
+            content: 'Current position'
+        });
+
+        locMarker.openInfo = function (cont) {
+            if (cont) {
+                locMarker.infowindow.content = cont;
+                locMarker.title = cont;
+            }
+            locMarker.infowindow.open(map, locMarker);
+        };
+
         gglMps.event.addListener(locMarker, 'click', function () {
-            infowindow.content = 'Your current position';
-            infowindow.open(map, locMarker);
+            locMarker.openInfo();
         });
 
         var recenter = function () {
@@ -205,7 +209,6 @@ angular.module('roadwire.services', []) // 'ngResource'
             map.fitBounds(boundsUsa);
         };
 
-        map.infowindow = infowindow;
         map.locMarker = locMarker;
         map.recenter = recenter;
 
@@ -234,8 +237,9 @@ angular.module('roadwire.services', []) // 'ngResource'
             .then(function (map) {
                 // after map object made, define extra functions
                 map.proxInstallers = function (addr) {
-                    return MarkersProx(addr, map.markers, function (markers, ltlgAddr) {
-                        map.locMarker.setPosition(ltlgAddr);
+                    return MarkersProx(addr, map.markers, function (markers, result) {
+                        map.locMarker.openInfo(result.formatted_address);
+                        map.locMarker.setPosition(result.geometry.location);
                         map.locMarker.setVisible(true);
 
                         var bounds = new gglMps.LatLngBounds();
@@ -254,6 +258,9 @@ angular.module('roadwire.services', []) // 'ngResource'
                 };
 
                 map.reset = function () {
+                    if (map.locMarker && map.locMarker.infowindow) {
+                        map.locMarker.infowindow.close();
+                    };
                     if (map.markers) {
                         angular.forEach(map.markers, function (marker) {
                             marker.setVisible(true);

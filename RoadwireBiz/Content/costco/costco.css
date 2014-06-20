@@ -393,9 +393,6 @@ body #costco-container #costco-view #map-body #inst-lookup:after {
 body #costco-container #costco-view #map-body #inst-lookup:after {
   clear: both;
 }
-body #costco-container #costco-view #map-body #inst-lookup .input-group-btn {
-  width: auto;
-}
 body #costco-container #costco-view #map-body #map-canvas {
   margin-top: 0;
   margin-bottom: 0;

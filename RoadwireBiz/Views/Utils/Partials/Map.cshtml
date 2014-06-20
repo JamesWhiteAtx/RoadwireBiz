@@ -1,8 +1,10 @@
 ﻿@*Utils Partials Map*@
-@*<div class="map-head">
-    <h4>Head</h4>
-</div>*@
-<div id="map-canvas" class="cc-map" style="height: 700px;"></div>
+<div class="map-head">
+    <button class="btn btn-default" type="button" ng-click="bound()"><span class="glyphicon glyphicon-search"></span> Find Locations </button>
+    <button class="btn btn-default" type="button" ng-click="reset()"><span class="glyphicon glyphicon-refresh"></span> Reset </button>
+</div>
+{{zipcode}}
+<div id="map-canvas" class="cc-map" style="height: 800px;"></div>
 @*<div class="map-foot">
     <h4>Foot</h4>
 </div>*@

@@ -120,7 +120,7 @@ angular.module('roadwire.services', []) // 'ngResource'
         var geocoder = new gglMps.Geocoder();
         geocoder.geocode({ address: address },
             function (results_array, status) {
-                if (status != "OK") {
+                if (status != gglMps.GeocoderStatus.OK) {
                     alert("Sorry - error");
                     return;
                 };
@@ -160,11 +160,24 @@ angular.module('roadwire.services', []) // 'ngResource'
         var map;
 
         var ltlgCenter = new gglMps.LatLng(38.50, -93.40);
-        var zoom = 4;
+        var boundsUsa = new gglMps.LatLngBounds(new gglMps.LatLng(49.38, -124.39), new gglMps.LatLng(25.82, -66.94));
+
+        var geocoder = new gglMps.Geocoder();
+        geocoder.geocode({ address: 'USA' }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                ltlgCenter = results[0].geometry.location;
+                boundsUsa = results[0].geometry.viewport;
+
+                if (map && map.recenter) {
+                    map.recenter();
+                };
+            }
+        });
 
         var mapProp = {
             center: ltlgCenter,
-            zoom: 4,
+            bounds: boundsUsa,
+            zoom: 5,
             mapTypeId: gglMps.MapTypeId.ROADMAP
         };
 
@@ -189,8 +202,8 @@ angular.module('roadwire.services', []) // 'ngResource'
 
         var recenter = function () {
             map.setCenter(ltlgCenter);
-            map.setZoom(zoom);
-        }
+            map.fitBounds(boundsUsa);
+        };
 
         map.infowindow = infowindow;
         map.locMarker = locMarker;
@@ -207,17 +220,52 @@ angular.module('roadwire.services', []) // 'ngResource'
 }])
 
 .factory('InstMap', ['LoadGglMaps', 'UsaMap', 'InstMarkers', 'MarkersProx', function (LoadGglMaps, UsaMap, InstMarkers, MarkersProx) {
-
     return function (mapDiv, gglMps) {
         var map;
-
         return LoadGglMaps(gglMps)
             .then(function (gglmps) {
+                // after google maps aquired, create map object
                 return UsaMap(mapDiv, gglMps);
             })
             .then(function (gMap) {
                 map = gMap;
+                return map;
+            })
+            .then(function (map) {
+                // after map object made, define extra functions
+                map.proxInstallers = function (addr) {
+                    return MarkersProx(addr, map.markers, function (markers, ltlgAddr) {
+                        map.locMarker.setPosition(ltlgAddr);
+                        map.locMarker.setVisible(true);
 
+                        var bounds = new gglMps.LatLngBounds();
+                        angular.forEach(markers, function (marker, idx) {
+                            if (idx < 5) {
+                                marker.setVisible(true);
+                                bounds.extend(marker.position);
+                            } else {
+                                marker.setVisible(false);
+                            };
+                        });
+                        bounds.extend(map.locMarker.position);
+                        map.fitBounds(bounds);
+                    },
+                    gglMps);
+                };
+
+                map.reset = function () {
+                    if (map.markers) {
+                        angular.forEach(map.markers, function (marker) {
+                            marker.setVisible(true);
+                        });
+                    };
+                    map.recenter();
+                };
+
+                return map;
+            })
+            .then(function (map) {
+                // after core map defined, assign installer markers to map
                 return InstMarkers(function (marker) {
                     marker.setMap(map);
 
@@ -235,67 +283,66 @@ angular.module('roadwire.services', []) // 'ngResource'
                 gglMps);
             })
             .then(function (markers) {
-                map.xx = 'xx';
+                // markers are assigned, set map property 
+                map.markers = markers;
+                // after all setup, return promise resolve to map to caller
                 return map;
             })
-            //.catch(function (reason) {
-            //    alert(reason);
-            //})
-            ;
+        ;
     };
 
-    return function (mapDiv) {
-        var map = UsaMap(mapDiv);
+    //return function (mapDiv) {
+    //    var map = UsaMap(mapDiv);
 
-        var markers = InstMarkers(function (marker) {
-            marker.setMap(map);
+    //    var markers = InstMarkers(function (marker) {
+    //        marker.setMap(map);
 
-            google.maps.event.addListener(marker, 'click', function () {
-                var html = '<div><p>' + marker.title + '</p>';
-                if (marker.distance) {
-                    html += '<p>' + marker.distance + '</p>';
-                };
-                html += '</div>';
+    //        google.maps.event.addListener(marker, 'click', function () {
+    //            var html = '<div><p>' + marker.title + '</p>';
+    //            if (marker.distance) {
+    //                html += '<p>' + marker.distance + '</p>';
+    //            };
+    //            html += '</div>';
 
-                marker.infowindow.content = html;
-                marker.infowindow.open(map, marker, map.locMarker);
-            });
-        });
+    //            marker.infowindow.content = html;
+    //            marker.infowindow.open(map, marker, map.locMarker);
+    //        });
+    //    });
 
-        var proxInstallers = function (addr) {
-            MarkersProx(addr, markers, function (markers, ltlgAddr) {
+    //    var proxInstallers = function (addr) {
+    //        MarkersProx(addr, markers, function (markers, ltlgAddr) {
 
-                map.locMarker.setPosition(ltlgAddr);
-                map.locMarker.setVisible(true);
+    //            map.locMarker.setPosition(ltlgAddr);
+    //            map.locMarker.setVisible(true);
 
-                var bounds = new google.maps.LatLngBounds();
-                angular.forEach(markers, function (marker, idx) {
-                    if (idx < 5) {
-                        marker.setVisible(true);
-                        bounds.extend(marker.position);
-                    } else {
-                        marker.setVisible(false);
-                    };
-                });
-                bounds.extend(map.locMarker.position);
+    //            var bounds = new google.maps.LatLngBounds();
+    //            angular.forEach(markers, function (marker, idx) {
+    //                if (idx < 5) {
+    //                    marker.setVisible(true);
+    //                    bounds.extend(marker.position);
+    //                } else {
+    //                    marker.setVisible(false);
+    //                };
+    //            });
+    //            bounds.extend(map.locMarker.position);
 
-                map.fitBounds(bounds);
-            });
-        };
+    //            map.fitBounds(bounds);
+    //        });
+    //    };
 
-        var reset = function () {
-            angular.forEach(markers, function (marker) {
-                marker.setVisible(true);
-            });
-            map.recenter();
-        };
+    //    var reset = function () {
+    //        angular.forEach(markers, function (marker) {
+    //            marker.setVisible(true);
+    //        });
+    //        map.recenter();
+    //    };
 
-        map.proxInstallers = proxInstallers;
-        map.markers = markers;
-        map.reset = reset;
+    //    map.proxInstallers = proxInstallers;
+    //    map.markers = markers;
+    //    map.reset = reset;
 
-        return map;
-    };
+    //    return map;
+    //};
 }])
 
 ;

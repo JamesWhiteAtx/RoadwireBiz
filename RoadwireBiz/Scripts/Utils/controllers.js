@@ -14,25 +14,26 @@ utils
 
 .controller('MapCtrl', ['$scope', 'gglMap', 'InstMap', function ($scope, gglMaps, InstMap) {
     //'UsaMap', 'InstMarkers', 'MarkersProx', // , UsaMap, InstMarkers, MarkersProx
-    $scope.srchloc;// = '44709';
+    //$scope.srchloc;// = '44709';
+    $scope.gglmaps = gglMaps;
+    
+    //var map;
+    //InstMap('map-canvas', gglMaps).then(function (gMap) {
+    //    map = gMap;
 
-    var map;
-    InstMap('map-canvas', gglMaps).then(function (gMap) {
-        map = gMap;
+    //    var ctrlDiv = document.getElementById('srchform');
+    //    ctrlDiv.index = 1;
 
-        var ctrlDiv = document.getElementById('ggl-map-ctrl');
-        ctrlDiv.index = 1;
-
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(ctrlDiv);
-        //ctrlDiv.style.display = 'block';
-        $scope.loadInstallers = function () {
-            map.proxInstallers($scope.srchloc);
-        };
-        $scope.reset = function () {
-            map.reset();
-        };
-    })
-
+    //    map.controls[google.maps.ControlPosition.TOP_LEFT].push(ctrlDiv);
+    //    //ctrlDiv.style.display = 'block';
+    //    $scope.loadInstallers = function () {
+    //        map.proxInstallers($scope.srchloc);
+    //    };
+    //    $scope.reset = function () {
+    //        map.reset();
+    //    };
+    //})
+    
     //UsaMap('map-canvas', gglMaps)
     //.then(function (gMap) {
     //    map = gMap;

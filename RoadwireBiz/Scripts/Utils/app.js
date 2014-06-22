@@ -3,7 +3,7 @@ RoadwireBiz Utils App
 (c) 2014 Roadwire, Inc.
 */
 
-var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.services', 'util.services'])
+var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.services', 'roadwire.directives', 'util.services'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/menu', {
             title: 'menu',

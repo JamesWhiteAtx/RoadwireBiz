@@ -279,6 +279,7 @@
     <Content Include="Scripts\roadwire\RwStore.js" />
     <Content Include="Scripts\utils\app.js" />
     <Content Include="Scripts\utils\controllers.js" />
+    <Content Include="Scripts\roadwire\rwdirectives.js" />
     <Content Include="Scripts\utils\services.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

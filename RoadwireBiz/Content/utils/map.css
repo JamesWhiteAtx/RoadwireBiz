@@ -6,23 +6,77 @@
   max-width: 100%;
   height: auto;
 }
+#srchform input[type=text] {
+  display: block;
+  width: 100%;
+  height: 31px;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+#srchform input[type=text] {
+  height: 28px;
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  border-radius: 0;
+}
+#srchform button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#srchform #btnreset {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+#srchform #btnfind {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
 .btn-group-lg > .btn {
   padding: 10px 16px;
   font-size: 15px;
   line-height: 1.33;
-  border-radius: 6px;
+  border-radius: 0;
 }
-.btn-group-sm > .btn {
+.btn-group-sm > .btn,
+#srchform button {
   padding: 5px 10px;
   font-size: 11px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 0;
 }
 .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 11px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 0;
 }
 .container:before,
 .container:after,
@@ -71,56 +125,63 @@
 html,
 body,
 #app-container,
-#page-view,
-#map-canvas {
+#page-view {
   height: 100%;
   margin: 0px;
   padding: 0px;
 }
-#map-canvas .ggl-map-ctrl {
+#map-canvas,
+#map-container {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+#srchform {
   margin-top: 16px;
   padding: 3px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-@media (min-width: 768px) {
-  #map-canvas .ggl-map-ctrl #srchform .form-group {
-    display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .form-control {
-    display: inline-block;
-    width: auto;
-    vertical-align: middle;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .input-group > .form-control {
-    width: 100%;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .control-label {
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .radio,
-  #map-canvas .ggl-map-ctrl #srchform .checkbox {
-    display: inline-block;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    vertical-align: middle;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .radio input[type="radio"],
-  #map-canvas .ggl-map-ctrl #srchform .checkbox input[type="checkbox"] {
-    float: none;
-    margin-left: 0;
-  }
-  #map-canvas .ggl-map-ctrl #srchform .has-feedback .form-control-feedback {
-    top: 0;
-  }
+#srchform label[for=locaddr] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
-#map-canvas .ggl-map-ctrl #srchform #locaddr {
-  text-overflow: ellipsis;
-  width: 200px;
+#srchform input[type=text] {
+  display: inline-block;
+  width: auto;
+  margin-right: -4px;
 }
-#map-canvas .ggl-map-ctrl #srchform #reset-map {
-  margin-left: 20px;
+#srchform button {
+  vertical-align: baseline;
 }
+#srchform #btnreset {
+  margin-left: 10px;
+}
+/*
+
+#map-canvas {
+    .ggl-map-ctrl {
+        margin-top: 16px;
+        padding: 3px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+        #srchform {
+            .form-inline;
+
+            #locaddr {
+                text-overflow: ellipsis;
+                width: 200px;
+            }
+
+            #reset-map {
+                margin-left: 20px;
+            }
+        }
+    }
+}
+*/

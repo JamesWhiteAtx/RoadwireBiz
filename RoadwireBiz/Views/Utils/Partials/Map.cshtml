@@ -1,30 +1,21 @@
 ﻿@*Utils Partials Map*@
-<div id="ggl-map-ctrl" class="ggl-map-ctrl">
-    <form ng-submit="loadInstallers()" id="srchform" name="srchform"  novalidate="novalidate">
-        
-        <div id="srch-ctrls" class="form-group input-group">
-            <input type="text" placeholder="current location" title="Enter Location (zip code)" name="locaddr" id="locaddr" class="form-control input-sm" ng-model="srchloc" required>
-            <span class="input-group-btn">
-                <button class="btn btn-primary btn-sm" type="submit" title="Find Locations"
-                        ng-disabled="srchform.locaddr.$error.required">
-                    <span class="glyphicon glyphicon-search"></span>
-                    Find Locations
-                </button>
-            </span>
-        </div>
-        
-        <div class="form-group">
-            <button type="button" id="reset-map" class="btn btn-default btn-sm" title="Reset Map" ng-click="reset()">
-                <span class="glyphicon glyphicon-refresh"></span>
-            </button>
-        </div>
+<div inst-map ggl-maps="gglmaps"></div>
 
+@*<div id="map-container">
+    <form ng-submit="loadInstallers()" id="srchform" name="srchform" novalidate="novalidate">
+        <label for="locaddr">Location</label>
+
+        <input type="text" placeholder="current location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>
+
+        <button type="submit" id="btnfind" title="Find Locations"
+                ng-disabled="srchform.locaddr.$error.required">
+            <span class="glyphicon glyphicon-search"></span>
+            Find Locations
+        </button>
+        <button type="button" id="btnreset" title="Reset Map"
+                ng-click="reset()">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </button>
     </form>
-</div>
-
-
-<div id="map-canvas" class="cc-map">
-</div>
-@*<div class="map-foot">
-    <h4>Foot</h4>
+    <div id="map-canvas">map-canvas</div>
 </div>*@

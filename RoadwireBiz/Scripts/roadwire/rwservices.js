@@ -226,7 +226,10 @@ angular.module('roadwire.services', []) // 'ngResource'
     return function (mapDiv, gglMps) {
         var map;
         return LoadGglMaps(gglMps)
-            .then(function (gglmps) {
+            .then(function (gMps) {
+                if (!gglMps) {
+                    gglMps = gMps;
+                };
                 // after google maps aquired, create map object
                 return UsaMap(mapDiv, gglMps);
             })

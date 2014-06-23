@@ -179,6 +179,7 @@
     <Content Include="Content\Images\loading-large.gif" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\roadwire\map.css" />
     <Content Include="Content\site\site.css" />
     <Content Include="Content\utils\map.css" />
     <Content Include="favicon.ico" />
@@ -263,6 +264,7 @@
     <Content Include="Content\costco\costco_old.less" />
     <Content Include="Content\costco\animation.less" />
     <Content Include="Content\utils\map.less" />
+    <Content Include="Content\roadwire\map.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />
@@ -306,6 +308,7 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Costco\Partials\Order.cshtml" />
     <Content Include="Views\Costco\Partials\Install.cshtml" />
+    <Content Include="Views\Utils\Partials\Mapx.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

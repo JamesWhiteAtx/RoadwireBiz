@@ -5,7 +5,7 @@
     @Styles.Render("~/Content/costco")
 }
 
-<div id="costco-container" class="costco-container" ng-app="costco" ng-controller="CostcoCtrl">
+<div id="costco-container" class="costco-container" ng-app="costco" ng-controller="CostcoCtrl" zb-route-styles>
     <div id="cc-head">
         Roadwire
     </div>
@@ -20,8 +20,10 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/angstyles")
 @Scripts.Render("~/bundles/animate")
+@Scripts.Render("~/bundles/rwutils")
 @Scripts.Render("~/bundles/costco")
-@Scripts.Render("~/bundles/underscore")
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvV2XB3ToYVHeUNMbTrr2Otq7ngt5pHD8&sensor=true&libraries=geometry"> </script>
+@*@Scripts.Render("~/bundles/underscore")
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvV2XB3ToYVHeUNMbTrr2Otq7ngt5pHD8&sensor=true&libraries=geometry"> </script>*@
 }

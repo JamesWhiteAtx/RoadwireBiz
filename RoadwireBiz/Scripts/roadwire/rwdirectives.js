@@ -5,48 +5,86 @@
         replace: true,
         transclude: true,
         scope: {
-            gglMaps: '=gglMaps'
+            gglMaps: '=gglMaps',
+            wtf: '=gglMaps',
         },
         template:
             '<div id="map-container">'+
                 '<form ng-submit="loadInstallers()" id="srchform" name="srchform" novalidate="novalidate">' +
-                '<label for="locaddr">Location</label>'+
-                '<input type="text" placeholder="current location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>'+
-                '<button type="submit" id="btnfind" title="Find Locations" ng-disabled="srchform.locaddr.$error.required">'+
-                    '<span class="glyphicon glyphicon-search"></span>'+
-                    'Find Locations'+
-                '</button>'+
-                '<button type="button" id="btnreset" title="Reset Map" ng-click="reset()">'+
-                    '<span class="glyphicon glyphicon-refresh"></span>'+
-                '</button>'+
+                    '<label for="locaddr">Location</label>'+
+                    '<input type="text" placeholder="current location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>'+
+                    '<button type="submit" id="btnfind" title="Find Locations" ng-disabled="srchform.locaddr.$error.required">'+
+                        '<span class="glyphicon glyphicon-search"></span>'+
+                        'Find Locations'+
+                    '</button>'+
+                    '<button type="button" id="btnreset" title="Reset Map" ng-click="reset()">'+
+                        '<span class="glyphicon glyphicon-refresh"></span>'+
+                    '</button>' +
+                    '<select ng-show="proxs && (proxs.length > 0)" ng-model="prox" ng-options="marker.proxDisp for marker in proxs">' +
+                        '<option value="">-- {{proxs.length}} locations found --</option>' +
+                    '</select>' +
                 '</form>' +
-                '<div id="map-canvas">map-canvas</div>'+
+                '<div id="map-canvas" map-refresh>map-canvas</div>' +
             '</div>',
 
+//        '<select><option value="volvo">Volvo</option><option value="saab">Saab</option><option value="mercedes">Mercedes</option><option value="audi">Audi</option></select>' +
+
+
         link: function (scope, element) {
-            var map;
+            scope.proxs = [];
+            scope.prox = null;
             var ctrlDiv = document.getElementById('srchform');
             ctrlDiv.style.display = 'none';
             InstMap('map-canvas', scope.gglMaps).then(function (gMap) {
-                map = gMap;
+                scope.map = gMap;
                 ctrlDiv.index = 1;
-                map.controls[google.maps.ControlPosition.TOP_LEFT].push(ctrlDiv);
-                //ctrlDiv.style.display = 'block';
+                scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(ctrlDiv);
+
                 scope.loadInstallers = function () {
-                    map.proxInstallers(scope.srchloc);
+                    scope.prox = null;
+                    scope.proxs = [];
+                    scope.map.proxInstallers(scope.srchloc,
+                        function (proxs) {
+                            angular.forEach(proxs, function (marker) {
+                                marker.proxDisp = marker.distance + ' ' + marker.title;
+                            });
+                            scope.proxs = proxs;
+                            scope.$apply();
+                        }
+                    );
                 };
                 scope.reset = function () {
-                    map.reset();
+                    scope.prox = null;
+                    scope.proxs = [];
+                    scope.map.reset();
                 };
                 ctrlDiv.style.display = 'block';
-                google.maps.event.addListenerOnce(map, "idle", function () {
-                    google.maps.event.trigger(map, 'resize');
-                    map.reset();
+
+                scope.$watch('prox', function (marker, prev) {
+                    if (prev && angular.isFunction(prev.closeInfo)) {
+                        prev.closeInfo();
+                    };
+                    if (marker && angular.isFunction(marker.openInfo)) {
+                        marker.openInfo();
+                    }
                 });
-                //google.maps.event.trigger(map, 'resize');
-                //scope.initialize();
-                //map.checkResize();
+                
             })
         }
     };
 }])
+
+.directive('mapRefresh', function ($timeout) {
+	return {
+		restrict: 'A',
+		link: function (scope, elem, attrs) {
+		    $timeout(function () {
+		        if (scope.map) {
+		            var center = scope.map.getCenter();
+		            google.maps.event.trigger(scope.map, "resize");
+		            scope.map.setCenter(center);
+		        };
+			});
+		}
+	}
+});

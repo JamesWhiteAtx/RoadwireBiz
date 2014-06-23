@@ -26,12 +26,7 @@ angular.module('roadwire.services', []) // 'ngResource'
                 }
                 $window.gglsrvccallback = undefined;
             };
-            // thanks to Emil Stenström: http://friendlybit.com/js/lazy-loading-asyncronous-javascript/
-            //if ($window.attachEvent) {
-            //    $window.attachEvent('onload', load_script);
-            //} else {
-            //    $window.addEventListener('load', load_script, false);
-            //}
+
             load_script();
             return deferred.promise;
         }
@@ -72,7 +67,8 @@ angular.module('roadwire.services', []) // 'ngResource'
                     var latLng = new gglMps.LatLng(location.latitude, location.longitude);
                     var marker = new gglMps.Marker({
                         position: latLng,
-                        title: location.title
+                        title: location.title,
+                        icon: 'http://maps.gstatic.com/mapfiles/markers2/measle.png'
                     });
 
                     markers.push(marker);
@@ -120,7 +116,7 @@ angular.module('roadwire.services', []) // 'ngResource'
         geocoder.geocode({ address: address },
             function (results_array, status) {
                 if (status != gglMps.GeocoderStatus.OK) {
-                    alert("Sorry - error");
+                    alert('Sorry - No location found for "'+address+'"');
                     return;
                 };
                 //var ltlgAddr = new gglMps.LatLng(results_array[0].geometry.location.lat(),results_array[0].geometry.location.lng());
@@ -152,19 +148,18 @@ angular.module('roadwire.services', []) // 'ngResource'
     };
 }])
 
-.factory('UsaMap', ['LoadGglMaps', function (LoadGglMaps) {
+.factory('UsaMap', ['$timeout', 'LoadGglMaps', function ($timeout, LoadGglMaps) {
     var makeMap = function (mapDiv, gglMps) {
         var map;
 
-        var ltlgCenter = new gglMps.LatLng(38.50, -93.40);
-        var boundsUsa = new gglMps.LatLngBounds(new gglMps.LatLng(49.38, -124.39), new gglMps.LatLng(25.82, -66.94));
-
+        var ltlgCenter = new gglMps.LatLng(38.50, -94.93);// - 93.40);
+        //var zoom = 5;
+        var boundsUsa = new gglMps.LatLngBounds(new gglMps.LatLng(44.33714334714611, -110.39872070312504), new gglMps.LatLng(32.35854297823947, -81.30692382812504));
         var geocoder = new gglMps.Geocoder();
         geocoder.geocode({ address: 'USA' }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 ltlgCenter = results[0].geometry.location;
                 boundsUsa = results[0].geometry.viewport;
-
                 if (map && map.recenter) {
                     map.recenter();
                 };
@@ -172,9 +167,8 @@ angular.module('roadwire.services', []) // 'ngResource'
         });
 
         var mapProp = {
-            center: ltlgCenter,
-            bounds: boundsUsa,
-            zoom: 5,
+            //center: ltlgCenter,
+            //zoom: zoom,
             mapTypeId: gglMps.MapTypeId.ROADMAP
         };
 
@@ -205,8 +199,22 @@ angular.module('roadwire.services', []) // 'ngResource'
         });
 
         var recenter = function () {
-            map.setCenter(ltlgCenter);
+            //map.setCenter(ltlgCenter);
+            //map.setZoom(zoom);
             map.fitBounds(boundsUsa);
+
+            /*
+            var rectangle = new google.maps.Rectangle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#ffd800',
+                fillOpacity: 0.35,
+                map: map,
+                bounds: boundsUsa
+            });
+            map.setZoom(map.getZoom() + 1);
+            */
         };
 
         map.locMarker = locMarker;
@@ -239,23 +247,30 @@ angular.module('roadwire.services', []) // 'ngResource'
             })
             .then(function (map) {
                 // after map object made, define extra functions
-                map.proxInstallers = function (addr) {
+                map.proxInstallers = function (addr, fcn) {
                     return MarkersProx(addr, map.markers, function (markers, result) {
                         map.locMarker.openInfo(result.formatted_address);
                         map.locMarker.setPosition(result.geometry.location);
                         map.locMarker.setVisible(true);
 
                         var bounds = new gglMps.LatLngBounds();
+                        var proxs = [];
                         angular.forEach(markers, function (marker, idx) {
                             if (idx < 5) {
                                 marker.setVisible(true);
+                                marker.setIcon(null);
                                 bounds.extend(marker.position);
+                                proxs.push(marker);
                             } else {
                                 marker.setVisible(false);
                             };
                         });
                         bounds.extend(map.locMarker.position);
                         map.fitBounds(bounds);
+
+                        if (angular.isFunction(fcn)) {
+                            fcn(proxs);
+                        };
                     },
                     gglMps);
                 };
@@ -266,6 +281,7 @@ angular.module('roadwire.services', []) // 'ngResource'
                     };
                     if (map.markers) {
                         angular.forEach(map.markers, function (marker) {
+                            marker.setIcon('http://maps.gstatic.com/mapfiles/markers2/measle.png');
                             marker.setVisible(true);
                         });
                     };
@@ -279,15 +295,21 @@ angular.module('roadwire.services', []) // 'ngResource'
                 return InstMarkers(function (marker) {
                     marker.setMap(map);
 
-                    gglMps.event.addListener(marker, 'click', function () {
+                    marker.openInfo = function () {
                         var html = '<div><p>' + marker.title + '</p>';
                         if (marker.distance) {
                             html += '<p>' + marker.distance + '</p>';
                         };
                         html += '</div>';
-
                         marker.infowindow.content = html;
-                        marker.infowindow.open(map, marker, map.locMarker);
+                        marker.infowindow.open(map, marker);
+                    };
+                    marker.closeInfo = function () {
+                        marker.infowindow.close();
+                    };
+
+                    gglMps.event.addListener(marker, 'click', function () {
+                        marker.openInfo();
                     });
                 },
                 gglMps);
@@ -301,58 +323,6 @@ angular.module('roadwire.services', []) // 'ngResource'
         ;
     };
 
-    //return function (mapDiv) {
-    //    var map = UsaMap(mapDiv);
-
-    //    var markers = InstMarkers(function (marker) {
-    //        marker.setMap(map);
-
-    //        google.maps.event.addListener(marker, 'click', function () {
-    //            var html = '<div><p>' + marker.title + '</p>';
-    //            if (marker.distance) {
-    //                html += '<p>' + marker.distance + '</p>';
-    //            };
-    //            html += '</div>';
-
-    //            marker.infowindow.content = html;
-    //            marker.infowindow.open(map, marker, map.locMarker);
-    //        });
-    //    });
-
-    //    var proxInstallers = function (addr) {
-    //        MarkersProx(addr, markers, function (markers, ltlgAddr) {
-
-    //            map.locMarker.setPosition(ltlgAddr);
-    //            map.locMarker.setVisible(true);
-
-    //            var bounds = new google.maps.LatLngBounds();
-    //            angular.forEach(markers, function (marker, idx) {
-    //                if (idx < 5) {
-    //                    marker.setVisible(true);
-    //                    bounds.extend(marker.position);
-    //                } else {
-    //                    marker.setVisible(false);
-    //                };
-    //            });
-    //            bounds.extend(map.locMarker.position);
-
-    //            map.fitBounds(bounds);
-    //        });
-    //    };
-
-    //    var reset = function () {
-    //        angular.forEach(markers, function (marker) {
-    //            marker.setVisible(true);
-    //        });
-    //        map.recenter();
-    //    };
-
-    //    map.proxInstallers = proxInstallers;
-    //    map.markers = markers;
-    //    map.reset = reset;
-
-    //    return map;
-    //};
 }])
 
 ;

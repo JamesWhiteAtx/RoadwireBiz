@@ -31,9 +31,9 @@ var costco = angular.module('costco', ['ngRoute', 'routeStyles', 'ngAnimate', 'r
             title: 'map',
             templateUrl: '/Partial/Costco/Map',
             controller: 'MapCtrl',
-            css: '/Content/utils/map.css',
+            css: '/Content/roadwire/map.css',
             resolve: {
-                gglMap: function ($q, LoadGglMaps) {
+                gglMaps: function ($q, LoadGglMaps) {
                     return LoadGglMaps();
                 }
             }

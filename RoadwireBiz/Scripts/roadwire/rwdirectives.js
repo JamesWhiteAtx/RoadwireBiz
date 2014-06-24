@@ -1,16 +1,16 @@
 ﻿angular.module('roadwire.directives', [])
-.directive('instMap', ['InstMap', function (InstMap) {
+.directive('rwInstMap', ['$q', 'InstMap', function ($q, InstMap) {
     return {
         restrict: 'EA',
         replace: true,
         transclude: true,
         scope: {
-            gglMaps: '=gglMaps',
-            wtf: '=gglMaps',
+            gglMaps: '=?',
+            map: '=?'
         },
         template:
             '<div id="map-container">'+
-                '<form ng-submit="loadInstallers()" id="srchform" name="srchform" novalidate="novalidate">' +
+                '<form ng-submit="loadInstallers()" id="srchform" name="srchform" novalidate="novalidate" ng-cloak>' +
                     '<label for="locaddr">Location</label>'+
                     '<input type="text" placeholder="current location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>'+
                     '<button type="submit" id="btnfind" title="Find Locations" ng-disabled="srchform.locaddr.$error.required">'+
@@ -21,14 +21,20 @@
                         '<span class="glyphicon glyphicon-refresh"></span>'+
                     '</button>' +
                     '<select ng-show="proxs && (proxs.length > 0)" ng-model="prox" ng-options="marker.proxDisp for marker in proxs">' +
-                        '<option value="">-- {{proxs.length}} locations found --</option>' +
+                        '<option value="">-- {{proxs.length}} nearest locations --</option>' +
                     '</select>' +
                 '</form>' +
+                '<div ng-transclude></div>'+
                 '<div id="map-canvas" map-refresh>map-canvas</div>' +
             '</div>',
 
-//        '<select><option value="volvo">Volvo</option><option value="saab">Saab</option><option value="mercedes">Mercedes</option><option value="audi">Audi</option></select>' +
+        controller: function ($scope) {
+            $scope.deferred = $q.defer();
 
+            this.mapQ = function() {
+                return $scope.deferred.promise;
+            }
+        },
 
         link: function (scope, element) {
             scope.proxs = [];
@@ -68,11 +74,30 @@
                         marker.openInfo();
                     }
                 });
-                
-            })
+                scope.deferred.resolve(gMap);
+            });
         }
     };
 }])
+
+.directive('gglMapCtrl', function ($timeout) {
+    return {
+        restrict: 'A',
+        require: '^rwInstMap',
+        link: function (scope, elem, attrs, instMapCtrl) {
+            elem.hide();
+            instMapCtrl.mapQ()
+            .then(function (map) {
+                var ctrlDiv = elem[0];
+                ctrlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_RIGHT].push(ctrlDiv);
+                elem.show();
+            }, function (reason) {
+                var x = reason;
+            });
+        }
+    }
+})
 
 .directive('mapRefresh', function ($timeout) {
 	return {
@@ -87,4 +112,6 @@
 			});
 		}
 	}
-});
+})
+
+;

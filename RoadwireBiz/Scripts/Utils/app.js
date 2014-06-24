@@ -16,7 +16,7 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
             controller: 'MapCtrl',
             css: ['/Content/roadwire/map.css', '/Content/utils/map.css'],
             resolve: {
-                gglMap: function ($q, LoadGglMaps) {
+                gglMaps: function ($q, LoadGglMaps) {
                     return LoadGglMaps();
                 }
             }

@@ -144,7 +144,15 @@ costco
     };
 }])
 
-.controller('MapCtrl', ['$scope', 'InstMap', function ($scope, InstMap) {
+.controller('MapCtrl', ['$scope', 'gglMaps', function ($scope, gglMaps) {
+
+    $scope.gglMaps = gglMaps;
+
+    $scope.clicky = function ()
+    {
+        var z = $scope.map;
+        alert('clicky');
+    }
     /*
     var map = InstMap("map-canvas");
     $scope.zipcode = null;

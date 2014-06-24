@@ -93,7 +93,7 @@
                 map.controls[google.maps.ControlPosition.TOP_RIGHT].push(ctrlDiv);
                 elem.show();
             }, function (reason) {
-                var x = reason;
+                elem.hide();
             });
         }
     }

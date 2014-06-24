@@ -22,6 +22,12 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
             }
         });
 
+        $routeProvider.when('/test', {
+            title: 'test',
+            templateUrl: '/Partial/Utils/Test',
+            controller: 'TestCtrl'
+        });
+
         $routeProvider.otherwise({ redirectTo: '/menu' });
     }])
 ;

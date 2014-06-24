@@ -1,0 +1,35 @@
+﻿<a href="#/menu">Menu</a>
+<h4>Test</h4>
+
+<p ng-repeat="bin in bins">
+    {{bin}}
+</p>
+
+    <style>
+        .table {
+            width: auto;
+        }
+    </style>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="danger">
+                <th>
+                    #
+                </th>
+                <th ng-repeat="set in sets">
+                    {{$index}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in results">
+                <td>
+                    {{$index}}
+                </td>
+                <td ng-repeat="cell in row track by $index">
+                    {{cell}}
+                </td>
+            </tr>
+        </tbody>
+    </table>

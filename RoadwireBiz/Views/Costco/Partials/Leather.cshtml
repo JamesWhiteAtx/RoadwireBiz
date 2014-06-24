@@ -27,7 +27,7 @@
 
     <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="kitShowOpts()">
         <h4 class="sel-caption">Select Your Color</h4>
-        <ul class="list-inline">
+        <ul>
             <li ng-repeat="col in kit.list" ng-click="pickKit($index)" title="{{col.name}}">
                 <div class="box-descr">{{col.leacolorname}} {{col.sku}}</div>
                 <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">

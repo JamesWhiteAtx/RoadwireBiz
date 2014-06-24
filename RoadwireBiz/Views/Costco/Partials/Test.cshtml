@@ -1,84 +1,50 @@
-﻿<button type="button" class="btn btn-default btn-lg">
-    <span class="glyphicon glyphicon-star"></span> Star
-</button>
-<div class="input-group">
-    <input type="text" class="form-control">
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span>Go!</button>
-    </span>
-</div><!-- /input-group -->
-
-
-<div id="sel-head" class="sel-sect">
-    Roadwire
-</div>
-
-<div id="lea-body">
-    <div id="sel-car" class="sel-opt-sect ">
+﻿<div id="lea-body" class="ng-scope">
+    <div id="sel-car" class="sel-opt-sect sel-sect-fade">
         <h4 class="sel-caption">Find Your Vehicle</h4>
-        @*<div class="sel-opt">
-            <div>
-                <span class="loading">Loading...</span>
-            </div>
-            <select id="slct-make" class="sel-slct">
-                <option value="" class="ng-binding">-- Select --</option>
-                <option value="1">opt 1</option>
-                <option value="1">opt 1</option>
-            </select>
-        </div>
-        <div class="sel-opt">
-            <div>
-                <span class="loading"></span>
-            </div>
-            <select id="slct-make" class="sel-slct">
-                <option value="" class="ng-binding">-- Select --</option>
-                <option value="1">opt 1</option>
-                <option value="1">opt 1</option>
-            </select>
-        </div>*@
-        <button class="btn" ng-click="toggle2()">
-            Toggle 2 <i class="icon-search"></i>
-        </button>
-        <button class="btn" ng-click="toggle3()">
-            Toggle 3 <i class="icon-search"></i>
-        </button>
-        <button class="btn" ng-click="toggle4()">
-            Toggle 4 <i class="icon-search"></i>
-        </button>
+        <div class="sel-opt ng-isolate-scope"  > <div  ></div><select id="slct-make" title="Make" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Make --</option><option value="0">ACURA</option><option value="1">AUDI</option><option value="2">BMW</option><option value="3">BUICK</option><option value="4">CADILLAC</option><option value="5">CHEVROLET</option><option value="6">CHRYSLER</option><option value="7">CODA</option><option value="8">DAEWOO</option><option value="9">DODGE</option><option value="10">EAGLE</option><option value="11">FIAT</option><option value="12">FORD</option><option value="13">GEO</option><option value="14">GMC</option><option value="15">HINO</option><option value="16">HONDA</option><option value="17">HUMMER</option><option value="18">HYUNDAI</option><option value="19">INFINITI</option><option value="20">ISUZU</option><option value="21">JEEP</option><option value="22">KIA</option><option value="23">LAND ROVER</option><option value="24">LEXUS</option><option value="25">LINCOLN</option><option value="26">MAZDA</option><option value="27">MERCEDES BENZ</option><option value="28">MERCURY</option><option value="29">MG</option><option value="30">MINI</option><option value="31">MITSUBISHI</option><option value="32">NISSAN</option><option value="33">OLDSMOBILE</option><option value="34">PLYMOUTH</option><option value="35">PONTIAC</option><option value="36">PORSCHE</option><option value="37">RAM</option><option value="38">SAAB</option><option value="39">SATURN</option><option value="40">SCION</option><option value="41">SMART</option><option value="42">SUBARU</option><option value="43">SUZUKI</option><option value="44">TOYOTA</option><option value="45">VOLKSWAGEN</option><option value="46">VOLVO</option></select></div>
+        <div class="sel-opt ng-isolate-scope"  > <div  ></div><select id="slct-year" title="Year" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Year --</option><option value="0">2014</option><option value="1">2013</option><option value="2">2012</option><option value="3">2011</option><option value="4">2010</option><option value="5">2009</option><option value="6">2008</option><option value="7">2007</option><option value="8">2006</option><option value="9">2005</option><option value="10">2004</option><option value="11">2003</option><option value="12">2002</option><option value="13">2001.5</option><option value="14">2001</option><option value="15">2000.5</option><option value="16">2000</option><option value="17">1999.5</option><option value="18">1999</option><option value="19">1998.5</option><option value="20">1998</option><option value="21">1997.5</option><option value="22">1997</option><option value="23">1996</option><option value="24">1995.5</option><option value="25">1995</option><option value="26">1994</option><option value="27">1993</option><option value="28">1992</option><option value="29">1991</option><option value="30">1990</option><option value="31">1989</option><option value="32">1988</option><option value="33">1987</option></select></div>
+        <div class="sel-opt ng-isolate-scope"  > <div  ></div><select id="slct-model" title="Model" class="sel-slct ng-valid ng-animate ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Model --</option><option value="0">ACCORD</option><option value="1">ACCORD CROSSTOUR </option><option value="2">CIVIC</option><option value="3">CR-V</option><option value="4">CR-Z</option><option value="5">FIT</option><option value="6">INSIGHT</option><option value="7">ODYSSEY</option><option value="8">PILOT</option><option value="9">RIDGELINE</option></select></div>
+        <div class="sel-opt ng-isolate-scope"  > <div  ></div><select id="slct-body" title="Body" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Body --</option><option value="0">COUPE</option><option value="1">SEDAN</option></select></div>
     </div>
 
-    <div id="sel-trim" class="sel-opt-sect sel-sect-fade" ng-show="show2">
-        <h4 class="sel-caption">Find Your Trim Level {{show2}}</h4>
-        @*<div class="sel-opt">
-                <div>
-                    <span class="loading"></span>
-                </div>
-                <select id="slct-make" class="sel-slct">
-                    <option value="" class="ng-binding">-- Select --</option>
-                    <option value="1">opt 1</option>
-                    <option value="1">opt 1</option>
-                </select>
-            </div>*@
-    </div>
-    
-    <div id="sel-int" class="sel-opt-sect sel-sect-fade" ng-show="show3">
-        <h4 class="sel-caption">Select Interior Color  {{show3}}</h4>
-        @*<div class="sel-opt">
-                <div>
-                    <span class="loading"></span>
-                </div>
-                <select id="slct-make" class="sel-slct">
-                    <option value="" class="ng-binding">-- Select --</option>
-                    <option value="1">opt 1</option>
-                    <option value="1">opt 1</option>
-                </select>
-            </div>*@
+    <div id="sel-trim" class="sel-opt-sect  sel-sect-fade"  style="">
+        <h4 class="sel-caption">Find Your Trim Level</h4>
+        <div class="sel-opt ng-isolate-scope"  ="trim" sec-name="Trim Level" sec-only-opts="true"> <div></div><select id="slct-trim level" title="Trim Level" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Trim Level --</option><option value="0">EX</option><option value="1">LX</option><option value="2">SPORT</option></select></div>
+        <div class="sel-opt ng-isolate-scope ng-hide"  ="car" sec-only-opts="true"> <div  ></div><select id="slct-car" title="Car" class="sel-slct ng-pristine ng-valid ng-animate" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Car --</option><option value="0" selected="selected">HON 13-14 ACCORD LX SEDAN</option></select></div>
+        <div class="sel-opt ng-isolate-scope"  ="ptrn" sec-name="Configuration" sec-only-opts="true"> <div  ></div><select id="slct-configuration" title="Configuration" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Configuration --</option><option value="0">LX SEDAN</option><option value="1">LX CCS</option></select></div>
     </div>
 
-    <div class="sel-opt-sect sel-sect-fade" ng-show="show4 && !show3"> </div>
+    <div id="sel-int" class="sel-opt-sect sel-sect-fade" style="">
+        <h4 class="sel-caption">Interior Color of Your Vehicle</h4>
+        <div class="sel-opt ng-isolate-scope"  ="int" sec-name="Interior Color"> <div  ></div><select id="slct-interior color" title="Interior Color" class="sel-slct ng-valid ng-dirty" ng-disabled="secModel.isLoading || secModel.list.length == 0" ng-hide="(secModel.isLoading)" focus-it="secModel.shouldFocus" ng-model="secModel.obj" ng-options="i as i.name for i in secModel.list" style=""><option value="" class="ng-binding">-- Select Interior Color --</option><option value="0">BLACK</option><option value="1">GRAY</option><option value="2">IVORY</option></select></div>
+    </div>
 
-    <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="show4">
-        <h4 class="sel-caption">Select Your Color  {{show4}}</h4>
-        @*<span class="loading-large">Loading...</span>*@
+
+    <div id="sel-color" class="sel-chc-sect sel-sect-fade"  style="">
+        <h4 class="sel-caption">Select Your Color</h4>
+        <ul>
+            <!-- ngRepeat: col in kit.list -->
+            <li   title="001 Black" class="ng-scope">
+                <div class="box-descr ng-binding">001 Black 633106-HV</div>
+                <img id="001 Black" alt="001 Black" class="sel-kit" src="~/Content/Images/img_not_avail.png">
+                <div class="ng-binding">Alternate</div>
+            </li><!-- end ngRepeat: col in kit.list -->
+            <li   title="001 Black" class="ng-scope">
+                <div class="box-descr ng-binding">001 Black 633057-HV</div>
+                <img id="001 Black" alt="001 Black" class="sel-kit" src="~/Content/Images/img_not_avail.png">
+                <div class="ng-binding">Alternate</div>
+            </li><!-- end ngRepeat: col in kit.list -->
+            <li   title="092 Stone" class="ng-scope">
+                <div class="box-descr ng-binding">092 Stone 633092-HV</div>
+                <img id="092 Stone" alt="092 Stone" class="sel-kit" src="~/Content/Images/img_not_avail.png">
+                <div class="ng-binding">Recommended</div>
+            </li><!-- end ngRepeat: col in kit.list -->
+            <li   title="092 Stone" class="ng-scope">
+                <div class="box-descr ng-binding">092 Stone 633107-HV</div>
+                <img id="092 Stone" alt="092 Stone" class="sel-kit" src="~/Content/Images/img_not_avail.png">
+                <div class="ng-binding">Recommended</div>
+            </li><!-- end ngRepeat: col in kit.list -->
+
+        </ul>
     </div>
 </div>

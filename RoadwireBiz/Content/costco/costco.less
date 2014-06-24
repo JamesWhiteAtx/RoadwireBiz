@@ -2,7 +2,6 @@
 @import (reference) "./../bootstrap/bootstrap.less";
 
 // this is all based on bootstrap included with box-sizing: border-box
-
 .heightvals(@topm: 0px, @botm: 0px, @bord: 0px, @topp: 0px, @botp: 0px) {
     margin-top: @topm;
     margin-bottom: @botm;
@@ -193,6 +192,11 @@ body {
 
                     ul {
                         .list-inline;
+
+                        white-space: nowrap;
+                        overflow-x:scroll;
+                        overflow-y:hidden;
+
                         .heighttot(@cc-chc-ul-tot-ht, 0, 0, 0, 1px, 1px);
                         @cc-chc-ul-cnt-ht: @content-ht;
                         //cc-chc-ul-cnt-ht: @cc-chc-ul-cnt-ht;
@@ -200,14 +204,16 @@ body {
                         margin-left: 1px;
                         background: rgba(255, 255, 255, 0.75);
 
+                        @cc-chc-li-tot-ht: @cc-chc-ul-cnt-ht - 25; // correct for scrollbar, ish
                         @cc-li-bord: @wire-frame-bord;
                         li when (@cc-li-bord > 0) {
                             border-style: solid;
                             border-color: #ff00dc;
                         }
                         li {
-                            .heighttot(@cc-chc-ul-cnt-ht, 0, 0, @cc-li-bord);
+                            .heighttot(@cc-chc-li-tot-ht, 0, 0, @cc-li-bord);
                             @cc-chc-li-cnt-ht: @content-ht;
+                            height: 100%;
 
                             background: rgba(255, 255, 255, 0.85);
                             color: #000;

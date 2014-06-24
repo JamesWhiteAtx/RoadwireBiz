@@ -307,6 +307,9 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul {
   padding-left: 0;
   list-style: none;
   margin-left: -5px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
   margin-top: 0;
   margin-bottom: 0;
   border-width: 0;
@@ -327,7 +330,8 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li {
   border-width: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
-  height: 381px;
+  height: 356px;
+  height: 100%;
   background: rgba(255, 255, 255, 0.85);
   color: #000;
   font-weight: bold;
@@ -337,7 +341,7 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li {
   cursor: pointer;
 }
 body #costco-container #costco-view #lea-body .sel-chc-sect ul li img.sel-kit {
-  height: 285px;
+  height: 267px;
 }
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-add,
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-remove {

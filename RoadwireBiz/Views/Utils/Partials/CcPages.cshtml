@@ -1,0 +1,130 @@
+﻿<div class="flex-head">
+    <h3>Products</h3>
+    <div class="box box-horz hscrl">
+        <div class="prod-box" ng-repeat="set in sets">
+            <div><label><input type="checkbox" ng-model="set.hidden"> Hidden</label></div>
+            <input class="form-control prod-name" ng-model="set.name" />
+            <button class="btn btn-input" title="Remove Product" ng-click="delSet($index)"><span class=" glyphicon glyphicon-remove"></span></button>
+
+            <h5 ng-show="set.options.length > 1">Options</h5>
+            <ul class="list-unstyled">
+                <li ng-repeat="opt in set.options">
+                    <input class="form-control input-sm" ng-model="opt.name" ng-show="set.options.length > 1" />
+                    <strong>$</strong>
+                    <input type="number" class="form-control input-sm" ng-model="opt.price" />
+                    <button class="btn btn-sm btn-input" title="Remove Option" ng-click="set.delOpt($index)" ng-show="set.options.length > 1">
+                        <span class=" glyphicon glyphicon-remove"></span>
+                    </button>
+
+
+                </li>
+            </ul>
+
+            <div>
+                <button class="btn btn-default" title="Add Option" ng-click="set.addOpt()">
+                    <span class="glyphicon glyphicon-plus"></span> Add Option
+                </button>
+            </div>
+
+        </div>
+
+        <div>
+            <button class="btn btn-default" title="Add Product" ng-click="newSet($index)">
+                <span class="glyphicon glyphicon-plus"></span> Add Product
+            </button>
+        </div>
+
+    </div>
+</div>
+<div id="cal-sect" class="flex-head box box-horz">
+    <div>
+        <button class="btn btn-default btn-calc" ng-click="calcResults()">
+            <span class="glyphicon glyphicon-refresh"></span> Calculate
+        </button>
+    </div>
+    <div>
+        <h4>
+            <span>Total Pages: </span>
+            {{hidPages.length + regPages.length}}
+        </h4>
+    </div>
+</div>
+<div class="flex-body box box-stretch">
+
+    <div class="flex-col">
+        <div class="flex-head"><h3>Hidden Pages</h3></div>
+        <div class="results-tbl flex-body vscrl">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th ng-repeat="set in hidSets">
+                            {{set.name}}
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in hidPages">
+                        <td>
+                            {{$index}}
+                        </td>
+                        <td ng-repeat="opt in row.opts track by $index">
+                            {{opt.name}}
+                        </td>
+                        <td>
+                            {{row.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="flex-foot futer">
+            Total Hidden Pages: {{hidPages.length}}
+        </div>
+    </div>
+
+    <div class="flex-col">
+        <div class="flex-head"><h3>Regular Pages</h3></div>
+        <div class="results-tbl flex-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="opt in regPages">
+                        <td>
+                            {{$index}}
+                        </td>
+                        <td>
+                            {{opt.name}}
+                        </td>
+                        <td>
+                            {{opt.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="flex-foot futer">
+            Total Regular Pages: {{regPages.length}}
+        </div>
+    </div>
+</div>
+<div class="flex-foot futer">
+
+</div>

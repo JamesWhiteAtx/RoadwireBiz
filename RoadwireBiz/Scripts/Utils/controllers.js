@@ -16,12 +16,15 @@ utils
     $scope.gglmaps = gglMaps;
 }])
 
-.controller('TestCtrl', ['$scope', function ($scope) {
+.controller('CcPagesCtrl', ['$scope', function ($scope) {
     $scope.sets = [];
     $scope.hidSets = [];
     $scope.regSets = [];
 
     var hidPages = [];
+    $scope.hidPages = [];
+    var regPages = [];
+    $scope.regPages = [];
 
     var makeOpt = function(opt, prc) {
         var option = {
@@ -86,7 +89,7 @@ utils
     //addSet('Jeep Top', ['Jeep Top']);
 
    
-    var combSets = function (sets, setIdx, rowArr) {
+    var combHidSets = function (sets, setIdx, rowArr) {
         setIdx = setIdx || 0;
         rowArr = rowArr || [];
 
@@ -99,7 +102,7 @@ utils
 
             row[setIdx] = opt;
 
-            combSets(sets, setIdx + 1, row);
+            combHidSets(sets, setIdx + 1, row);
         };
 
         if (sets.length == setIdx) {
@@ -133,6 +136,7 @@ utils
         $scope.hidSets = [];
         $scope.regSets = [];
 
+        // segregate hidden from regular
         angular.forEach($scope.sets, function (set) {
             if (set.options.length == 1) {
                 set.options[0].name = set.name;
@@ -144,6 +148,7 @@ utils
             };
         });
 
+        // calculate hidden page combinations
         hidPages = [];
 
         var setCnt = $scope.hidSets.length;
@@ -155,10 +160,21 @@ utils
                 var set = (x ? $scope.hidSets[b] : null);
                 sets.push(set);
             };
-            combSets(sets);
+            combHidSets(sets);
         };
 
         $scope.hidPages = hidPages;
+
+        //regular pages
+        var regPages = [];
+
+        angular.forEach($scope.regSets, function (set) {
+            angular.forEach(set.options, function (opt) {
+                regPages.push(opt)
+            });
+        });
+
+        $scope.regPages = regPages;
     };
 
     $scope.newSet = function () {
@@ -170,6 +186,9 @@ utils
     }
 
     $scope.calcResults()
+}])
+
+.controller('TestCtrl', ['$scope', function ($scope) {
 }])
 
 ;

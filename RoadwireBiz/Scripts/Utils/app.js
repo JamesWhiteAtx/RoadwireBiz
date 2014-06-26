@@ -22,10 +22,18 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
             }
         });
 
+        $routeProvider.when('/ccpages', {
+            title: 'Costco Pages',
+            templateUrl: '/Partial/Utils/CcPages',
+            controller: 'CcPagesCtrl',
+            css: '/Content/utils/ccpages.css'
+        });
+
         $routeProvider.when('/test', {
             title: 'test',
             templateUrl: '/Partial/Utils/Test',
-            controller: 'TestCtrl'
+            controller: 'TestCtrl',
+            css: '/Content/utils/flex.css'
         });
 
         $routeProvider.otherwise({ redirectTo: '/menu' });

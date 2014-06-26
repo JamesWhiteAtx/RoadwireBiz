@@ -1,9 +1,54 @@
+.f-row {
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+.f-row-reverse {
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+  -moz-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+.f-column {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.f-column-reverse {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+  -moz-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
 .flex-col {
   display: -webkit-box;
   display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
   -ms-flex-direction: column;
@@ -12,9 +57,14 @@
 .flex-row {
   display: -webkit-box;
   display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
   -webkit-flex-direction: row;
   -moz-flex-direction: row;
   -ms-flex-direction: row;
@@ -32,9 +82,14 @@ body,
   border: 1px solid red;
   display: -webkit-box;
   display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
   -ms-flex-direction: column;

@@ -33,7 +33,7 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
             title: 'test',
             templateUrl: '/Partial/Utils/Test',
             controller: 'TestCtrl',
-            css: '/Content/utils/flex.css'
+            css: '/Content/utils/test.css'
         });
 
         $routeProvider.otherwise({ redirectTo: '/menu' });

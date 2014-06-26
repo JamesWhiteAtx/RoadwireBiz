@@ -1,8 +1,4 @@
-﻿.full-ht() {
-    margin:0;
-    height:100%;
-    min-height:100%;
-}
+﻿// Roadwire flex.less
 
 // thanks to jayk flexbox.less https://gist.github.com/jayj/4012969
 //http://the-echoplex.net/flexyboxes/
@@ -78,6 +74,26 @@
           flex-flow: @flow;
 }
 
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around 
+.justify-content(@justify: flex-start) {
+  -webkit-justify-content: @justify;
+     -moz-justify-content: @justify;
+      -ms-justify-content: @justify;
+          justify-content: @justify;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch 
+.align-items(@align: stretch) {
+  -webkit-align-items: @align;
+     -moz-align-items: @align;
+      -ms-align-items: @align;
+          align-items: @align;
+}
+
 .display-flex() {
     .flex-display(flex);
 }
@@ -86,11 +102,10 @@
     .flex-display(inline-flex);
 }
 
-.f-row {.flex-direction(row)} 
-.f-row-reverse  {.flex-direction(row-reverse)}
-.f-column {.flex-direction(column)}
-.f-column-reverse {.flex-direction(column-reverse)}
-
+//.f-row {.flex-direction(row)} 
+//.f-row-reverse  {.flex-direction(row-reverse)}
+//.f-column {.flex-direction(column)}
+//.f-column-reverse {.flex-direction(column-reverse)}
 
 .flex-col {
     .display-flex();
@@ -102,25 +117,16 @@
     .flex-direction(row);
 }
 
-html, body, #app-container, #page-view {
-    .full-ht();
-}
-
-#page-view {
-    border: 1px solid red;
-    //margin:0;
-    .flex-col;
-}
-
 .flex-fix {
     .flex(0 0 auto);
 }
+
 .flex-fill {
     .flex(1);
 }
 
-#page-view div {
-    border: 1px solid blue;
-    padding: 1px;
-    margin: 1px;
+.full-ht() {
+    margin:0;
+    height:100%;
+    min-height:100%;
 }

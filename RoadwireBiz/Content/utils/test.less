@@ -1,0 +1,130 @@
+﻿@import (reference) "./../bootstrap/bootstrap.less";
+@import (reference) "./../roadwire/flex.less";
+
+html, body, #app-container, #page-view {
+    .full-ht();
+} 
+
+#page-view {
+    //border: 1px solid red;
+    //margin:0;
+    .flex-col;
+}
+
+//#page-view div {
+//    border: 1px solid blue;
+//    padding: 1px;
+//    margin: 1px;
+//}
+
+#products {
+    .flex-fix;
+
+
+    #prod-row {
+        .flex-row;
+        overflow-x: scroll;
+        
+        .prod-item {
+            .flex-col;
+
+            border: 1px solid #cccccc;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            border-radius: 4px;
+            padding: 5px;
+            margin: 0 10px 0 0;
+            min-width: 170px;
+
+            .del-btn {
+                .btn;
+                .btn-default;
+                padding: 6px 6px;
+                    
+                span {
+                    .glyphicon;
+                    .glyphicon-minus;
+                }
+            }
+            .frm-ctrl {
+                display: inline-block;
+                width: 80px; 
+                padding: 2px 6px;
+                border: 1px solid #cccccc;
+            }
+
+            .prod-descr {
+                .flex-row;
+
+                .justify-content(space-between);
+
+                .prod-name {
+                    .form-control;
+                    .frm-ctrl;
+                    font-weight: bold;
+                    width: 120px;
+                }
+
+            }
+
+            ul {
+                margin-bottom: 1px;
+
+                li {
+                    .flex-row;
+                    .align-items(center);
+                    margin: 0 0 5px 0;
+
+                    span.symbol {
+                        .glyphicon;
+                        .glyphicon-usd;
+                        margin-left: 5px;
+                    }
+
+                    input[type="number"] {
+                        max-width: 60px;
+                    }
+                    .del-btn {
+                        .btn-sm;
+                        padding-right: 6px;
+                        padding-left: 6px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+#calculate {
+    .flex-fix;
+    .flex-row;
+    .align-items(center);
+
+    margin-top: 20px;
+}
+
+#pages {
+    .flex-fill;
+    .flex-row;
+
+    .page-item {
+        .flex-col;
+
+        .page-head {
+            .flex-fix;
+        } 
+        .page-list {
+            .flex-fill;
+            overflow-y: scroll;
+        }
+        .page-fut {
+            .flex-fix;
+        }
+    }
+}
+
+#summary {
+    .flex-fix;
+}

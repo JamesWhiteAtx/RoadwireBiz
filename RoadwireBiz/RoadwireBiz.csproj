@@ -179,11 +179,12 @@
     <Content Include="Content\Images\loading-large.gif" />
     <Content Include="Content\Images\loading.gif" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\roadwire\Flex.css" />
     <Content Include="Content\roadwire\map.css" />
     <Content Include="Content\site\site.css" />
     <Content Include="Content\utils\ccpages.css" />
-    <Content Include="Content\utils\flex.css" />
     <Content Include="Content\utils\map.css" />
+    <Content Include="Content\utils\test.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -268,7 +269,8 @@
     <Content Include="Content\utils\map.less" />
     <Content Include="Content\roadwire\map.less" />
     <Content Include="Content\utils\ccpages.less" />
-    <Content Include="Content\utils\flex.less" />
+    <Content Include="Content\roadwire\flex.less" />
+    <Content Include="Content\utils\test.less" />
     <None Include="Properties\PublishProfiles\RoadwireBiz.pubxml" />
     <None Include="Scripts\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\costco\controllers.js" />

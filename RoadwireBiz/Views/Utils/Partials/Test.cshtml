@@ -1,25 +1,41 @@
-﻿<div class="flex-fix" >
+﻿<div id="products">
     <h4>Products</h4>
-    <div class="flex-row" style="overflow-x: auto;">
-        <div class="flex-col" style="min-width:500px;">
-            <div><input /><input /><input /><input /></div>
-            <div>c</div>
-            <div>c</div>
-        </div>
-        <div class="flex-col" style="min-width:500px;">
-            <div><input /><input /><input /><input /></div>
-            <div>c</div>
-            <div>c</div>
-        </div>
-        @*<div class="flex-col" style="min-width:500px;">
-            <div><input /><input /><input /><input /></div>
-            <div>c</div>
-            <div>c</div>
-        </div>*@
+    <div id="prod-row">
+        <div class="prod-item">
+            <div class="prod-descr">
+                <input class="prod-name" title="Delete Product" ng-model="set.name" />
+                <button class="del-btn"><span></span></button>
+            </div>
+            <div><label><input type="checkbox" ng-model="set.hidden"> Hidden</label></div>
+            <h5>Options</h5>            
 
+            <ul class="list-unstyled">
+                <li >
+                    <input class="form-control input-sm frm-ctrl" ng-model="opt.name">
+                    <span class="symbol"></span>
+                    <input type="number" class="form-control input-sm frm-ctrl" ng-model="opt.price">
+                    <button class="del-btn"><span></span></button>
+                </li>
+            </ul>
+            <div>
+                <button class="btn btn-default" title="Add Option" ng-click="set.addOpt()">
+                    <span class="glyphicon glyphicon-plus"></span> Add Option
+                </button>
+            </div>
+
+        </div>
+        <div class="prod-item">
+            <div>c</div>
+            <div>c</div>
+        </div>
+        <div>
+            <button class="btn btn-default" title="Add Product" ng-click="newSet($index)">
+                <span class="glyphicon glyphicon-plus"></span> Add Product
+            </button>
+        </div>
     </div>
 </div>
-<div class="flex-fix flex-row">
+<div id="calculate">
     <div>
         <button class="btn btn-default btn-calc" ng-click="calcResults()">
             <span class="glyphicon glyphicon-refresh"></span> Calculate
@@ -33,10 +49,10 @@
     </div>
 
 </div>
-<div class="flex-fill flex-row">
-    <div class="flex-col">
-        <div class="flex-fix"><h4>Hidden Pages</h4></div>
-        <div class="flex-fill" style="overflow-y: scroll;">
+<div id="pages">
+    <div class="page-item">
+        <div class="page-head"><h3>Hidden Pages</h3></div>
+        <div class="page-list">
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
@@ -44,17 +60,17 @@
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
         </div>
-        <div class="flex-fix">c</div>
+        <div class="page-fut">Total</div>
     </div>
-    <div class="flex-col">
-        <div class="flex-fix"><h4>Regular Pages</h4></div>
-        <div class="flex-fill" style="overflow-y: scroll;">
+    <div class="page-item">
+        <div class="page-head"><h3>Regular Pages</h3></div>
+        <div class="page-list">
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
             <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
         </div>
-        <div class="flex-fix">c</div>
+        <div class="page-fut">Total</div>
     </div>
 </div>
-<div class="flex-fix">
+<div id="summary" class="flex-fix">
     bot
 </div>

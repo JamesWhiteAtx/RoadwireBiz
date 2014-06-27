@@ -1,0 +1,118 @@
+﻿<div id="cc-shop">
+
+    <div id="prod-list">
+        <h3>Products</h3>
+
+        <div ng-repeat="prod in prods">
+            <a href="" class="prod-pick" ng-if="prod.selector" ng-click="pickSlctr(prod)"><span></span> {{prod.name}}</a>
+            <div ng-if="!prod.selector">
+                <div ng-repeat="opt in prod.options">
+                    <a href="" ng-click="pickPage(prod, opt)">
+                        <span></span>
+                        <span ng-if="prod.options.length > 1">{{prod.name}}-</span> {{opt.name}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="sctr" ng-show="curSlctr">
+        <h3>{{curSlctr.name}} Selector Landing Page</h3>
+
+
+        <div ng-repeat="page in curSlctr.pages">
+            <a href="" class="slctr-pg-pick" ng-click="pickPage(curProd, page)">
+                <span></span>
+                {{page.name}}
+            </a>
+        </div>
+    </div>
+
+    <div id="buy-page" ng-show="curPage">
+        <h3>Item Page (Regular or Hidden)</h3>
+        <div>
+            <label>Product</label> {{curPage.name}}  
+        </div>
+        <div>
+            <label>Price</label> {{curPage.price | currency}}
+        </div>
+        <div>
+            <label>Qty</label> <input type="number" ng-model="curPage.qty" />
+        </div>
+        <div>
+            <label>Toatal</label> {{curPage.price * curPage.qty | currency}}
+        </div>
+
+        <a href="" class="pg-buy" ng-click="buyPage(curPage)">
+            <span></span> Buy Now
+        </a>
+        
+    </div>
+
+    <div id="cart">
+        <h3>Cart</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Qty
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                    <th>
+                        Remove
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in cart">
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.price | currency}}
+                    </td>
+                    <td>
+                        {{item.qty}}
+                    </td>
+                    <td>
+                        {{item.price * item.qty | currency}}
+                    </td>
+                    <td>
+                        <a href="" class="del-cart" ng-click="delCart($index)">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        {{cartTot | currency}}
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        <div >
+
+        </div>
+    </div>
+
+</div>

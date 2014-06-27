@@ -10,17 +10,10 @@ body {
     margin-right: 5px;
 }
 
-#page-view {
-    //border: 1px solid red;
-    //margin:0;
+#cc-pages {
+    .full-ht();
     .flex-col;
 }
-
-//#page-view div {
-//    border: 1px solid blue;
-//    padding: 1px;
-//    margin: 1px;
-//}
 
 .link-btn(@color) {
     .align-self(center);
@@ -189,12 +182,11 @@ body {
 
 }
 
-
-#calculate {
+#midy {
     .flex-fix;
     .flex-row;
-    .align-items(baseline);
-
+    .justify-content(space-between);
+    .align-items(center);
     margin-top: 20px;
 
     button {
@@ -204,12 +196,21 @@ body {
         
         span {
             .glyphicon;
-            .glyphicon-refresh;
         }
     }
-            
-    /*div {margin: 0 10px 0 0;}*/
+
+    .calc-btn { span {.glyphicon-refresh;}}
+    .btn-shop { span {.glyphicon-hand-right;}}
+
+    #calculate {
+        //.flex-fix;
+        .flex-row;
+        .align-items(baseline);
+    }
+
+
 }
+
 
 #pages {
     .flex-fill;
@@ -257,4 +258,16 @@ body {
     border-radius: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+#cc-shop {
+    .full-ht();
+    .flex-row;
+
+    & > div {
+        .flex-fill;
+        margin: 0 10px 0 0;
+        border: 1px solid blue;
+    } 
+
 }

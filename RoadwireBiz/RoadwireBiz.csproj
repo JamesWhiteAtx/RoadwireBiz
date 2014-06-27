@@ -317,6 +317,7 @@
     <Content Include="Views\Utils\Partials\Mapx.cshtml" />
     <Content Include="Views\Utils\Partials\Test.cshtml" />
     <Content Include="Views\Utils\Partials\CcPages.cshtml" />
+    <Content Include="Views\Utils\Partials\CcShop.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

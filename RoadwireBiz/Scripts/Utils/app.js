@@ -28,6 +28,12 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
             controller: 'CcPagesCtrl',
             css: '/Content/utils/ccpages.css'
         });
+        $routeProvider.when('/ccshop', {
+            title: 'Costco Shopping',
+            templateUrl: '/Partial/Utils/CcShop',
+            controller: 'CcShopCtrl',
+            css: '/Content/utils/ccpages.css'
+        });
 
         $routeProvider.when('/test', {
             title: 'test',

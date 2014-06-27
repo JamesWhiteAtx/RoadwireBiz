@@ -1,142 +1,151 @@
-﻿<div id="configuration">
-    <div id="selectors">
-        <h3>Selectors</h3>
-        <div class="slctr-list">
-            <ul>
-                <li ng-repeat="slctr in selectors">
-                    <input class="form-control input-sm frm-ctrl" ng-model="slctr.name">
-                    <a href="" class="del-slctr" title="Delete Option" ng-click="delSlctr($index)"><span></span></a>
-                </li>
-            </ul>
-            <div>
-                <a href="" class="add-slctr" title="Add Option" ng-click="newSlctr()"><span></span> Add Selector</a>
-            </div>
-        </div class="slctr-list">
-    </div>
-    <div id="products">
-        <div id="prod-head">
-            <h3>Products</h3>
-            <a href="" class="add-prod" title="Add Product" ng-click="newProd($index)">
-                <span></span>
-            </a>
-        </div>
-        
-        <div id="prod-items">
-            <div class="prod-item" ng-repeat="prod in prods">
-                <div class="prod-descr">
-                    <input class="prod-name" ng-model="prod.name" />
-                    <a href="" class="del-prod" title="Delete Product" ng-click="delProd($index)"><span></span></a>
-                </div>
-                <select class="slctrs-pick"
-                        title="Selectors"
-                        ng-model="prod.selector"
-                        ng-options="slctr as slctr.name for slctr in selectors">
-                    <option value="">Regular Page</option>
-                </select>
-                <h5 ng-show="prod.options.length > 1">Options</h5>
-
+﻿<div id="cc-pages">
+    <div id="configuration">
+        <div id="selectors">
+            <h3>Selectors</h3>
+            <div class="slctr-list">
                 <ul>
-                    <li ng-repeat="opt in prod.options">
-                        <input ng-model="opt.name" ng-show="prod.options.length > 1">
-                        <span class="symbol"></span>
-                        <input type="number" ng-model="opt.price">
-                        <a href="" class="del-opt" title="Delete Option" ng-click="prod.delOpt($index)" ng-show="prod.options.length > 1"><span></span></a>
+                    <li ng-repeat="slctr in selectors">
+                        <input class="form-control input-sm frm-ctrl" ng-model="slctr.name">
+                        <a href="" class="del-slctr" title="Delete Option" ng-click="delSlctr($index)"><span></span></a>
                     </li>
                 </ul>
                 <div>
-                    <a href="" class="add-opt" title="Add Option" ng-click="prod.addOpt()"><span></span> Add Option</a>
+                    <a href="" class="add-slctr" title="Add Option" ng-click="newSlctr()"><span></span> Add Selector</a>
                 </div>
+            </div>
+        </div>
+        <div id="products">
+            <div id="prod-head">
+                <h3>Products</h3>
+                <a href="" class="add-prod" title="Add Product" ng-click="newProd($index)">
+                    <span></span>
+                </a>
+            </div>
 
+            <div id="prod-items">
+                <div class="prod-item" ng-repeat="prod in prods">
+                    <div class="prod-descr">
+                        <input class="prod-name" ng-model="prod.name" />
+                        <a href="" class="del-prod" title="Delete Product" ng-click="delProd($index)"><span></span></a>
+                    </div>
+                    <select class="slctrs-pick"
+                            title="Selectors"
+                            ng-model="prod.selector"
+                            ng-options="slctr as slctr.name for slctr in selectors">
+                        <option value="">Regular Page</option>
+                    </select>
+                    <h5 ng-show="prod.options.length > 1">Options</h5>
+
+                    <ul>
+                        <li ng-repeat="opt in prod.options">
+                            <input ng-model="opt.name" ng-show="prod.options.length > 1">
+                            <span class="symbol"></span>
+                            <input type="number" ng-model="opt.price">
+                            <a href="" class="del-opt" title="Delete Option" ng-click="prod.delOpt($index)" ng-show="prod.options.length > 1"><span></span></a>
+                        </li>
+                    </ul>
+                    <div>
+                        <a href="" class="add-opt" title="Add Option" ng-click="prod.addOpt()"><span></span> Add Option</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="midy">
+
+        <div id="calculate">
+            <div>
+                <button class="calc-btn" ng-click="calcResults()"><span></span> Calculate</button>
+            </div>
+            <div>
+                <h3>Total Pages: {{totalReg + totalHid}}</h3>
+            </div>
+            <div>(Regular: {{totalReg}} Hidden: {{totalHid}})</div>
+        </div>
+        <div>
+            <button class="btn-shop" ng-click="shopNow()"><span></span> Go Shopping</button>
+        </div>
+
+    </div>
+
+    <div id="pages">
+        <div class="page-item">
+            <div class="page-head"><h3>Regular Pages</h3></div>
+            <div class="page-list">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Product
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="opt in regPages">
+                            <td>
+                                {{$index}}
+                            </td>
+                            <td>
+                                {{opt.name}}
+                            </td>
+                            <td>
+                                {{opt.price | currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-fut">
+                Total Regular Pages: {{regPages.length}}
             </div>
         </div>
 
-    </div>
-</div>
-
-<div id="calculate">
-    <div>
-        <button ng-click="calcResults()"><span></span> Calculate</button>
-    </div>
-    <div>
-        <h3>Total Pages: {{totalReg + totalHid}}</h3>
-    </div>
-    <div>(Regular: {{totalReg}} Hidden: {{totalHid}})</div>
-</div>
-
-<div id="pages">
-    <div class="page-item">
-        <div class="page-head"><h3>Regular Pages</h3></div>
-        <div class="page-list">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Product
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="opt in regPages">
-                        <td>
-                            {{$index}}
-                        </td>
-                        <td>
-                            {{opt.name}}
-                        </td>
-                        <td>
-                            {{opt.price | currency}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="page-fut">
-            Total Regular Pages: {{regPages.length}}
+        <div class="page-item" ng-repeat="slctr in selectors">
+            <div class="page-head"><h3>{{slctr.name}} Selector</h3></div>
+            <div class="page-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th ng-repeat="prod in slctr.prods">
+                                {{prod.name}}
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="page in slctr.pages">
+                            <td>
+                                {{$index}}
+                            </td>
+                            <td ng-repeat="opt in page.opts track by $index">
+                                {{opt.name}}
+                            </td>
+                            <td>
+                                {{page.price | currency}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="page-fut">
+                Total Hidden {{slctr.name}} Pages: {{slctr.pages.length}}
+            </div>
         </div>
     </div>
 
-    <div class="page-item" ng-repeat="slctr in selectors">
-        <div class="page-head"><h3>{{slctr.name}} Selector</h3></div>
-        <div class="page-list">
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th ng-repeat="prod in slctr.prods">
-                            {{prod.name}}
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="page in slctr.pages">
-                        <td>
-                            {{$index}}
-                        </td>
-                        <td ng-repeat="opt in page.opts track by $index">
-                            {{opt.name}}
-                        </td>
-                        <td>
-                            {{page.price | currency}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="page-fut">
-            Total Hidden {{slctr.name}} Pages: {{slctr.pages.length}}
-        </div>
-    </div>
-</div>
-
-<div id="summary"></div>
+    <div id="summary"></div>
+</div id="cc-pages">

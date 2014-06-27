@@ -5,6 +5,11 @@ html, body, #app-container, #page-view {
     .full-ht();
 } 
 
+body {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
 #page-view {
     //border: 1px solid red;
     //margin:0;
@@ -20,6 +25,26 @@ html, body, #app-container, #page-view {
 #products {
     .flex-fix;
 
+    .btn-span() {
+        .btn;
+        .btn-default;
+        padding: 6px 6px;
+        span {
+            .glyphicon;
+        }
+    }
+    .del-btn {
+        .btn-span();
+        span {
+            .glyphicon-minus;
+        }
+    }
+    .add-btn {
+        .btn-span();
+        span {
+            .glyphicon-plus;
+        }
+    }
 
     #prod-row {
         .flex-row;
@@ -36,16 +61,6 @@ html, body, #app-container, #page-view {
             margin: 0 10px 0 0;
             min-width: 170px;
 
-            .del-btn {
-                .btn;
-                .btn-default;
-                padding: 6px 6px;
-                    
-                span {
-                    .glyphicon;
-                    .glyphicon-minus;
-                }
-            }
             .frm-ctrl {
                 display: inline-block;
                 width: 80px; 
@@ -68,6 +83,7 @@ html, body, #app-container, #page-view {
             }
 
             ul {
+                .list-unstyled;
                 margin-bottom: 1px;
 
                 li {
@@ -93,9 +109,13 @@ html, body, #app-container, #page-view {
             }
 
         }
+
+        .add-prod {
+            .add-btn;
+            .align-self(center);
+        }
     }
 }
-
 
 #calculate {
     .flex-fix;
@@ -103,6 +123,10 @@ html, body, #app-container, #page-view {
     .align-items(center);
 
     margin-top: 20px;
+
+    div {
+        margin: 0 10px 0 0;
+    }
 }
 
 #pages {
@@ -112,19 +136,43 @@ html, body, #app-container, #page-view {
     .page-item {
         .flex-col;
 
+        margin: 0 10px 0 0;
+
         .page-head {
             .flex-fix;
         } 
         .page-list {
             .flex-fill;
             overflow-y: scroll;
+            padding: 1px;
+            border: 1px solid #e3e3e3;
+            border-radius: 1px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+
+            table {
+                .table;
+                .table-bordered;
+            }
         }
         .page-fut {
             .flex-fix;
+            padding: 5px;
+            background-color: #f5f5f5;
+            border: 1px solid #e3e3e3;
+            border-radius: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
         }
     }
 }
 
 #summary {
     .flex-fix;
+    padding: 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }

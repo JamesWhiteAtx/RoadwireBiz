@@ -1,96 +1,72 @@
-﻿<div class="flex-head">
-    <h3>Products</h3>
-    <div class="box box-horz hscrl">
-        <div class="prod-box" ng-repeat="set in sets">
-            <div><label><input type="checkbox" ng-model="set.hidden"> Hidden</label></div>
-            <input class="form-control prod-name" ng-model="set.name" />
-            <button class="btn btn-input" title="Remove Product" ng-click="delSet($index)"><span class=" glyphicon glyphicon-remove"></span></button>
-
-            <h5 ng-show="set.options.length > 1">Options</h5>
-            <ul class="list-unstyled">
-                <li ng-repeat="opt in set.options">
-                    <input class="form-control input-sm" ng-model="opt.name" ng-show="set.options.length > 1" />
-                    <strong>$</strong>
-                    <input type="number" class="form-control input-sm" ng-model="opt.price" />
-                    <button class="btn btn-sm btn-input" title="Remove Option" ng-click="set.delOpt($index)" ng-show="set.options.length > 1">
-                        <span class=" glyphicon glyphicon-remove"></span>
-                    </button>
-
-
+﻿<div id="configuration">
+    <div id="selectors">
+        <h3>Selectors</h3>
+        <div class="slctr-list">
+            <ul>
+                <li ng-repeat="slctr in selectors">
+                    <input class="form-control input-sm frm-ctrl" ng-model="slctr.name">
+                    <a href="" class="del-slctr" title="Delete Option" ng-click="delSlctr($index)"><span></span></a>
                 </li>
             </ul>
-
             <div>
-                <button class="btn btn-default" title="Add Option" ng-click="set.addOpt()">
-                    <span class="glyphicon glyphicon-plus"></span> Add Option
-                </button>
+                <a href="" class="add-slctr" title="Add Option" ng-click="newSlctr()"><span></span> Add Selector</a>
             </div>
-
+        </div class="slctr-list">
+    </div>
+    <div id="products">
+        <div id="prod-head">
+            <h3>Products</h3>
+            <a href="" class="add-prod" title="Add Product" ng-click="newProd($index)">
+                <span></span>
+            </a>
         </div>
+        
+        <div id="prod-items">
+            <div class="prod-item" ng-repeat="prod in prods">
+                <div class="prod-descr">
+                    <input class="prod-name" ng-model="prod.name" />
+                    <a href="" class="del-prod" title="Delete Product" ng-click="delProd($index)"><span></span></a>
+                </div>
+                <select class="slctrs-pick"
+                        title="Selectors"
+                        ng-model="prod.selector"
+                        ng-options="slctr as slctr.name for slctr in selectors">
+                    <option value="">Regular Page</option>
+                </select>
+                <h5 ng-show="prod.options.length > 1">Options</h5>
 
-        <div>
-            <button class="btn btn-default" title="Add Product" ng-click="newSet($index)">
-                <span class="glyphicon glyphicon-plus"></span> Add Product
-            </button>
+                <ul>
+                    <li ng-repeat="opt in prod.options">
+                        <input ng-model="opt.name" ng-show="prod.options.length > 1">
+                        <span class="symbol"></span>
+                        <input type="number" ng-model="opt.price">
+                        <a href="" class="del-opt" title="Delete Option" ng-click="prod.delOpt($index)" ng-show="prod.options.length > 1"><span></span></a>
+                    </li>
+                </ul>
+                <div>
+                    <a href="" class="add-opt" title="Add Option" ng-click="prod.addOpt()"><span></span> Add Option</a>
+                </div>
+
+            </div>
         </div>
 
     </div>
 </div>
-<div id="cal-sect" class="flex-head box box-horz">
+
+<div id="calculate">
     <div>
-        <button class="btn btn-default btn-calc" ng-click="calcResults()">
-            <span class="glyphicon glyphicon-refresh"></span> Calculate
-        </button>
+        <button ng-click="calcResults()"><span></span> Calculate</button>
     </div>
     <div>
-        <h4>
-            <span>Total Pages: </span>
-            {{hidPages.length + regPages.length}}
-        </h4>
+        <h3>Total Pages: {{totalReg + totalHid}}</h3>
     </div>
+    <div>(Regular: {{totalReg}} Hidden: {{totalHid}})</div>
 </div>
-<div class="flex-body box box-stretch">
 
-    <div class="flex-col">
-        <div class="flex-head"><h3>Hidden Pages</h3></div>
-        <div class="results-tbl flex-body vscrl">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th ng-repeat="set in hidSets">
-                            {{set.name}}
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in hidPages">
-                        <td>
-                            {{$index}}
-                        </td>
-                        <td ng-repeat="opt in row.opts track by $index">
-                            {{opt.name}}
-                        </td>
-                        <td>
-                            {{row.price | currency}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="flex-foot futer">
-            Total Hidden Pages: {{hidPages.length}}
-        </div>
-    </div>
-
-    <div class="flex-col">
-        <div class="flex-head"><h3>Regular Pages</h3></div>
-        <div class="results-tbl flex-body">
+<div id="pages">
+    <div class="page-item">
+        <div class="page-head"><h3>Regular Pages</h3></div>
+        <div class="page-list">
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -120,11 +96,47 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex-foot futer">
+        <div class="page-fut">
             Total Regular Pages: {{regPages.length}}
         </div>
     </div>
-</div>
-<div class="flex-foot futer">
 
+    <div class="page-item" ng-repeat="slctr in selectors">
+        <div class="page-head"><h3>{{slctr.name}} Selector</h3></div>
+        <div class="page-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th ng-repeat="prod in slctr.prods">
+                            {{prod.name}}
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="page in slctr.pages">
+                        <td>
+                            {{$index}}
+                        </td>
+                        <td ng-repeat="opt in page.opts track by $index">
+                            {{opt.name}}
+                        </td>
+                        <td>
+                            {{page.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-fut">
+            Total Hidden {{slctr.name}} Pages: {{slctr.pages.length}}
+        </div>
+    </div>
 </div>
+
+<div id="summary"></div>

@@ -6,8 +6,8 @@
 // Flexbox display
 // flex or inline-flex
 .flex-display(@display: flex) {
-    display: -webkit-box;
-    display: -moz-box;
+    //display: -webkit-box;
+    //display: -moz-box;
 	display: ~"-webkit-@{display}";
 	display: ~"-moz-@{display}";
 	display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
@@ -29,8 +29,8 @@
 // row | row-reverse | column | column-reverse
 .flex-direction(@direction: row) {
     // legacy styles
-    .box-orient(@direction);
-    .box-direction(@direction);
+    //.box-orient(@direction);
+    //.box-direction(@direction);
   -webkit-flex-direction: @direction;
      -moz-flex-direction: @direction;
       -ms-flex-direction: @direction;
@@ -92,6 +92,17 @@
      -moz-align-items: @align;
       -ms-align-items: @align;
           align-items: @align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch 
+.align-self(@align: auto) {
+ -ms-flex-item-align: @align;
+  -webkit-align-self: @align;
+     -moz-align-self: @align;
+      -ms-align-self: @align;
+          align-self: @align;
 }
 
 .display-flex() {

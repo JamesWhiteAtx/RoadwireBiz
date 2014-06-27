@@ -1,38 +1,28 @@
 ﻿<div id="products">
-    <h4>Products</h4>
+    <h3>Products</h3>
     <div id="prod-row">
         <div class="prod-item">
             <div class="prod-descr">
-                <input class="prod-name" title="Delete Product" ng-model="set.name" />
-                <button class="del-btn"><span></span></button>
+                <input class="prod-name" ng-model="set.name" />
+                <button class="del-btn" title="Delete Product" ng-click="delSet($index)"><span></span></button>
             </div>
             <div><label><input type="checkbox" ng-model="set.hidden"> Hidden</label></div>
-            <h5>Options</h5>            
+            <h5 ng-show="set.options.length > 1">Options</h5>            
 
-            <ul class="list-unstyled">
-                <li >
-                    <input class="form-control input-sm frm-ctrl" ng-model="opt.name">
+            <ul>
+                <li ng-repeat="opt in set.options">
+                    <input class="form-control input-sm frm-ctrl" ng-model="opt.name" ng-show="set.options.length > 1">
                     <span class="symbol"></span>
                     <input type="number" class="form-control input-sm frm-ctrl" ng-model="opt.price">
-                    <button class="del-btn"><span></span></button>
+                    <button class="del-btn" title="Delete Option" ng-show="set.options.length > 1"><span></span></button>
                 </li>
             </ul>
             <div>
-                <button class="btn btn-default" title="Add Option" ng-click="set.addOpt()">
-                    <span class="glyphicon glyphicon-plus"></span> Add Option
-                </button>
+                <button class="add-btn" title="Add Option" ng-click="set.addOpt()"><span></span> Add Option</button>
             </div>
 
         </div>
-        <div class="prod-item">
-            <div>c</div>
-            <div>c</div>
-        </div>
-        <div>
-            <button class="btn btn-default" title="Add Product" ng-click="newSet($index)">
-                <span class="glyphicon glyphicon-plus"></span> Add Product
-            </button>
-        </div>
+        <button class="add-prod" title="Add Product" ng-click="newSet($index)"><span></span> Add Product</button>
     </div>
 </div>
 <div id="calculate">
@@ -50,27 +40,82 @@
 
 </div>
 <div id="pages">
+    
     <div class="page-item">
         <div class="page-head"><h3>Hidden Pages</h3></div>
         <div class="page-list">
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th ng-repeat="set in hidSets">
+                            {{set.name}}
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in hidPages">
+                        <td>
+                            {{$index}}
+                        </td>
+                        <td ng-repeat="opt in row.opts track by $index">
+                            {{opt.name}}
+                        </td>
+                        <td>
+                            {{row.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>        
+        
         </div>
-        <div class="page-fut">Total</div>
+        <div class="page-fut">
+            Total Hidden Pages: {{hidPages.length}}
+        </div>
     </div>
+    
     <div class="page-item">
         <div class="page-head"><h3>Regular Pages</h3></div>
         <div class="page-list">
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
-            <p><input /></p><p><input /></p><p><input /></p><p><input /></p><p><input /></p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="opt in regPages">
+                        <td>
+                            {{$index}}
+                        </td>
+                        <td>
+                            {{opt.name}}
+                        </td>
+                        <td>
+                            {{opt.price | currency}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="page-fut">Total</div>
+        <div class="page-fut">
+            Total Regular Pages: {{regPages.length}}
+        </div>
     </div>
+
 </div>
-<div id="summary" class="flex-fix">
-    bot
-</div>
+<div id="summary"></div>

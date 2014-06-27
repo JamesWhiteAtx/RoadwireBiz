@@ -17,9 +17,10 @@ utils
 }])
 
 .controller('CcPagesCtrl', ['$scope', function ($scope) {
-    $scope.sets = [];
-    $scope.hidSets = [];
-    $scope.regSets = [];
+    $scope.selectors = [];
+    $scope.prods = [];
+    $scope.hidProds = [];
+    $scope.regProds = [];
 
     var hidPages = [];
     $scope.hidPages = [];
@@ -53,44 +54,53 @@ utils
         return option;
     }
 
-    var makeSet = function (name, hidden, options) {
-        var set = { 
-            name: 'Product' + $scope.sets.length.toString(),
+    var makeProd = function (name, selector, options) {
+        var prod = { 
+            name: 'Product' + $scope.prods.length.toString(),
             options: []
         };
-        set.addOpt = function (opt) {
+        prod.addOpt = function (opt) {
             var newOpt = makeOpt(opt);
-            set.options.push(newOpt);
+            prod.options.push(newOpt);
             return newOpt;
         };
-        set.delOpt = function (idx) {
-            set.options.splice(idx, 1);
+        prod.delOpt = function (idx) {
+            prod.options.splice(idx, 1);
         };
 
         if (name) {
-            set.name = name;
+            prod.name = name;
         };
-        set.hidden = (hidden === true);
+        prod.selector = selector;
         angular.forEach(options, function (opt) {
-            set.addOpt(opt);
+            prod.addOpt(opt);
         });
 
-        return set;
+        return prod;
     }
 
-    var addSet = function (name, hdn, opts) {
-        var set = makeSet(name, hdn, opts);
-        $scope.sets.push(set);
-        return set;
+    var addProd = function (name, slctr, opts) {
+        var prod = makeProd(name, slctr, opts);
+        $scope.prods.push(prod);
+        return prod;
     };
     
-    addSet('Leather', true, [{ name: '1Row', price: 799 }, { name: '2Row', price: 1299 }, { name: '3Row', price: 1799 }]);
-    addSet('Heathers', true, [{ name: '1Heater', price: 249 }, { name: '2Heater', price: 449 }]);
-    //addSet('Jeep Top', ['Jeep Top']);
+    var makeSlctr = function (name) {
+        var slctr = {
+            name: name || 'Selector' + $scope.selectors.length.toString(),
+            prods: []
+        };
+        return slctr;
+    };
 
-   
-    var combHidSets = function (sets, setIdx, rowArr) {
-        setIdx = setIdx || 0;
+    var addSlctr = function (name) {
+        var slctr = makeSlctr(name);
+        $scope.selectors.push(slctr);
+        return slctr;
+    };
+
+    var combProdOpts = function (pages, prods, prodIdx, rowArr) {
+        prodIdx = prodIdx || 0;
         rowArr = rowArr || [];
 
         var addOpt = function (opt) {
@@ -100,12 +110,12 @@ utils
                 row[rowIdx] = rowOpt;
             });
 
-            row[setIdx] = opt;
+            row[prodIdx] = opt;
 
-            combHidSets(sets, setIdx + 1, row);
+            combProdOpts(pages, prods, prodIdx + 1, row);
         };
 
-        if (sets.length == setIdx) {
+        if (prods.length == prodIdx) {
             row = { opts: rowArr };
 
             var price = 0;
@@ -116,74 +126,125 @@ utils
             });
             row.price = price;
 
-            hidPages.push(row);
+            pages.push(row);
             return;
         };
 
-        var set = sets[setIdx];
+        var prod = prods[prodIdx];
 
-        if (!set) {
+        if (!prod) {
             addOpt(null);
             return;
         }
 
-        angular.forEach(set.options, function (opt) {
+        angular.forEach(prod.options, function (opt) {
             addOpt(opt);
         });
     };
 
-    $scope.calcResults = function () {
-        $scope.hidSets = [];
-        $scope.regSets = [];
+    // segregate selector from regular
+    var segrProds = function () {
+        $scope.regProds = [];
+        $scope.hidProds = [];
 
-        // segregate hidden from regular
-        angular.forEach($scope.sets, function (set) {
-            if (set.options.length == 1) {
-                set.options[0].name = set.name;
-            };
-            if (set.hidden) {
-                $scope.hidSets.push(set);
-            } else {
-                $scope.regSets.push(set);
-            };
+        angular.forEach($scope.selectors, function (slctr) {
+            slctr.prods = [];
         });
 
-        // calculate hidden page combinations
-        hidPages = [];
-
-        var setCnt = $scope.hidSets.length;
-        var combos = Math.pow(2, setCnt);
-        for (c = 1; c < combos; c++) {
-            var sets = [];
-            for (b = 0; b < setCnt; b++) {
-                var x = (c >> b) & 1;
-                var set = (x ? $scope.hidSets[b] : null);
-                sets.push(set);
+        angular.forEach($scope.prods, function (prod) {
+            if (prod.options.length == 1) {
+                prod.options[0].name = prod.name;
             };
-            combHidSets(sets);
-        };
+            if (prod.selector) {
+                prod.selector.prods.push(prod);
+                $scope.hidProds.push(prod);
+            } else {
+                $scope.regProds.push(prod);
+            };
+        });
+    };
 
-        $scope.hidPages = hidPages;
-
-        //regular pages
+    //regular pages
+    var calcReg = function () {
         var regPages = [];
-
-        angular.forEach($scope.regSets, function (set) {
-            angular.forEach(set.options, function (opt) {
-                regPages.push(opt)
+        angular.forEach($scope.regProds, function (prod) {
+            var prfx = '';
+            if (prod.options.length > 1) {
+                prfx = prod.name + '-';
+            };
+            angular.forEach(prod.options, function (opt) {
+                regPages.push(makeOpt(prfx + opt.name, opt.price));
             });
         });
-
         $scope.regPages = regPages;
     };
 
-    $scope.newSet = function () {
-        addSet().addOpt();
+    // calculate selector page combinations
+    var calcSlctrs = function () {
+        angular.forEach($scope.selectors, function (slctr) {
+            calcSlctrPages(slctr);
+        });
     };
 
-    $scope.delSet = function (idx) {
-        $scope.sets.splice(idx, 1);
+    var calcSlctrPages = function (slctr) {
+        var pages = [];
+
+        var prodCnt = slctr.prods.length;
+        var combos = Math.pow(2, prodCnt);
+        for (c = 1; c < combos; c++) {
+            var prods = [];
+            for (b = 0; b < prodCnt; b++) {
+                var x = (c >> b) & 1;
+                var prod = (x ? slctr.prods[b] : null);
+                prods.push(prod);
+            };
+            combProdOpts(pages, prods);
+        };
+
+        slctr.pages = pages;
+    };
+
+    $scope.calcResults = function () {
+        // segregate selector from regular
+        segrProds();
+
+        // calculate selector page combinations
+        calcSlctrs();
+
+        //regular pages
+        calcReg();
+
+        var totReg = $scope.regPages.length;
+        var totHid = 0;
+        angular.forEach($scope.selectors, function (slctr) {
+            totHid += slctr.pages.length;
+        });
+
+        $scope.totalReg = totReg;
+        $scope.totalHid = totHid;
+    };
+
+    $scope.newSlctr = function () {
+        return addSlctr()
+    };
+
+    $scope.delSlctr = function (idx) {
+        $scope.selectors.splice(idx, 1);
+    };
+
+    $scope.newProd = function () {
+        addProd().addOpt();
+    };
+
+    $scope.delProd = function (idx) {
+        $scope.prods.splice(idx, 1);
     }
+
+    var slctrLea = addSlctr('Leather');
+
+    addProd('Leather Kit', slctrLea, [{ name: '1Row', price: 799 }, { name: '2Row', price: 1299 }, { name: '3Row', price: 1799 }]);
+    addProd('Heaters', slctrLea, [{ name: '1Heater', price: 249 }, { name: '2Heater', price: 449 }]);
+    //addProd('Jeep Top', ['Jeep Top']);
 
     $scope.calcResults()
 }])

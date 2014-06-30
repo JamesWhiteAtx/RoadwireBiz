@@ -16,9 +16,19 @@
         </div>
 
     </div>
-    <div id="sctr" ng-show="curSlctr">
-        <h3>{{curSlctr.name}} Selector Landing Page</h3>
 
+    <div id="slctr_land" ng-show="curSlctr && openSlctr">
+        <h3>{{curSlctr.name}} Landing Page</h3>
+
+        <a href="" class="slctr-lct-prod" ng-click="slctProd()">
+            <span></span>
+            <h3>Order Now (launch selector)</h3>
+        </a>
+
+    </div>
+
+    <div id="slctr" ng-show="curSlctr && !openSlctr">
+        <h3>{{curSlctr.name}} Selector </h3>
 
         <div ng-repeat="page in curSlctr.pages">
             <a href="" class="slctr-pg-pick" ng-click="pickPage(curProd, page)">

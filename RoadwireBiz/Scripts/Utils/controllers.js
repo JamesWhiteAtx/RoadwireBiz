@@ -34,6 +34,7 @@ utils
         $scope.regPages = data.regPages;
 
         $scope.totalReg = data.totalReg;
+        $scope.totalLand = data.totalLand;
         $scope.totalHid = data.totalHid;
     };
 
@@ -71,12 +72,18 @@ utils
 
     $scope.curProd;
     $scope.curSlctr;
+    $scope.openSlctr = false;
     $scope.curPage;
 
     $scope.pickSlctr = function (prod) {
         $scope.curProd = prod;
         $scope.curSlctr = $scope.curProd.selector;
+        $scope.openSlctr = true;
         $scope.curPage = null;
+    };
+
+    $scope.slctProd = function () {
+        $scope.openSlctr = false;
     };
 
     $scope.pickPage = function (prod, opt) {

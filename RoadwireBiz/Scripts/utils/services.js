@@ -219,12 +219,18 @@ angular.module('util.services', []) // 'ngResource'
         calcReg();
 
         var totReg = data.regPages.length;
+        var totLand = 0;
         var totHid = 0;
         angular.forEach(data.selectors, function (slctr) {
-            totHid += slctr.pages.length;
+            var pgs = slctr.pages.length;
+            if (pgs > 0) {
+                totLand ++;
+            }
+            totHid += pgs;
         });
 
         data.totalReg = totReg;
+        data.totalLand = totLand;
         data.totalHid = totHid;
     };
 

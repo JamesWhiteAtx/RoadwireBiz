@@ -33,7 +33,7 @@ costco
     };
 }])
 
-.controller('LeaCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
+.controller('LeaCtrl', ['$scope', 'WidgetData', 'LeaPrice', function ($scope, WidgetData, LeaPrice) {
     $scope.trimIsLoading = function () {
         return (($scope.trim) && ($scope.trim.isLoading))
         || (($scope.car) && ($scope.car.isLoading))
@@ -79,6 +79,12 @@ costco
     $scope.pickKit = function (idx) {
         $scope.kit.obj = $scope.kit.list[idx];
         $scope.routeInst();
+    };
+
+    $scope.price = function () {
+        if ($scope.ptrn && $scope.ptrn.obj) {
+            return LeaPrice($scope.ptrn.obj.rowsid);
+        };
     };
 
     function isUndefinedOrNull(val) {

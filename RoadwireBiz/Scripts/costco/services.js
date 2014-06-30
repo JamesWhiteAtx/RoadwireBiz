@@ -287,4 +287,18 @@ angular.module('costco.services', []) // 'ngResource'
     };
 }])
 
+.factory('LeaPrice', [function () {
+    return function (rowid) {
+        if (rowid == 1) {
+            return 799.00;
+        } else if (rowid == 2) {
+            return 1299.00;
+        } else if (rowid == 3) {
+            return 1799.00;
+        } else {
+            return null;
+        }
+    };
+}])
+
 ;

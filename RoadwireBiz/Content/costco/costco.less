@@ -121,10 +121,7 @@ body {
                         color: #ffffff;
                         font-weight: bold;
                     }
-                    span {
-                        color: #ffffff;
-                        font-weight: bold;
-                    }
+                    //span {color: #ffffff;font-weight: bold;}
                 }
 
                 // Seletor Option Section
@@ -228,6 +225,28 @@ body {
                             img.sel-kit
                             {
                                 height: @img-dim;
+                            }
+
+                            div.price-pick {
+                                .clearfix();
+
+                                .price {
+                                    .pull-left();
+                                    span.symbol {
+                                        .glyphicon; 
+                                        .glyphicon-usd;
+                                    }
+                                }
+                                .select-kit {
+                                    .pull-right();
+                                    .btn; 
+                                    .btn-primary;
+
+                                    span.symbol {
+                                        .glyphicon; 
+                                        .glyphicon-ok;
+                                    }
+                                }
                             }
 
                         }

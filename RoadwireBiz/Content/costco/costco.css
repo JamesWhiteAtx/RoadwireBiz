@@ -185,10 +185,6 @@ body #costco-container #costco-view #lea-body .sel-sect .sel-caption {
   color: #ffffff;
   font-weight: bold;
 }
-body #costco-container #costco-view #lea-body .sel-sect span {
-  color: #ffffff;
-  font-weight: bold;
-}
 body #costco-container #costco-view #lea-body .sel-opt-sect {
   margin-top: 0;
   margin-bottom: 0;
@@ -207,10 +203,6 @@ body #costco-container #costco-view #lea-body .sel-opt-sect .sel-caption {
   padding-top: 0px;
   padding-bottom: 0px;
   height: 22px;
-  color: #ffffff;
-  font-weight: bold;
-}
-body #costco-container #costco-view #lea-body .sel-opt-sect span {
   color: #ffffff;
   font-weight: bold;
 }
@@ -299,10 +291,6 @@ body #costco-container #costco-view #lea-body .sel-chc-sect .sel-caption {
   color: #ffffff;
   font-weight: bold;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect span {
-  color: #ffffff;
-  font-weight: bold;
-}
 body #costco-container #costco-view #lea-body .sel-chc-sect ul {
   padding-left: 0;
   list-style: none;
@@ -342,6 +330,141 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li {
 }
 body #costco-container #costco-view #lea-body .sel-chc-sect ul li img.sel-kit {
   height: 267px;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:before,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+  clear: both;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:before,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+  clear: both;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price {
+  float: left !important;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price span.symbol {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price span.symbol:before {
+  content: "\e148";
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+  float: right !important;
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus {
+  color: #333333;
+  text-decoration: none;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled],
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active,
+.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active,
+.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+  background-image: none;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled],
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:hover,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:focus,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:active,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled.active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled].active,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit .badge {
+  color: #428bca;
+  background-color: #ffffff;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit span.symbol {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit span.symbol:before {
+  content: "\e013";
 }
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-add,
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-remove {

@@ -32,6 +32,12 @@
                 <div class="box-descr">{{col.leacolorname}} {{col.sku}}</div>
                 <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">
                 <div>{{col.rectype}}</div>
+                
+                <div class="price-pick">
+                    <div class="price"><span class="symbol"></span>{{price() | number:2}}</div>
+                    <button class="select-kit"><span class="symbol"></span> Select</button>
+                </div>
+
             </li>
         </ul>
     </div>    

@@ -1,0 +1,58 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="close()">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <h3 class="modal-title" id="myModalLabel">Professional Installation from Roadwire</h3>
+</div>
+
+<div class="modal-body">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a data-target="#why" role="tab" data-toggle="tab">
+                Why Professional Installation?
+            </a>
+        </li>
+        <li>
+            <a data-target="#where" role="tab" data-toggle="tab">
+                Installation Centers
+            </a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="why">
+            <div id="inst-img">
+                <img alt="" src="/Content/Images/testimonials.png">
+            </div>
+            <p>There is nothing quite as satisfying as building or fixing something yourself. However, there are some things that are better left to the professionals. While Roadwire's products help deliver the ultimate driving experience, the greatest and most long-lasting enjoyment comes when they are properly installed.</p><p>For this reason, Roadwire has bundled professional installation into all of its product packages. Roadwire has partnered with InstallerNet, the largest independent installation network in the country, to match you with qualified, top-rated, local restylers that can help you get the most out of your Roadwire products. When you make a purchase on Costco, you will receive an InstallCard. Simply visit the website on the back of the card or call the number, enter the code, and schedule your install. It is that easy. If you run in to any problems, InstallerNet's friendly installation coordinators can assist you with any questions you may have.</p><p>Now, Roadwire and InstallerNet have removed the hassle from buying products on Costco. We have bundled the product, professional installation, free shipping, and our industry-leading 3 year/36,000 mile warranty into one low price. Buy with confidence knowing you are getting the best deal, direct from the manufacturer to you!</p>
+        </div>
+        
+        <div class="tab-pane" id="where">
+            srchloc: {{srchloc}}
+            <form ng-submit="findInstallers()" id="srchform" name="srchform" novalidate="novalidate" ng-cloak>
+                @*<label for="locaddr">Location</label>*@
+                <input type="text" placeholder="enter your location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>
+                <button type="submit" id="btnfind" title="Find Locations" ng-disabled="srchform.locaddr.$error.required">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Find Locations
+                </button>
+                <button type="button" id="btnreset" title="Reset Map" ng-click="reset()">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </button>
+                <select ng-show="proxs && (proxs.length > 0)" ng-model="prox" ng-options="marker.proxDisp for marker in proxs">
+                    <option value="">-- {{proxs.length}} nearest locations --</option>
+                </select>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn" ng-click="close()">Close</button>
+</div>

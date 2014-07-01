@@ -3,7 +3,7 @@ RoadwireBiz Costco App
 (c) 2014 Roadwire, Inc.
 */
 
-var costco = angular.module('costco', ['ngRoute', 'routeStyles', 'ngAnimate', 
+var costco = angular.module('costco', ['ngRoute', 'routeStyles', 'ngAnimate', 'ui.bootstrap',
     'roadwire.directives', 'roadwire.services', 'costco.services', 'costco.directives'])
 
     .config(['$routeProvider', function ($routeProvider) {

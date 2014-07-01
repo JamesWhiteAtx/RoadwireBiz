@@ -199,6 +199,8 @@
     <Content Include="Scripts\angular\angular-route-1.2.16.js" />
     <Content Include="Scripts\angular\angular-route-1.2.16.min.js" />
     <Content Include="Scripts\angular\route-styles.js" />
+    <Content Include="Scripts\angular\ui-bootstrap-custom-tpls-0.10.0.js" />
+    <Content Include="Scripts\angular\ui-bootstrap-custom-tpls-0.10.0.min.js" />
     <Content Include="Scripts\costco\app.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -320,6 +322,7 @@
     <Content Include="Views\Utils\Partials\Test.cshtml" />
     <Content Include="Views\Utils\Partials\CcPages.cshtml" />
     <Content Include="Views\Utils\Partials\CcShop.cshtml" />
+    <Content Include="Views\Utils\Partials\WhyInstall.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

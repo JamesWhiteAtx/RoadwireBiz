@@ -1,10 +1,58 @@
 .thumbnail > img,
 .thumbnail a > img,
 .carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
+.carousel-inner > .item > a > img,
+.why-install .tab-content #why #inst-img img > img,
+.why-install .tab-content #why #inst-img img a > img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+.why-install .tab-content #where #srchform input[type=text] {
+  display: block;
+  width: 100%;
+  height: 31px;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.why-install .tab-content #where #srchform button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.why-install .tab-content #where #srchform #btnreset {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.why-install .tab-content #where #srchform #btnfind {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
 }
 .btn-group-lg > .btn {
   padding: 10px 16px;
@@ -571,11 +619,85 @@ body #costco-container .costco-footer {
   padding-bottom: 5px;
   height: 25px;
 }
-.cc-map {
-  width: 100%;
-  height: 380px;
-  position: relative;
+.why-install .nav-tabs {
+  font-weight: bold;
+}
+.why-install .modal-body {
+  min-height: 500px;
+}
+.why-install .tab-content .tab-pane {
+  padding-top: 10px;
+}
+.why-install .tab-content #why #inst-img {
+  float: left !important;
+  margin-right: 10px;
+}
+.why-install .tab-content #why #inst-img img {
+  display: block;
+  padding: 4px;
+  margin-bottom: 17px;
+  line-height: 1.42857143;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 10px;
+}
+.why-install .tab-content #why #inst-img img > img,
+.why-install .tab-content #why #inst-img img a > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+a.why-install .tab-content #why #inst-img img:hover,
+a.why-install .tab-content #why #inst-img img:focus,
+a.why-install .tab-content #why #inst-img img.active {
+  border-color: #428bca;
+}
+.why-install .tab-content #why #inst-img img .caption {
+  padding: 9px;
+  color: #333333;
+}
+.why-install .tab-content #why p {
+  font-size: 15px;
+}
+.why-install .tab-content #where {
+  /*#locaddr {
+                //width: 250px;
+                .form-control;
+            }
+            #btnfind {
+                .btn;
+                .btn-primary;
+            }*/
+}
+.why-install .tab-content #where #srchform {
+  margin-top: 16px;
+  padding: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.why-install .tab-content #where #srchform label[for=locaddr] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
   overflow: hidden;
-  -webkit-transform: translateZ(0px);
-  background-color: #e5e3df;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.why-install .tab-content #where #srchform input[type=text] {
+  display: inline-block;
+  width: 50%;
+  margin-right: -4px;
+}
+.why-install .tab-content #where #srchform button {
+  vertical-align: baseline;
+}
+.why-install .tab-content #where #srchform #btnreset {
+  margin-left: 10px;
+}
+.why-install .tab-content #where #srchform select {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.6);
 }

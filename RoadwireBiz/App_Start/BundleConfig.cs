@@ -25,6 +25,9 @@ namespace RoadwireBiz
                 "~/Scripts/angular/angular-route-{version}.js",
                 "~/Scripts/angular/angular-resource-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ui-boots").Include(
+                "~/Scripts/angular/ui-bootstrap-custom-tpls-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/animate").Include(
                 "~/Scripts/angular/angular-animate-{version}.js"));
 

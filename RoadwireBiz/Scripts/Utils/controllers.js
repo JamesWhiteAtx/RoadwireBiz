@@ -3,12 +3,55 @@ RoadwireBiz Utils Contollers
 (c) 2014 Roadwire, Inc.
 */
 utils
-.controller('UtilsCtrl', ['$scope', '$location', function ($scope, $location) {
+.controller('UtilsCtrl', ['$scope', '$location', '$modal', function ($scope, $location, $modal) {
     $scope.routeMenu = function () {
         $location.path('/menu');
     };
     $scope.routeCcShop = function () {
         $location.path('/ccshop');
+    };
+
+    $scope.WhyInstall = function (size) {
+        var modalInstance = $modal.open({
+            templateUrl: '/Partial/Utils/WhyInstall', 
+            controller: 'WhyInstCtrl',
+            size: size,
+            windowClass: 'why-install'
+        });
+    };
+
+}])
+
+.controller('WhyInstCtrl', ['$scope', '$modalInstance', 'InstMarkers', 'MarkersProx',  function ($scope, $modalInstance, InstMarkers, MarkersProx) {
+    $scope.close = function () {
+        $modalInstance.close();
+    };
+
+    $scope.srchloc = 'some loc';
+    $scope.srchAddr;
+    $scope.proxLocs = [];
+
+    $scope.findInstallers = function () {
+
+        InstMarkers().then(function (markers) {
+            //alert('findInstallers');
+            MarkersProx($scope.srchloc, markers, function (markers, result) {
+                var m = markers;
+                var r = result;
+
+                $scope.srchAddr = resut.formatted_address;
+                $scope.proxLocs = [];
+                angular.forEach($scope.markers, function (marker, idx) {
+                    if (idx > 10) {
+                        return false;
+                    } else {
+                        $scope.proxLocs.push(marker);
+                    };
+                });
+
+            });
+        });
+        
     };
 }])
 
@@ -120,16 +163,6 @@ utils
 
 .controller('TestCtrl', ['$scope', function ($scope) {
 
-    $scope.dlg = function () {
-        $('#myModal').modal()
-    };
-
-    $scope.tabwhy = function () {
-        $('#myTab li:eq(2) a').tab('show')
-    };
-    
-    $scope.tabwhere = function () {
-    }
 }])
 
 ;

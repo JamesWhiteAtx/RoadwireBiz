@@ -191,7 +191,7 @@ body {
                         .list-inline;
 
                         white-space: nowrap;
-                        overflow-x:scroll;
+                        overflow-x:auto;
                         overflow-y:hidden;
 
                         .heighttot(@cc-chc-ul-tot-ht, 0, 0, 0, 1px, 1px);
@@ -199,7 +199,7 @@ body {
                         //cc-chc-ul-cnt-ht: @cc-chc-ul-cnt-ht;
 
                         margin-left: 1px;
-                        background: rgba(255, 255, 255, 0.75);
+                        background: rgba(0, 0, 0, 0.75);
 
                         @cc-chc-li-tot-ht: @cc-chc-ul-cnt-ht - 25; // correct for scrollbar, ish
                         @cc-li-bord: @wire-frame-bord;
@@ -212,40 +212,63 @@ body {
                             @cc-chc-li-cnt-ht: @content-ht;
                             height: 100%;
 
-                            background: rgba(255, 255, 255, 0.85);
+                            background: #fff;
                             color: #000;
                             font-weight: bold;
-                            text-align:center;
+                            //text-align:center;
                             margin-right: 1px;
                             padding: 0 10px;
 
-                            cursor: pointer;
+                            .kit-click {
+                                cursor: pointer;
+                                margin-bottom: 10px;
 
-                            @img-dim: floor(@cc-chc-li-cnt-ht * 0.75);
-                            img.sel-kit
-                            {
-                                height: @img-dim;
-                            }
+                                .box-descr {
+                                    text-align:center;
+                                }
 
-                            div.price-pick {
-                                .clearfix();
+                                @img-dim: floor(@cc-chc-li-cnt-ht * 0.75);
+                                img.sel-kit
+                                {
+                                    height: @img-dim;
+                                }
 
-                                .price {
-                                    .pull-left();
-                                    span.symbol {
-                                        .glyphicon; 
-                                        .glyphicon-usd;
+                                div.price-pick {
+                                    .clearfix();
+
+                                    .price {
+                                        color: #cc201a;
+                                        font-size: @font-size-h3;
+                                        font-style: normal;
+                                        font-family: 'Georgia', serif;
+                                        font-weight: bold;
+                                        //display: block;
+                                        //margin-bottom: 10px;
+                                        //margin-left: 6px;
+                                        .pull-left();
+                                        span.symbol {
+                                            .glyphicon; 
+                                            .glyphicon-usd;
+                                        }
+                                    }
+                                    .select-kit {
+                                        .pull-right();
+                                        .btn; 
+                                        .btn-primary;
+
+                                        span.symbol {
+                                            .glyphicon; 
+                                            .glyphicon-ok;
+                                        }
                                     }
                                 }
-                                .select-kit {
-                                    .pull-right();
-                                    .btn; 
-                                    .btn-primary;
-
-                                    span.symbol {
-                                        .glyphicon; 
-                                        .glyphicon-ok;
-                                    }
+                            }
+                            .prof-inst {
+                                font-weight: bolder;
+                                //text-align: left;
+                                span.symbol {
+                                    .glyphicon; 
+                                    .glyphicon-info-sign;
                                 }
                             }
 

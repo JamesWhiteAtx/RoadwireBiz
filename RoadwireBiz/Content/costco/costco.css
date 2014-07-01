@@ -168,11 +168,7 @@ body #costco-container #costco-view #lea-body {
   padding-bottom: 0px;
   height: 609px;
   width: auto;
-  background: url('/Content/Images/costco-selector.jpg') no-repeat left center;
-  -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
 }
 body #costco-container #costco-view #lea-body .sel-sect {
   padding-left: 5px;
@@ -300,7 +296,7 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul {
   list-style: none;
   margin-left: -5px;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   margin-top: 0;
   margin-bottom: 0;
@@ -309,7 +305,7 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul {
   padding-bottom: 1px;
   height: 383px;
   margin-left: 1px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.75);
 }
 body #costco-container #costco-view #lea-body .sel-chc-sect ul > li {
   display: inline-block;
@@ -324,37 +320,47 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li {
   padding-bottom: 0px;
   height: 356px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.85);
+  background: #fff;
   color: #000;
   font-weight: bold;
-  text-align: center;
   margin-right: 1px;
   padding: 0 10px;
-  cursor: pointer;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li img.sel-kit {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click .box-descr {
+  text-align: center;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click img.sel-kit {
   height: 267px;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:before,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:before,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:after {
   content: " ";
   display: table;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:after {
   clear: both;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:before,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:before,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:after {
   content: " ";
   display: table;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick:after {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick:after {
   clear: both;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .price {
+  color: #cc201a;
+  font-size: 21px;
+  font-style: normal;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
   float: left !important;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price span.symbol {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .price span.symbol {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -365,10 +371,10 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .price span.symbol:before {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .price span.symbol:before {
   content: "\e148";
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit {
   float: right !important;
   display: inline-block;
   margin-bottom: 0;
@@ -391,28 +397,28 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick
   background-color: #428bca;
   border-color: #357ebd;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active:focus,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active:focus {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:active:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.active:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:focus {
   color: #333333;
   text-decoration: none;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.active {
   outline: 0;
   background-image: none;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled],
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled],
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.65;
@@ -420,43 +426,43 @@ fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect u
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active,
-.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.active,
+.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit {
   color: #ffffff;
   background-color: #3276b1;
   border-color: #285e8e;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active,
-.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.active,
+.open .dropdown-togglebody #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit {
   background-image: none;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled],
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:hover,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:hover,
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:hover,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:focus,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:focus,
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:focus,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled:active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled]:active,
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit:active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.disabled.active,
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit[disabled].active,
-fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit.active {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled],
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled]:hover,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:hover,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled]:focus,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:focus,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled]:active,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit:active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.disabled.active,
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit[disabled].active,
+fieldset[disabled] body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit.active {
   background-color: #428bca;
   border-color: #357ebd;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit .badge {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit .badge {
   color: #428bca;
   background-color: #ffffff;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit span.symbol {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit span.symbol {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -467,8 +473,25 @@ body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body #costco-container #costco-view #lea-body .sel-chc-sect ul li div.price-pick .select-kit span.symbol:before {
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .kit-click div.price-pick .select-kit span.symbol:before {
   content: "\e013";
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .prof-inst {
+  font-weight: bolder;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .prof-inst span.symbol {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #lea-body .sel-chc-sect ul li .prof-inst span.symbol:before {
+  content: "\e086";
 }
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-add,
 body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide-remove {

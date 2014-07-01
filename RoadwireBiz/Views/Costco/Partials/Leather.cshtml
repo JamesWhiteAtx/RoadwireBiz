@@ -28,17 +28,22 @@
     <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="kitShowOpts()">
         <h4 class="sel-caption">Select Your Color</h4>
         <ul>
-            <li ng-repeat="col in kit.list" ng-click="pickKit($index)" title="{{col.name}}">
-                <div class="box-descr">{{col.leacolorname}} {{col.sku}}</div>
-                <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">
-                <div>{{col.rectype}}</div>
+            <li ng-repeat="col in kit.list" title="{{col.name}}">
                 
-                <div class="price-pick">
-                    <div class="price"><span class="symbol"></span>{{price() | number:2}}</div>
-                    <button class="select-kit"><span class="symbol"></span> Select</button>
-                </div>
+                <div class="kit-click" ng-click="pickKit($index)">
+                    <div class="box-descr">{{col.leacolorname}}</div>
+                    <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">
+                    <div>{{col.rectype}}</div>
 
+                    <div class="price-pick">
+                        <div class="price">${{price() | number:0}}</div>
+                        <button class="select-kit"><span class="symbol"></span> Select</button>
+                    </div>
+                </div>        
+
+                <a href="" class="prof-inst" ng-click="installInfo()"><span class="symbol"></span> Professional Installation Included</a>
             </li>
+
         </ul>
     </div>    
 </div>

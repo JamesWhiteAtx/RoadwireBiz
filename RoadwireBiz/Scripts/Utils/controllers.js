@@ -123,8 +123,13 @@ utils
     $scope.dlg = function () {
         $('#myModal').modal()
     };
-    
 
+    $scope.tabwhy = function () {
+        $('#myTab li:eq(2) a').tab('show')
+    };
+    
+    $scope.tabwhere = function () {
+    }
 }])
 
 ;

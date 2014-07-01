@@ -1,121 +1,32 @@
-﻿<div id="products">
-    <h3>Products</h3>
-    <div id="prod-row">
-        <div class="prod-item">
-            <div class="prod-descr">
-                <input class="prod-name" ng-model="set.name" />
-                <button class="del-btn" title="Delete Product" ng-click="delSet($index)"><span></span></button>
+﻿<h3>Test</h3>
+
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg" ng-click="dlg()"> @*data-toggle="modal" data-target="#myModal">*@
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="myModalLabel">Why Professional Installation?</h3>
             </div>
-            <div><label><input type="checkbox" ng-model="set.hidden"> Hidden</label></div>
-            <h5 ng-show="set.options.length > 1">Options</h5>            
+            
+            <div class="modal-body">
+                <div class="pull-left"> 
+                    <img alt="" src="/Content/Images/testimonials.png" class="img-polaroid">
+                </div>
+                <p>There is nothing quite as satisfying as building or fixing something yourself. However, there are some things that are better left to the professionals. While Roadwire's products help deliver the ultimate driving experience, the greatest and most long-lasting enjoyment comes when they are properly installed.</p><p>For this reason, Roadwire has bundled professional installation into all of its product packages. Roadwire has partnered with InstallerNet, the largest independent installation network in the country, to match you with qualified, top-rated, local restylers that can help you get the most out of your Roadwire products. When you make a purchase on Costco, you will receive an InstallCard. Simply visit the website on the back of the card or call the number, enter the code, and schedule your install. It is that easy. If you run in to any problems, InstallerNet's friendly installation coordinators can assist you with any questions you may have.</p><p>Now, Roadwire and InstallerNet have removed the hassle from buying products on Costco. We have bundled the product, professional installation, free shipping, and our industry-leading 3 year/36,000 mile warranty into one low price. Buy with confidence knowing you are getting the best deal, direct from the manufacturer to you!</p>
+            </div>
 
-            <ul>
-                <li ng-repeat="opt in set.options">
-                    <input class="form-control input-sm frm-ctrl" ng-model="opt.name" ng-show="set.options.length > 1">
-                    <span class="symbol"></span>
-                    <input type="number" class="form-control input-sm frm-ctrl" ng-model="opt.price">
-                    <button class="del-btn" title="Delete Option" ng-show="set.options.length > 1"><span></span></button>
-                </li>
-            </ul>
-            <div>
-                <button class="add-btn" title="Add Option" ng-click="set.addOpt()"><span></span> Add Option</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
 
         </div>
-        <button class="add-prod" title="Add Product" ng-click="newSet($index)"><span></span> Add Product</button>
     </div>
 </div>
-<div id="calculate">
-    <div>
-        <button class="btn btn-default btn-calc" ng-click="calcResults()">
-            <span class="glyphicon glyphicon-refresh"></span> Calculate
-        </button>
-    </div>
-    <div>
-        <h4>
-            <span>Total Pages: </span>
-            {{hidPages.length + regPages.length}}
-        </h4>
-    </div>
-
-</div>
-<div id="pages">
-    
-    <div class="page-item">
-        <div class="page-head"><h3>Hidden Pages</h3></div>
-        <div class="page-list">
-        
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th ng-repeat="set in hidSets">
-                            {{set.name}}
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="row in hidPages">
-                        <td>
-                            {{$index}}
-                        </td>
-                        <td ng-repeat="opt in row.opts track by $index">
-                            {{opt.name}}
-                        </td>
-                        <td>
-                            {{row.price | currency}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>        
-        
-        </div>
-        <div class="page-fut">
-            Total Hidden Pages: {{hidPages.length}}
-        </div>
-    </div>
-    
-    <div class="page-item">
-        <div class="page-head"><h3>Regular Pages</h3></div>
-        <div class="page-list">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Product
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="opt in regPages">
-                        <td>
-                            {{$index}}
-                        </td>
-                        <td>
-                            {{opt.name}}
-                        </td>
-                        <td>
-                            {{opt.price | currency}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="page-fut">
-            Total Regular Pages: {{regPages.length}}
-        </div>
-    </div>
-
-</div>
-<div id="summary"></div>
+<!-- Modal -->

@@ -119,6 +119,12 @@ utils
 }])
 
 .controller('TestCtrl', ['$scope', function ($scope) {
+
+    $scope.dlg = function () {
+        $('#myModal').modal()
+    };
+    
+
 }])
 
 ;

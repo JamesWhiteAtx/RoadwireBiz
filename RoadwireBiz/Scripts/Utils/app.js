@@ -3,7 +3,8 @@ RoadwireBiz Utils App
 (c) 2014 Roadwire, Inc.
 */
 
-var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.services', 'roadwire.directives', 'util.services'])
+var utils = angular.module('utils', ['ngRoute', 'routeStyles', 
+    'roadwire.services', 'roadwire.directives', 'util.services'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/menu', {
             title: 'menu',
@@ -38,8 +39,7 @@ var utils = angular.module('utils', ['ngRoute', 'routeStyles', 'roadwire.service
         $routeProvider.when('/test', {
             title: 'test',
             templateUrl: '/Partial/Utils/Test',
-            controller: 'TestCtrl',
-            css: '/Content/utils/test.css'
+            controller: 'TestCtrl'
         });
 
         $routeProvider.otherwise({ redirectTo: '/menu' });

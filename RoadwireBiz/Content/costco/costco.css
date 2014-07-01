@@ -160,6 +160,13 @@ body #costco-container #costco-view:after {
 body #costco-container #costco-view:after {
   clear: both;
 }
+body #costco-container #costco-view .light-bkg {
+  background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
+}
+body #costco-container #costco-view .dark-bkg {
+  background: url('/Content/Images/costco-selector.jpg') no-repeat left center;
+  background-size: cover;
+}
 body #costco-container #costco-view #lea-body {
   margin-top: 0;
   margin-bottom: 0;
@@ -168,7 +175,6 @@ body #costco-container #costco-view #lea-body {
   padding-bottom: 0px;
   height: 609px;
   width: auto;
-  background: url('/Content/Images/carbkgrnd.jpg') no-repeat left center;
 }
 body #costco-container #costco-view #lea-body .sel-sect {
   padding-left: 5px;

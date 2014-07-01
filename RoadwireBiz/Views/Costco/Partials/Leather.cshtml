@@ -1,12 +1,14 @@
-﻿<div id="lea-body">
+﻿<div id="lea-body" ng-class="lightbkg ? 'light-bkg' : 'dark-bkg '">
+
     <div id="sel-car" class="sel-opt-sect sel-sect-fade">
         <h4 class="sel-caption">Find Your Vehicle</h4>
         <div sel-car-select sec-model="make"></div>
         <div sel-car-select sec-model="year"></div>
         <div sel-car-select sec-model="model"></div>
         <div sel-car-select sec-model="body" sec-plural="Bodies" sec-only-opts="true"></div>
+        <span class="glyphicon glyphicon-camera" ng-click="lightbkg = !lightbkg;"></span>
     </div>
-    
+
     <div class="loading-large" ng-show="trimShowLoading()"></div>
     <div id="sel-trim" class="sel-opt-sect  sel-sect-fade" ng-show="trimShowOpts()">
         <h4 class="sel-caption">Find Your Trim Level</h4>
@@ -14,22 +16,22 @@
         <div sel-car-select sec-model="car" sec-only-opts="true"></div>
         <div sel-car-select sec-model="ptrn" sec-name="Configuration" sec-only-opts="true"></div>
     </div>
-    
+
     <div class="loading-large" ng-show="intShowLoading()"></div>
     <div id="sel-int" class="sel-opt-sect sel-sect-fade" ng-show="intShowOpts()">
         <h4 class="sel-caption">Interior Color of Your Vehicle</h4>
         <div sel-car-select sec-model="int" sec-name="Interior Color"></div>
     </div>
-    
+
     <div class="loading-large" ng-show="kitShowLoading()"></div>
-    
+
     <div class="sel-opt-sect sel-sect-fade" ng-show="kitShowOpts() && !kitShowLoading() && (!trimShowOpts() || !intShowOpts())"></div>
 
     <div id="sel-color" class="sel-chc-sect sel-sect-fade" ng-show="kitShowOpts()">
         <h4 class="sel-caption">Select Your Color</h4>
         <ul>
             <li ng-repeat="col in kit.list" title="{{col.name}}">
-                
+
                 <div class="kit-click" ng-click="pickKit($index)">
                     <div class="box-descr">{{col.leacolorname}}</div>
                     <img id="{{col.name}}" ng-src="{{col.displayUrl}}" alt="{{col.name}}" class="sel-kit">
@@ -37,13 +39,40 @@
 
                     <div class="price-pick">
                         <div class="price">${{price() | number:0}}</div>
-                        <button class="select-kit"><span class="symbol"></span> Select</button>
+                        <button class="select-kit"><span class="symbol"></span> Buy Now</button>
                     </div>
-                </div>        
+                </div>
 
                 <a href="" class="prof-inst" ng-click="installInfo()"><span class="symbol"></span> Professional Installation Included</a>
             </li>
 
         </ul>
-    </div>    
+    </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h3 class="modal-title" id="myModalLabel">Why Professional Installation?</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="pull-left" style="margin-right: 12px;">
+                    <img alt="" src="/Content/Images/testimonials.png" class="thumbnail">
+                </div>
+                <p>There is nothing quite as satisfying as building or fixing something yourself. However, there are some things that are better left to the professionals. While Roadwire's products help deliver the ultimate driving experience, the greatest and most long-lasting enjoyment comes when they are properly installed.</p><p>For this reason, Roadwire has bundled professional installation into all of its product packages. Roadwire has partnered with InstallerNet, the largest independent installation network in the country, to match you with qualified, top-rated, local restylers that can help you get the most out of your Roadwire products. When you make a purchase on Costco, you will receive an InstallCard. Simply visit the website on the back of the card or call the number, enter the code, and schedule your install. It is that easy. If you run in to any problems, InstallerNet's friendly installation coordinators can assist you with any questions you may have.</p><p>Now, Roadwire and InstallerNet have removed the hassle from buying products on Costco. We have bundled the product, professional installation, free shipping, and our industry-leading 3 year/36,000 mile warranty into one low price. Buy with confidence knowing you are getting the best deal, direct from the manufacturer to you!</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->

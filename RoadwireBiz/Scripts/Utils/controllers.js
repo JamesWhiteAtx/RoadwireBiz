@@ -3,7 +3,7 @@ RoadwireBiz Utils Contollers
 (c) 2014 Roadwire, Inc.
 */
 utils
-.controller('UtilsCtrl', ['$scope', '$location', '$modal', function ($scope, $location, $modal) {
+.controller('UtilsCtrl', ['$scope', '$location', '$modal', 'WhyInstDlg', function ($scope, $location, $modal, WhyInstDlg) {
     $scope.routeMenu = function () {
         $location.path('/menu');
     };
@@ -11,49 +11,91 @@ utils
         $location.path('/ccshop');
     };
 
-    $scope.WhyInstall = function (size) {
-        var modalInstance = $modal.open({
-            templateUrl: '/Partial/Utils/WhyInstall', 
-            controller: 'WhyInstCtrl',
-            size: size,
-            windowClass: 'why-install'
-        });
+    $scope.WhyInstall = function () {
+
+        WhyInstDlg();
+
+        //var modalInstance = $modal.open({
+        //    templateUrl: '/Partial/Utils/WhyInstall', 
+        //    controller: 'WhyInstCtrl',
+        //    windowClass: 'why-install'
+        //});
     };
 
 }])
 
-.controller('WhyInstCtrl', ['$scope', '$modalInstance', 'InstMarkers', 'MarkersProx',  function ($scope, $modalInstance, InstMarkers, MarkersProx) {
-    $scope.close = function () {
-        $modalInstance.close();
-    };
+//.controller('WhyInstCtrl', ['$scope', '$modalInstance', 'FindInst', function ($scope, $modalInstance, FindInst) {
+//    $scope.close = function () {
+//        $modalInstance.close();
+//    };
 
-    $scope.srchloc = 'some loc';
-    $scope.srchAddr;
-    $scope.proxLocs = [];
+//    $scope.isloading = false;
+//    $scope.srchAddr;
+//    $scope.radius = 100;
+//    $scope.proxLocs = [];
 
-    $scope.findInstallers = function () {
+//    $scope.findInstallers = function (addr, radius) {
+//        $scope.isloading = true;
+//        $scope.srchAddr = null;
+//        $scope.proxLocs = [];
 
-        InstMarkers().then(function (markers) {
-            //alert('findInstallers');
-            MarkersProx($scope.srchloc, markers, function (markers, result) {
-                var m = markers;
-                var r = result;
+//        var prom = FindInst(addr, radius)
+//        prom.then(
+//            function (result) {
+//                $scope.srchAddr = result.srchAddr;
+//                $scope.proxLocs = result.instLocs;
+//            },
+//            function (err) {
+//                $scope.srchAddr = err;
+//            }
+//        );
+//        prom['finally'](function (data) {
+//            $scope.isloading = false;
+//            $scope.$apply();
+//        });
+//    };
 
-                $scope.srchAddr = resut.formatted_address;
-                $scope.proxLocs = [];
-                angular.forEach($scope.markers, function (marker, idx) {
-                    if (idx > 10) {
-                        return false;
-                    } else {
-                        $scope.proxLocs.push(marker);
-                    };
-                });
+//    //$scope.findInstallers = function (addr, radius) {
+//    //    $scope.srchAddr = null;
+//    //    $scope.proxLocs = [];
 
-            });
-        });
+//    //    $scope.isloading = true;
+//    //    InstMarkers().then(function (markers) {
+//    //        //alert('findInstallers');
+//    //        MarkersProx(addr, markers, function (markers, result) {
+//    //            $scope.srchAddr = result.formatted_address;
+//    //        })
+//    //        .then(
+//    //            function (markers) {
+//    //                var marker;
+//    //                for (var i = 0, len = markers.length; i < len; i++) {
+//    //                    marker = markers[i];
+
+//    //                    if (angular.isNumber(radius)) {
+//    //                        if (angular.isNumber(marker.proximitymiles) && (marker.proximitymiles > radius)) {
+//    //                            break;
+//    //                        }
+//    //                    } else if (i > 10) {
+//    //                        break;
+//    //                    }
+//    //                    if (angular.isNumber(marker.proximitymiles)) {
+//    //                        $scope.proxLocs.push(marker);
+//    //                    };
+
+//    //                }
+//    //            },
+//    //            function (err) {
+//    //                $scope.srchAddr = err;
+//    //            }
+//    //        )
+//    //        ['finally'](function (xx) {
+//    //            $scope.isloading = false;
+//    //            $scope.$apply();
+//    //        });
+//    //    });
         
-    };
-}])
+//    //};
+//}])
 
 .controller('MenuCtrl', ['$scope', function ($scope) {
 }])

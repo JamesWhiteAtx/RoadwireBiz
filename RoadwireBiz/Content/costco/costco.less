@@ -369,6 +369,7 @@ body {
     
     .modal-body {
         min-height: 500px;
+        max-height: 600px;
     }
 
     .tab-content {
@@ -391,22 +392,23 @@ body {
         }
 
         #where {
-
             #srchform {
-                margin-top: 16px;
+                margin-top: 5px;
                 padding: 3px;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                //box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 
                 label[for=locaddr]
                 {
                     .sr-only;
                 }
 
-                input[type=text]
+                input
                 {
                     &:extend(.form-control);
                     //&:extend(.input-sm);
                     display: inline-block;
+                }
+                #locaddr {
                     width: 50%;
                     margin-right: -4px;
                 }
@@ -418,26 +420,19 @@ body {
                 }
                 #btnfind {
                     &:extend(.btn-primary);
+                    margin-right: 10px;
                 }
-                #btnreset {
-                    &:extend(.btn-default);
-                    margin-left: 10px;
+                #btnfind[disabled] {
+                    &:extend(.btn[disabled]);
                 }
-                select {
-                    display: block;
-                    background-color: rgba(255, 255, 255, 0.60);
+                #within {
+                    width: 65px;
                 }
             }
-
-
-            /*#locaddr {
-                //width: 250px;
-                .form-control;
+            .locations {
+                max-height: 300px;
+                overflow-y: auto;
             }
-            #btnfind {
-                .btn;
-                .btn-primary;
-            }*/
         }
 
     }

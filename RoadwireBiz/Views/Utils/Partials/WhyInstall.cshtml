@@ -32,21 +32,28 @@
         </div>
         
         <div class="tab-pane" id="where">
-            srchloc: {{srchloc}}
-            <form ng-submit="findInstallers()" id="srchform" name="srchform" novalidate="novalidate" ng-cloak>
-                @*<label for="locaddr">Location</label>*@
-                <input type="text" placeholder="enter your location" title="Enter Location (zip code)" name="locaddr" id="locaddr" ng-model="srchloc" required>
-                <button type="submit" id="btnfind" title="Find Locations" ng-disabled="srchform.locaddr.$error.required">
-                    <span class="glyphicon glyphicon-search"></span>
-                    Find Locations
+
+            <h4>Find Authorized Installation Centers</h4>
+            <form ng-submit="findInstallers(srchloc, radius)" id="srchform" name="srchform" novalidate="novalidate" ng-cloak>
+                <label for="locaddr">Location</label>
+                <input type="text" placeholder="enter your location" title="Enter Location" name="locaddr" id="locaddr" ng-model="srchloc" required>
+                <button type="submit" id="btnfind" title="Find Locations"
+                        ng-disabled="srchform.locaddr.$error.required">
+                    <span class="glyphicon glyphicon-search"></span> Find
                 </button>
-                <button type="button" id="btnreset" title="Reset Map" ng-click="reset()">
-                    <span class="glyphicon glyphicon-refresh"></span>
-                </button>
-                <select ng-show="proxs && (proxs.length > 0)" ng-model="prox" ng-options="marker.proxDisp for marker in proxs">
-                    <option value="">-- {{proxs.length}} nearest locations --</option>
-                </select>
+                <span> within </span>
+                <input type="number" placeholder="miles" title="Miles" name="within" id="within" ng-model="radius" required>
+                <span> miles </span>
             </form>
+            <span class="loading" ng-show="isloading">Finding Locations...</span>
+            <h4>{{srchAddr}}</h4>
+            <div class="locations">
+                <ul>
+                    <li ng-repeat="loc in proxLocs">
+                        {{loc.distance}}, {{loc.title}}
+                    </li>
+                </ul>
+            </div class="locations">
 
         </div>
 

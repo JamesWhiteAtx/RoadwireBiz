@@ -3,7 +3,7 @@ Roadwire Costco
 (c) 2014 Roadwire, Inc.
 */
 costco
-.controller('CostcoCtrl', ['$rootScope', '$scope', '$location', '$modal', function ($rootScope, $scope, $location, $modal) {
+.controller('CostcoCtrl', ['$rootScope', '$scope', '$location', 'WhyInstDlg', function ($rootScope, $scope, $location, WhyInstDlg) {
     $scope.routeLea = function () {
         $location.path('/leather');
     };
@@ -14,21 +14,10 @@ costco
         $location.path('/order');
     };
 
-    $scope.WhyInstall = function (size) {
-        var modalInstance = $modal.open({
-            templateUrl: '/Partial/Utils/WhyInstall', //'myModalContent.html',
-            controller: 'WhyInstCtrl',
-            size: size,
-            windowClass: 'why-install'
-        });
+    $scope.WhyInstall = function () {
+        WhyInstDlg();
     };
 
-}])
-
-.controller('WhyInstCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
-    $scope.close = function () {
-        $modalInstance.close();
-    };
 }])
 
 .controller('TestCtrl', ['$scope', function ($scope) {

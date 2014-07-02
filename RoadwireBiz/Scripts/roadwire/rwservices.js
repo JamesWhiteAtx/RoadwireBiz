@@ -116,7 +116,7 @@ angular.module('roadwire.services', []) // 'ngResource'
         geocoder.geocode({ address: address },
             function (results_array, status) {
                 if (status != gglMps.GeocoderStatus.OK) {
-                    alert('Sorry - No location found for "'+address+'"');
+                    deferred.reject('No location found for "'+address+'"');
                     return;
                 };
                 //var ltlgAddr = new gglMps.LatLng(results_array[0].geometry.location.lat(),results_array[0].geometry.location.lng());
@@ -128,7 +128,7 @@ angular.module('roadwire.services', []) // 'ngResource'
                     var proximitymiles = proximitymeter * 0.000621371192;
 
                     marker.proximitymiles = proximitymiles;
-                    marker.distance = 'distance: ' + deci(proximitymiles) + ' miles';
+                    marker.distance = deci(proximitymiles) + ' miles';
                 });
 
                 markers.sort(function (a, b) { return a.proximitymiles - b.proximitymiles });
@@ -145,6 +145,43 @@ angular.module('roadwire.services', []) // 'ngResource'
         return LoadGglMaps(gglMps).then(function (gglMps) {
             return sortProx(address, markers, fcn, gglMps);
         });
+    };
+}])
+
+.factory('FindInst', ['$q', 'InstMarkers', 'MarkersProx', function ($q, InstMarkers, MarkersProx) {
+    return function (addr, radius) {
+        var srchAddr;
+        var instLocs = [];
+        var deferred = $q.defer();
+        InstMarkers().then(function (markers) {
+            MarkersProx(addr, markers, function (markers, result) {
+                srchAddr = result.formatted_address;
+            })
+            .then(
+                function (markers) {
+                    var marker;
+                    for (var i = 0, len = markers.length; i < len; i++) {
+                        marker = markers[i];
+
+                        if (angular.isNumber(radius)) {
+                            if (angular.isNumber(marker.proximitymiles) && (marker.proximitymiles > radius)) {
+                                break;
+                            }
+                        } else if (i > 10) {
+                            break;
+                        }
+                        if (angular.isNumber(marker.proximitymiles)) {
+                            instLocs.push(marker);
+                        };
+                    };
+                    deferred.resolve({ srchAddr: srchAddr, instLocs: instLocs });
+                },
+                function (err) {
+                    deferred.reject(err);
+                }
+            )
+        });
+        return deferred.promise;
     };
 }])
 
@@ -325,4 +362,46 @@ angular.module('roadwire.services', []) // 'ngResource'
 
 }])
 
+.factory('WhyInstDlg', ['$modal', 'FindInst', function ($modal, FindInst) {
+
+    var whyInstCtrl = function ($scope, $modalInstance, FindInst) {
+        $scope.close = function () {
+            $modalInstance.close();
+        };
+
+        $scope.isloading = false;
+        $scope.srchAddr;
+        $scope.radius = 100;
+        $scope.proxLocs = [];
+
+        $scope.findInstallers = function (addr, radius) {
+            $scope.isloading = true;
+            $scope.srchAddr = null;
+            $scope.proxLocs = [];
+
+            var prom = FindInst(addr, radius)
+            prom.then(
+                function (result) {
+                    $scope.srchAddr = result.srchAddr;
+                    $scope.proxLocs = result.instLocs;
+                },
+                function (err) {
+                    $scope.srchAddr = err;
+                }
+            );
+            prom['finally'](function (data) {
+                $scope.isloading = false;
+                //$scope.$apply();
+            });
+        };
+    };
+
+    return function () {
+        var modalInstance = $modal.open({
+            templateUrl: '/Partial/Utils/WhyInstall',
+            controller: whyInstCtrl,
+            windowClass: 'why-install'
+        });
+    };
+}])
 ;

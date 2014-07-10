@@ -1,0 +1,16 @@
+﻿@*~/Views/Utils/_Layout.cshtml*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("styles", required: false)
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <h1>~/Views/Utils/_Layout.cshtml</h1>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+</body>
+</html>

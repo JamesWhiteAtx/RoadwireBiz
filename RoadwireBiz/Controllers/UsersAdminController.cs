@@ -234,5 +234,83 @@ namespace RoadwireBiz.Controllers
             }
             return View();
         }
+
+
+        //
+        // GET: /Account/ResetPassword
+        public async Task<ActionResult> ResetPassword(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            
+            ResetPasswordViewModel model = new ResetPasswordViewModel
+            {
+                Email = user.Email
+            };
+            
+            return View(model);
+        }
+
+        //
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "No user found.");
+                    return View();
+                }
+
+                var result = await UserManager.RemovePasswordAsync(user.Id);
+                if (result.Succeeded)
+                {
+                    result = await UserManager.AddPasswordAsync(user.Id, model.Password);
+                }
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ResetPasswordConfirmation", new {email = model.Email });
+                }
+                else
+                {
+                    AddErrors(result);
+                    return View();
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/ResetPasswordConfirmation
+        [AllowAnonymous]
+        public ActionResult ResetPasswordConfirmation(string email)
+        {
+            ViewBag.ResetEmail = email;
+            return View();
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+
+
+
     }
 }

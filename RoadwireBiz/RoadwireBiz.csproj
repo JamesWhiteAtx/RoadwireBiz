@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="ChangeNotes.txt" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\costco\animation.css" />
     <Content Include="Content\costco\costco.css" />
@@ -405,6 +406,8 @@
     <Content Include="Views\Costco\_Layout.cshtml" />
     <Content Include="Views\Utils\_Layout.cshtml" />
     <Content Include="Views\Utils\_ViewStart.cshtml" />
+    <Content Include="Views\UsersAdmin\ResetPassword.cshtml" />
+    <Content Include="Views\UsersAdmin\ResetPasswordConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj">

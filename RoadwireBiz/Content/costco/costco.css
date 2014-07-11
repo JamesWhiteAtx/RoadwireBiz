@@ -102,7 +102,9 @@
 .modal-footer:before,
 .modal-footer:after,
 body #costco-container:before,
-body #costco-container:after {
+body #costco-container:after,
+body #costco-container #costco-view #conf-body:before,
+body #costco-container #costco-view #conf-body:after {
   content: " ";
   display: table;
 }
@@ -119,7 +121,8 @@ body #costco-container:after {
 .pager:after,
 .panel-body:after,
 .modal-footer:after,
-body #costco-container:after {
+body #costco-container:after,
+body #costco-container #costco-view #conf-body:after {
   clear: both;
 }
 body {
@@ -561,16 +564,67 @@ body #costco-container #costco-view #lea-body .sel-sect-fade.ng-hide {
   height: 1px;
   opacity: 0;
 }
-body #costco-container #costco-view #ord-body ul.ord-sum {
-  padding-left: 0;
-  list-style: none;
+body #costco-container #costco-view #conf-body {
+  margin-left: -15px;
+  margin-right: -15px;
+  /*ul.conf-sum {
+                    .list-unstyled;
+                    label {
+                        color: red;
+                        min-width: 75px;
+                    }
+                    label:after {
+                        content: ": "
+                    }
+                }*/
 }
-body #costco-container #costco-view #ord-body ul.ord-sum label {
-  color: red;
-  min-width: 75px;
+body #costco-container #costco-view #conf-body div {
+  border-width: 1px;
+  border-style: solid;
 }
-body #costco-container #costco-view #ord-body ul.ord-sum label:after {
-  content: ": ";
+body #costco-container #costco-view #conf-body .order-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-color: #ffd800;
+}
+@media (min-width: 992px) {
+  body #costco-container #costco-view #conf-body .order-info {
+    float: left;
+    width: 58.33333333%;
+  }
+}
+body #costco-container #costco-view #conf-body .order-info .order-line {
+  border-color: #0026ff;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .title {
+  border-color: #808080;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .info {
+  border-color: #00ff90;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .info .display {
+  border-color: #ff00dc;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .info .detail {
+  border-color: #0026ff;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .info .total {
+  border-color: #ff00dc;
+}
+body #costco-container #costco-view #conf-body .member-info {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-color: #ffd800;
+}
+@media (min-width: 992px) {
+  body #costco-container #costco-view #conf-body .member-info {
+    float: left;
+    width: 41.66666667%;
+  }
 }
 body #costco-container #costco-view #map-body {
   margin-top: 0;

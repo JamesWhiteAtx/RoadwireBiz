@@ -363,7 +363,7 @@
     <Content Include="Views\Utils\Partials\Map.cshtml" />
     <Content Include="Views\Utils\Partials\Menu.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
-    <Content Include="Views\Costco\Partials\Order.cshtml" />
+    <Content Include="Views\Costco\Partials\Confirm.cshtml" />
     <Content Include="Views\Costco\Partials\Install.cshtml" />
     <Content Include="Views\Utils\Partials\Mapx.cshtml" />
     <Content Include="Views\Utils\Partials\Test.cshtml" />

@@ -223,17 +223,16 @@ angular.module('costco.services', []) // 'ngResource'
                 };
 
                 return $.map(list, function (item) {
+                    if ((item.isspecial === true) || (item.isclearance === true)) {
+                        return null
+                    };
                     item.sku = item.name;
                     item.name = item.leacolorname;
                     NsUrl('imgbase')
                         .then(function (url) {
                             item.mainimgurl = imgUrl(url, item.storeimgurl);
                             item.colorurl = imgUrl(url, item.swatchimgurl);
-                            if (item.storeimgurl) {
-                                item.displayUrl = item.mainimgurl;
-                            } else {
-                                item.displayUrl = item.colorurl;
-                            }
+                            item.displayUrl = item.colorurl;
                         }, function (reason) {
                             item.mainimgurl = imgUrl(false);
                             item.colorurl = imgUrl(false);

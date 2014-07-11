@@ -23,10 +23,10 @@ var costco = angular.module('costco', ['ngRoute', 'routeStyles', 'ngAnimate', 'u
             templateUrl: '/Partial/Costco/install',
             controller: "InstCtrl"
         });
-        $routeProvider.when('/order', {
-            title: 'order',
-            templateUrl: '/Partial/Costco/Order',
-            controller: "OrderCtrl"
+        $routeProvider.when('/confirm', {
+            title: 'confirm',
+            templateUrl: '/Partial/Costco/Confirm',
+            controller: "ConfirmCtrl"
         });
         $routeProvider.when('/map', {
             title: 'map',

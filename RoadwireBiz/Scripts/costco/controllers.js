@@ -10,8 +10,8 @@ costco
     $scope.routeInst = function () {
         $location.path('/install');
     };
-    $scope.routeOrder = function () {
-        $location.path('/order');
+    $scope.routeConfirm = function () {
+        $location.path('/confirm');
     };
 
     $scope.WhyInstall = function () {
@@ -83,7 +83,7 @@ costco
 
     $scope.pickKit = function (idx) {
         $scope.kit.obj = $scope.kit.list[idx];
-        $scope.routeInst();
+        $scope.routeConfirm();
     };
 
     $scope.price = function () {
@@ -140,7 +140,7 @@ costco
     });
 }])
 
-.controller('OrderCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
+.controller('ConfirmCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
     var data = WidgetData();
     $scope.items = [];
     

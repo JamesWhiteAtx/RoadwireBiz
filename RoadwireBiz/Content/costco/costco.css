@@ -8,42 +8,6 @@
   max-width: 100%;
   height: auto;
 }
-.why-install .tab-content #where #srchform input {
-  display: block;
-  width: 100%;
-  height: 31px;
-  padding: 6px 12px;
-  font-size: 12px;
-  line-height: 1.42857143;
-  color: #555555;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  border-radius: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-.why-install .tab-content #where #srchform button {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 12px;
-  line-height: 1.42857143;
-  border-radius: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .why-install .tab-content #where #srchform #btnfind[disabled] {
   cursor: not-allowed;
   pointer-events: none;
@@ -51,11 +15,6 @@
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
   box-shadow: none;
-}
-.why-install .tab-content #where #srchform #btnfind {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
 }
 .btn-group-lg > .btn {
   padding: 10px 16px;
@@ -578,16 +537,12 @@ body #costco-container #costco-view #conf-body {
                     }
                 }*/
 }
-body #costco-container #costco-view #conf-body div {
-  border-width: 1px;
-  border-style: solid;
-}
 body #costco-container #costco-view #conf-body .order-info {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  border-color: #ffd800;
+  padding-right: 30px;
 }
 @media (min-width: 992px) {
   body #costco-container #costco-view #conf-body .order-info {
@@ -596,35 +551,248 @@ body #costco-container #costco-view #conf-body .order-info {
   }
 }
 body #costco-container #costco-view #conf-body .order-info .order-line {
-  border-color: #0026ff;
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+  margin-bottom: 5px;
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .title {
-  border-color: #808080;
+  font-weight: bold;
 }
-body #costco-container #costco-view #conf-body .order-info .order-line .info {
+body #costco-container #costco-view #conf-body .order-info .order-line .details:before,
+body #costco-container #costco-view #conf-body .order-info .order-line .details:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details:after {
+  clear: both;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details:before,
+body #costco-container #costco-view #conf-body .order-info .order-line .details:after {
+  content: " ";
+  display: table;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details:after {
+  clear: both;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details > div {
+  float: left !important;
+  position: relative;
+  min-height: 1px;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details .display {
+  width: 16.66666667%;
+  border-color: #ff00dc;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details .display img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+body #costco-container #costco-view #conf-body .order-info .order-line .details .items {
+  width: 83.33333333%;
+  padding: 0 5px 0 5px;
   border-color: #00ff90;
 }
-body #costco-container #costco-view #conf-body .order-info .order-line .info .display {
-  border-color: #ff00dc;
+body #costco-container #costco-view #conf-body .order-info .order-line .details .items > div {
+  float: left !important;
+  position: relative;
+  min-height: 1px;
 }
-body #costco-container #costco-view #conf-body .order-info .order-line .info .detail {
-  border-color: #0026ff;
+body #costco-container #costco-view #conf-body .order-info .order-line .details .items .descr {
+  width: 75%;
 }
-body #costco-container #costco-view #conf-body .order-info .order-line .info .total {
-  border-color: #ff00dc;
+body #costco-container #costco-view #conf-body .order-info .order-line .details .items .total {
+  width: 25%;
+  text-align: right;
 }
 body #costco-container #costco-view #conf-body .member-info {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
-  border-color: #ffd800;
 }
 @media (min-width: 992px) {
   body #costco-container #costco-view #conf-body .member-info {
     float: left;
     width: 41.66666667%;
   }
+}
+body #costco-container #costco-view #conf-body .member-info .details {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div {
+  margin-bottom: 15px;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div .required {
+  color: #a94442;
+}
+abody #costco-container #costco-view #conf-body .member-info .details > div .required:hover {
+  color: #843534;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div span.required {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div span.required:before {
+  content: "\2a";
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input {
+  display: block;
+  width: 100%;
+  height: 31px;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input:-ms-input-placeholder {
+  color: #999999;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input::-webkit-input-placeholder {
+  color: #999999;
+}
+body #costco-container #costco-view #conf-body .member-info .details > div input[disabled],
+body #costco-container #costco-view #conf-body .member-info .details > div input[readonly],
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .details > div input {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textareabody #costco-container #costco-view #conf-body .member-info .details > div input {
+  height: auto;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  line-height: 1.33;
+  border-radius: 0;
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button:focus,
+body #costco-container #costco-view #conf-body .member-info .confirm button:active:focus,
+body #costco-container #costco-view #conf-body .member-info .confirm button.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button:hover,
+body #costco-container #costco-view #conf-body .member-info .confirm button:focus {
+  color: #333333;
+  text-decoration: none;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button:active,
+body #costco-container #costco-view #conf-body .member-info .confirm button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled],
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button:hover,
+body #costco-container #costco-view #conf-body .member-info .confirm button:focus,
+body #costco-container #costco-view #conf-body .member-info .confirm button:active,
+body #costco-container #costco-view #conf-body .member-info .confirm button.active,
+.open .dropdown-togglebody #costco-container #costco-view #conf-body .member-info .confirm button {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button:active,
+body #costco-container #costco-view #conf-body .member-info .confirm button.active,
+.open .dropdown-togglebody #costco-container #costco-view #conf-body .member-info .confirm button {
+  background-image: none;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled],
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button,
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled:hover,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled]:hover,
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button:hover,
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled:focus,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled]:focus,
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button:focus,
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled:active,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled]:active,
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button:active,
+body #costco-container #costco-view #conf-body .member-info .confirm button.disabled.active,
+body #costco-container #costco-view #conf-body .member-info .confirm button[disabled].active,
+fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .confirm button.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button .badge {
+  color: #428bca;
+  background-color: #ffffff;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button span {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #conf-body .member-info .confirm button span:before {
+  content: "\e092";
 }
 body #costco-container #costco-view #map-body {
   margin-top: 0;
@@ -734,17 +902,143 @@ a.why-install .tab-content #why #inst-img img.active {
   border: 0;
 }
 .why-install .tab-content #where #srchform input {
+  display: block;
+  width: 100%;
+  height: 31px;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   display: inline-block;
+}
+.why-install .tab-content #where #srchform input:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.why-install .tab-content #where #srchform input::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.why-install .tab-content #where #srchform input:-ms-input-placeholder {
+  color: #999999;
+}
+.why-install .tab-content #where #srchform input::-webkit-input-placeholder {
+  color: #999999;
+}
+.why-install .tab-content #where #srchform input[disabled],
+.why-install .tab-content #where #srchform input[readonly],
+fieldset[disabled] .why-install .tab-content #where #srchform input {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textarea.why-install .tab-content #where #srchform input {
+  height: auto;
 }
 .why-install .tab-content #where #srchform #locaddr {
   width: 50%;
   margin-right: -4px;
 }
 .why-install .tab-content #where #srchform button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  border-radius: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   vertical-align: baseline;
 }
+.why-install .tab-content #where #srchform button:focus,
+.why-install .tab-content #where #srchform button:active:focus,
+.why-install .tab-content #where #srchform button.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.why-install .tab-content #where #srchform button:hover,
+.why-install .tab-content #where #srchform button:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.why-install .tab-content #where #srchform button:active,
+.why-install .tab-content #where #srchform button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.why-install .tab-content #where #srchform button.disabled,
+.why-install .tab-content #where #srchform button[disabled],
+fieldset[disabled] .why-install .tab-content #where #srchform button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .why-install .tab-content #where #srchform #btnfind {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
   margin-right: 10px;
+}
+.why-install .tab-content #where #srchform #btnfind:hover,
+.why-install .tab-content #where #srchform #btnfind:focus,
+.why-install .tab-content #where #srchform #btnfind:active,
+.why-install .tab-content #where #srchform #btnfind.active,
+.open .dropdown-toggle.why-install .tab-content #where #srchform #btnfind {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.why-install .tab-content #where #srchform #btnfind:active,
+.why-install .tab-content #where #srchform #btnfind.active,
+.open .dropdown-toggle.why-install .tab-content #where #srchform #btnfind {
+  background-image: none;
+}
+.why-install .tab-content #where #srchform #btnfind.disabled,
+.why-install .tab-content #where #srchform #btnfind[disabled],
+fieldset[disabled] .why-install .tab-content #where #srchform #btnfind,
+.why-install .tab-content #where #srchform #btnfind.disabled:hover,
+.why-install .tab-content #where #srchform #btnfind[disabled]:hover,
+fieldset[disabled] .why-install .tab-content #where #srchform #btnfind:hover,
+.why-install .tab-content #where #srchform #btnfind.disabled:focus,
+.why-install .tab-content #where #srchform #btnfind[disabled]:focus,
+fieldset[disabled] .why-install .tab-content #where #srchform #btnfind:focus,
+.why-install .tab-content #where #srchform #btnfind.disabled:active,
+.why-install .tab-content #where #srchform #btnfind[disabled]:active,
+fieldset[disabled] .why-install .tab-content #where #srchform #btnfind:active,
+.why-install .tab-content #where #srchform #btnfind.disabled.active,
+.why-install .tab-content #where #srchform #btnfind[disabled].active,
+fieldset[disabled] .why-install .tab-content #where #srchform #btnfind.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.why-install .tab-content #where #srchform #btnfind .badge {
+  color: #428bca;
+  background-color: #ffffff;
 }
 .why-install .tab-content #where #srchform #within {
   width: 65px;

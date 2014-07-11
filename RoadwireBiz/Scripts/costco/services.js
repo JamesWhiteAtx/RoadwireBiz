@@ -282,6 +282,15 @@ angular.module('costco.services', []) // 'ngResource'
             });
         };
 
+        if (!data.member) {
+            data.member = {
+                email:'',
+                lastname:'',
+                postal:'',
+                phone:''
+            };
+        };
+
         return data;
     };
 }])

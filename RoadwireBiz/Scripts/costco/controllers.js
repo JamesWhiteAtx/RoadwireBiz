@@ -141,20 +141,47 @@ costco
 }])
 
 .controller('ConfirmCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
-    var data = WidgetData();
-    $scope.items = [];
+    $scope.lines = [];
     
-    var addItm = function (name, defn) {
-        $scope.items.push({name: name, defn: defn});
+    var addLine = function (title, url) {
+        var line = {
+            title: title, 
+            items: [], 
+            url: url
+        };
+
+        line.item = function(descr, total) {
+            line.items.push({descr: descr, total: total});
+            return line;
+        };
+
+        $scope.lines.push(line);
+        return line;
     };
 
+    var data = WidgetData();
+
     if (data.selector.kit.obj) {
-        addItm("Vehicle", data.selector.make.obj.name);
-        addItm("Sku", data.selector.kit.obj.sku);
+        //addItm("Vehicle", data.selector.make.obj.name);
+        //addItm("Sku", data.selector.kit.obj.sku);
     } else {
-        addItm("Vehicle", "geegee");
-        addItm("Sku", "skoodio");
+        addLine('Leather Seat', 'https://system.sandbox.netsuite.com//core/media/media.nl?id=224&c=801095&h=b2c9a5bec52d11efe3b5')
+            .item('122 Quick Silver ELECTRIC BASE', 1299)
+            .item('Part Number: 633386')
+            .item('Pattern: ELECTRIC BASE');
+        
+        addLine('Seat Heaters')
+            .item('Driver Side Seat Heater', 249.00)
+            .item('Passenger Side Seat Heater', 249.00)
+            .item('Multi Heaters Discount', -49.00);
+
+        addLine('Total').item('', 1749.00);
+        
+        addLine('Your Car').item('CODA 2012 ELECTRIC COD 12-12 ELECTRIC BASE SEDAN');
     };
+
+    $scope.member = data.member;
+
 }])
 
 .controller('MapCtrl', ['$scope', 'gglMaps', function ($scope, gglMaps) {

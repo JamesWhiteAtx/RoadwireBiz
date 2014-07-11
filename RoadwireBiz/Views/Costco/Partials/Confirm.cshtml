@@ -1,0 +1,59 @@
+﻿<div id="conf-body">
+    <div class="order-info">
+        <h3>Confirm Your Order</h3>
+
+        <div class="order-line" ng-repeat="line in lines">
+            <div class="title">{{line.title}}</div>
+            <div class="details">
+                
+                <div class="display">
+                    <img ng-if="line.url" ng-src="{{line.url}}" alt="the color">
+                </div>
+                
+                <div class="items">
+                    <div class="descr" ng-repeat-start="item in line.items">
+                        {{item.descr}}
+                    </div>
+                    <div class="total" ng-repeat-end>
+                        <span ng-if="item.total">{{item.total | currency}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="member-info">
+        <h3>Enter Costco Member Information</h3>
+        <div class="details">
+
+            <div>
+                <label for="inputEmail" ng-class="{required: !member.email}">Member Email </label><span ng-class="{required: !member.email}"> </span>
+                <input type="text" id="inputEmail" placeholder="Costco.com Member Email" ng-model="member.email">
+            </div>
+
+            <div>
+                <label for="inputLast" ng-class="{required: !member.lastname}">Ship Last Name </label><span ng-class="{required: !member.lastname}"> </span>
+                <input type="text" id="inputLast" placeholder="Ship To Last Name" ng-model="member.lastname">
+            </div>
+
+            <div>
+                <label for="inputPostal" ng-class="{required: !member.postal}">Ship To Zip Code </label><span ng-class="{required: !member.postal}"> </span>
+                <input type="text" id="inputPostal" placeholder="Ship To Zip Code" ng-model="member.postal">
+            </div>
+
+            <div>
+                <label for="inputPhone" ng-class="{required: !member.phone}">Phone </label><span ng-class="{required: !member.phone}"> </span>
+                <input type="text" id="inputPhone" placeholder="Phone" ng-model="member.phone">
+            </div>
+
+        </div>
+        <div class="confirm">
+            <button type="button" ng-disabled="!member.email || !member.lastname || !member.postal || !member.phone" ng-click="linkToCostCo()">
+                Complete Order on Costco.com
+                <span></span>
+            </button>
+        </div>
+
+    </div>
+
+</div>

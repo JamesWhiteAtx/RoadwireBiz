@@ -298,37 +298,72 @@ body {
 
             #conf-body {
 
-                div {
-                    border-width: 1px;
-                    border-style: solid;
-                }
+                //div {border-width: 1px; border-style: solid;}
 
                 .make-row();
 
                 .order-info {
                     .make-md-column(7);
-                    border-color: #ffd800;
+                    padding-right: 30px;
+                    //border-color: #ffd800;
                     
                     .order-line {
-                        //.make-row();
-                        border-color: #0026ff;
+                        border-top: 1px solid #dddddd;
+                        padding-top: 10px;
+                        margin-bottom: 5px;
+                        //border-color: #0026ff;
 
                         .title {
-                            //.make-row();
-                            border-color: #808080;
+                            font-weight: bold;
+                            //border-color: #808080;
                         }
-                        .info {
+                        .details {
                             //.make-row();
+                            .clearfix();
+
+                            & > div {
+                                .pull-left;
+                                position: relative;
+                                min-height: 1px;
+                            }
+
                             .display {
+                                width: percentage((2 / @grid-columns));
+                                //min-height: 1px;
                                 border-color: #ff00dc;
+                                //background-color: #ff00dc;
+
+                                img {
+                                    .img-responsive;
+                                }
                             }
-                            .detail {
-                                border-color: #0026ff;
+                            .items {
+                                width: percentage((10 / @grid-columns));
+                                padding: 0 5px 0 5px;
+                                //min-height: 1px;
+                                border-color: #00ff90;
+
+                                & > div {
+                                    .pull-left;
+                                    position: relative;
+                                    min-height: 1px;
+                                }
+                                
+                                .descr {
+                                    width: percentage((9 / @grid-columns));
+                                    
+                                    //min-height: 1px;
+                                    //border-color: #0026ff;
+                                    //background-color: #0026ff;
+                                }
+                                .total {
+                                    width: percentage((3 / @grid-columns));
+                                    //min-height: 1px;
+                                    .text-right;
+                                    //background-color: #ff00dc;
+                                }
+
                             }
-                            .total {
-                                border-color: #ff00dc;
-                            }
-                            border-color: #00ff90;
                         }
 
 
@@ -336,7 +371,43 @@ body {
                 }
                 .member-info {
                     .make-md-column(5);
-                    border-color: #ffd800;
+                    .details {
+                        border-top: 1px solid #dddddd;
+                        padding-top: 10px;
+
+                        & > div {
+                            .form-group;
+
+                            .required {
+                                //color:#cc201a;
+                                .text-danger;
+                            }
+                            span.required {
+                                .glyphicon; 
+                                .glyphicon-asterisk;
+                            }
+
+                            input {
+                                .form-control;
+                                //.placeholder(#cc201a);
+                            }
+                        }
+                    }
+                    .confirm {
+
+                        button
+                        {
+                            .btn;
+                            .btn-lg;
+                            .btn-primary;
+                            .center-block;
+                            span {
+                                .glyphicon; 
+                                .glyphicon-arrow-right;
+                            }
+
+                        }
+                    }
                 }
 
                 /*ul.conf-sum {
@@ -446,8 +517,7 @@ body {
 
                 input
                 {
-                    &:extend(.form-control);
-                    //&:extend(.input-sm);
+                    .form-control;
                     display: inline-block;
                 }
                 #locaddr {
@@ -456,12 +526,11 @@ body {
                 }
                 button
                 {
-                    &:extend(.btn);
-                    //&:extend(.btn-sm);
+                    .btn;
                     vertical-align: baseline;
                 }
                 #btnfind {
-                    &:extend(.btn-primary);
+                    .btn-primary;
                     margin-right: 10px;
                 }
                 #btnfind[disabled] {

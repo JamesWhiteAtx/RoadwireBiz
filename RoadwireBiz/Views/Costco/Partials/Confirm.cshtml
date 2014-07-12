@@ -3,7 +3,11 @@
         <h3>Confirm Your Order</h3>
 
         <div class="order-line" ng-repeat="line in lines">
-            <div class="title">{{line.title}}</div>
+            <div class="header">
+                <div class="title">{{line.title}}</div>
+                <div class="modify"><span title="Edit" ng-if="line.edtFcn" ng-click="line.edtFcn()">Edit</span></div>
+                <div class="remove"><span title="Remove" ng-if="line.delFcn" ng-click="line.delFcn($index)">Remove</span></div>
+            </div>
             <div class="details">
                 
                 <div class="display">
@@ -21,7 +25,18 @@
 
             </div>
         </div>
+
+        <div class="order-line">
+            <div class="header">
+                <div class="title">Total</div>
+                <div class="total">
+                    <span ng-if="total">{{total | currency}}</span>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     <div class="member-info">
         <h3>Enter Costco Member Information</h3>
         <div class="details">
@@ -48,7 +63,17 @@
 
         </div>
         <div class="confirm">
-            <button type="button" ng-disabled="!member.email || !member.lastname || !member.postal || !member.phone" ng-click="linkToCostCo()">
+            <div class="msg">
+                <p class="not-done" ng-hide="confirmable()">
+                    <span></span>
+                    You are almost done. Please fill out your Costco.com membership information so we can process your order.
+                </p>
+                <p class="done" ng-show="confirmable()">
+                    <span></span>
+                    You are now ready to complete you purchase on Costco.com. Thank you.
+                </p>
+            </div class="msg">
+            <button type="button" ng-disabled="!confirmable()" ng-click="linkToCostCo()">
                 Complete Order on Costco.com
                 <span></span>
             </button>

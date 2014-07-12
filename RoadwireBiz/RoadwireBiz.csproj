@@ -408,6 +408,8 @@
     <Content Include="Views\Utils\_ViewStart.cshtml" />
     <Content Include="Views\UsersAdmin\ResetPassword.cshtml" />
     <Content Include="Views\UsersAdmin\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Test\_ViewStart.cshtml" />
+    <Content Include="Views\Test\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj">

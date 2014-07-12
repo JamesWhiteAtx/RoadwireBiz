@@ -1,6 +1,12 @@
 ﻿// Core variables and mixins
 @import (reference) "./../bootstrap/bootstrap.less";
 
+// this will override bootstrap setting that suppresses not-allowed cursor
+.btn.disabled, .btn[disabled], button[disabled] {
+    pointer-events: initial !important;
+    cursor: not-allowed !important;
+}
+
 // this is all based on bootstrap included with box-sizing: border-box
 .heightvals(@topm: 0px, @botm: 0px, @bord: 0px, @topp: 0px, @botp: 0px) {
     margin-top: @topm;
@@ -308,17 +314,56 @@ body {
                     //border-color: #ffd800;
                     
                     .order-line {
-                        border-top: 1px solid #dddddd;
+                        border-top: 2px solid #dddddd;
                         padding-top: 10px;
                         margin-bottom: 5px;
                         //border-color: #0026ff;
 
-                        .title {
-                            font-weight: bold;
-                            //border-color: #808080;
+                        .header {
+
+                            .clearfix();
+                            margin-bottom: 5px;
+
+                            & > div {
+                                .pull-left;
+                                position: relative;
+                                min-height: 1px;
+                            }
+
+                            .title {
+                                width: percentage((9 / @grid-columns));
+                                font-weight: bold;
+                            }
+                            .modify {
+                                width: percentage((1 / @grid-columns));
+                                span {
+                                    cursor: pointer;
+                                    .text-primary;
+                                    .glyphicon; 
+                                    .glyphicon-edit;
+                                }
+                            }
+                            .remove {
+                                width: percentage((2 / @grid-columns));
+                                span {
+                                    cursor: pointer;
+                                    color: rgba(0,0,0,0.5);
+                                    .glyphicon; 
+                                    .glyphicon-remove;
+                                }
+                            }
+                            .total {
+                                width: percentage((3 / @grid-columns));
+                                .text-right;
+
+                                color: #cc201a;
+                                font-size: @font-size-h4;
+                                font-style: normal;
+                                font-family: 'Georgia', serif;
+                                font-weight: bold;
+                            }
                         }
                         .details {
-                            //.make-row();
                             .clearfix();
 
                             & > div {
@@ -329,9 +374,7 @@ body {
 
                             .display {
                                 width: percentage((2 / @grid-columns));
-                                //min-height: 1px;
                                 border-color: #ff00dc;
-                                //background-color: #ff00dc;
 
                                 img {
                                     .img-responsive;
@@ -341,7 +384,7 @@ body {
                                 width: percentage((10 / @grid-columns));
                                 padding: 0 5px 0 5px;
                                 //min-height: 1px;
-                                border-color: #00ff90;
+                                border-top: 1px solid #dddddd;
 
                                 & > div {
                                     .pull-left;
@@ -394,13 +437,35 @@ body {
                         }
                     }
                     .confirm {
-
+                        .msg {
+                            min-height: 75px;
+                            padding-top: 10px;
+                            .not-done {
+                                .text-danger;
+                                span {
+                                    .glyphicon; 
+                                    .glyphicon-asterisk;
+                                }
+                            }
+                            .done {
+                                .text-primary;
+                                span {
+                                    .glyphicon; 
+                                    .glyphicon-ok;
+                                }
+                            }
+                        }
                         button
                         {
                             .btn;
-                            .btn-lg;
                             .btn-primary;
-                            .center-block;
+
+                            /*.btn-lg;*/
+                            @bigger: 4px;
+                            .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large + @bigger; @line-height-large;  @border-radius-large + @bigger);
+
+                            /*.center-block;*/
+                            .btn-block;
                             span {
                                 .glyphicon; 
                                 .glyphicon-arrow-right;
@@ -475,6 +540,7 @@ body {
 }
 
 // installation dialog
+/*
 .why-install {
     .nav-tabs {
         font-weight: bold;
@@ -550,4 +616,4 @@ body {
     
 
 }
-
+*/

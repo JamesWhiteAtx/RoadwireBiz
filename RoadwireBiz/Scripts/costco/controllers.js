@@ -143,14 +143,16 @@ costco
 .controller('ConfirmCtrl', ['$scope', 'WidgetData', function ($scope, WidgetData) {
     $scope.lines = [];
     
-    var addLine = function (title, url) {
+    var addLine = function (title, url, edtFcn, delFcn) {
         var line = {
             title: title, 
-            items: [], 
-            url: url
+            url: url,
+            items: [],
+            edtFcn: edtFcn, 
+            delFcn: delFcn
         };
 
-        line.item = function(descr, total) {
+        line.item = function (descr, total) {
             line.items.push({descr: descr, total: total});
             return line;
         };
@@ -159,27 +161,64 @@ costco
         return line;
     };
 
+    var calcTotal = function () {
+        $scope.total = 0;
+        angular.forEach($scope.lines, function (line) {
+            angular.forEach(line.items, function (item) {
+                if (angular.isNumber(item.total)) {
+                    $scope.total += item.total;
+                };
+            });
+        });
+    };
+
+    var delLine = function (idx) {
+        $scope.lines.splice(idx, 1);
+        calcTotal();
+    };
+
+    var delLea = function (idx) {
+        delLine(idx);
+    };
+    var delHea = function (idx) {
+        delLine(idx);
+    };
+
+    $scope.confirmable = function () {
+        return ($scope.member) && ($scope.member.email) && ($scope.member.lastname) && ($scope.member.postal) && ($scope.member.phone);
+    }
+
     var data = WidgetData();
 
     if (data.selector.kit.obj) {
         //addItm("Vehicle", data.selector.make.obj.name);
         //addItm("Sku", data.selector.kit.obj.sku);
     } else {
-        addLine('Leather Seat', 'https://system.sandbox.netsuite.com//core/media/media.nl?id=224&c=801095&h=b2c9a5bec52d11efe3b5')
+        $scope.total = 0;
+        addLine('Your Vehicle',
+            null, function () { $scope.routeLea(); }
+            )
+            .item('CODA 2012 ELECTRIC COD 12-12 ELECTRIC BASE SEDAN');
+
+        addLine('Leather Seat', 'https://system.sandbox.netsuite.com//core/media/media.nl?id=224&c=801095&h=b2c9a5bec52d11efe3b5',
+            function () { $scope.routeLea(); },
+            delLea
+            )
             .item('122 Quick Silver ELECTRIC BASE', 1299)
             .item('Part Number: 633386')
             .item('Pattern: ELECTRIC BASE');
         
-        addLine('Seat Heaters')
+        addLine('Seat Heaters', null,
+            function () { alert('edit'); },
+            delHea
+            )
             .item('Driver Side Seat Heater', 249.00)
             .item('Passenger Side Seat Heater', 249.00)
             .item('Multi Heaters Discount', -49.00);
 
-        addLine('Total').item('', 1749.00);
-        
-        addLine('Your Car').item('CODA 2012 ELECTRIC COD 12-12 ELECTRIC BASE SEDAN');
+        calcTotal();
     };
-
+    
     $scope.member = data.member;
 
 }])

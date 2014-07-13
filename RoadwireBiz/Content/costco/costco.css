@@ -533,6 +533,50 @@ body #costco-container #costco-view #conf-body {
                     }
                 }*/
 }
+body #costco-container #costco-view #conf-body .msg {
+  min-height: 75px;
+  padding-top: 10px;
+}
+body #costco-container #costco-view #conf-body .msg .not-done {
+  color: #a94442;
+}
+abody #costco-container #costco-view #conf-body .msg .not-done:hover {
+  color: #843534;
+}
+body #costco-container #costco-view #conf-body .msg .not-done span.symbol {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #conf-body .msg .not-done span.symbol:before {
+  content: "\2a";
+}
+body #costco-container #costco-view #conf-body .msg .done {
+  color: #428bca;
+}
+abody #costco-container #costco-view #conf-body .msg .done:hover {
+  color: #3071a9;
+}
+body #costco-container #costco-view #conf-body .msg .done span {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body #costco-container #costco-view #conf-body .msg .done span:before {
+  content: "\e013";
+}
 body #costco-container #costco-view #conf-body .order-info {
   position: relative;
   min-height: 1px;
@@ -576,11 +620,12 @@ body #costco-container #costco-view #conf-body .order-info .order-line .header >
   min-height: 1px;
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .title {
-  width: 75%;
+  width: 66.66666667%;
   font-weight: bold;
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .modify {
-  width: 8.33333333%;
+  width: 16.66666667%;
+  text-align: right;
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .modify span {
   cursor: pointer;
@@ -603,6 +648,7 @@ body #costco-container #costco-view #conf-body .order-info .order-line .header .
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .remove {
   width: 16.66666667%;
+  text-align: right;
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .remove span {
   cursor: pointer;
@@ -621,7 +667,7 @@ body #costco-container #costco-view #conf-body .order-info .order-line .header .
   content: "\e014";
 }
 body #costco-container #costco-view #conf-body .order-info .order-line .header .total {
-  width: 25%;
+  width: 33.33333333%;
   text-align: right;
   color: #cc201a;
   font-size: 15px;
@@ -757,50 +803,6 @@ fieldset[disabled] body #costco-container #costco-view #conf-body .member-info .
 }
 textareabody #costco-container #costco-view #conf-body .member-info .details > div input {
   height: auto;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg {
-  min-height: 75px;
-  padding-top: 10px;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .not-done {
-  color: #a94442;
-}
-abody #costco-container #costco-view #conf-body .member-info .confirm .msg .not-done:hover {
-  color: #843534;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .not-done span {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .not-done span:before {
-  content: "\2a";
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .done {
-  color: #428bca;
-}
-abody #costco-container #costco-view #conf-body .member-info .confirm .msg .done:hover {
-  color: #3071a9;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .done span {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-body #costco-container #costco-view #conf-body .member-info .confirm .msg .done span:before {
-  content: "\e013";
 }
 body #costco-container #costco-view #conf-body .member-info .confirm button {
   display: inline-block;

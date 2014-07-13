@@ -202,9 +202,11 @@ angular.module('costco.services', []) // 'ngResource'
             name: ptrnNm, title: 'Configuration', type: 'carptrns', list: 'patterns', parms: ptParms,
             listFcn: function (list) {
                 return $.map(list, function (item) {
-                    item.ptrnname = item.name;
-                    item.name = item.seldescr;
-                    return item;
+                    if ((item.rowsid == 1) || (item.rowsid == 2) || (item.rowsid == 3)) {
+                        item.ptrnname = item.name;
+                        item.name = item.seldescr;
+                        return item;
+                    }
                 });
             }
         });
@@ -226,8 +228,7 @@ angular.module('costco.services', []) // 'ngResource'
                     if ((item.isspecial === true) || (item.isclearance === true)) {
                         return null
                     };
-                    item.sku = item.name;
-                    item.name = item.leacolorname;
+                    item.partno = item.name;
                     NsUrl('imgbase')
                         .then(function (url) {
                             item.mainimgurl = imgUrl(url, item.storeimgurl);
@@ -255,7 +256,7 @@ angular.module('costco.services', []) // 'ngResource'
     };
 }])
 
-.factory('WidgetData', ['SelectorList', function (SelectorList) {
+.factory('WidgetData', ['SelectorList', 'Pricer', function (SelectorList, Pricer) {
     var data;
     return function () {
         if (!data) {
@@ -276,27 +277,129 @@ angular.module('costco.services', []) // 'ngResource'
         };
 
         if (!data.selector) {
-            data.selector = {};
+            var selector = {};
+
             data.walkLevels(function (lvlDefn) {
-                data.selector[lvlDefn.name] = lvlDefn;
+                selector[lvlDefn.name] = lvlDefn;
             });
+
+            selector.kitSelected = function () {
+                return (selector.kit.obj && selector.kit.obj.id);
+            }
+
+            data.selector = selector;
+        };
+
+        if (!data.heaters) {
+            data.heaters = 0;
         };
 
         if (!data.member) {
-            data.member = {
+            var member = {
                 email:'',
                 lastname:'',
                 postal:'',
                 phone:''
             };
+
+            member.complete = function () {
+                return (member.email) && (member.lastname) && (member.postal) && (member.phone);
+            };
+
+            data.member = member;
+        };
+
+        if (!data.order) {
+            var order = {
+                car: {},
+                lea: {},
+                heat: {}
+            };
+
+            order.clearCar = function () {
+                order.car = {};
+            };
+            order.clearLea = function () {
+                order.lea = {};
+            };
+            order.clearHeat = function () {
+                order.heat = {};
+            };
+
+            order.loadSlctr = function () {
+                var car = {};
+                var lea = {};
+
+                data.walkLevels(function (lvlDefn) {
+                    car[lvlDefn.name] = {};
+                    var obj = data.selector[lvlDefn.name].obj;
+                    if (obj) {
+                        car[lvlDefn.name] = { id: obj.id, name: obj.name };
+                    };
+                });
+
+                lea.ptrn = car.ptrn;
+                lea.kit = car.kit;
+                lea.color = data.selector.kit.obj ? data.selector.kit.obj.leacolorname : null;
+                lea.dispUrl = data.selector.kit.obj ? data.selector.kit.obj.displayUrl : null;
+                lea.price = data.selector.ptrn.obj ? Pricer.leaRows(data.selector.ptrn.obj.rowsid) : 0;
+
+                order.car = car;
+                order.lea = lea;
+            };
+
+            order.loadHeat = function () {
+                var heat = {
+                    qty: data.heaters,
+                    driver: 0,
+                    pass: 0,
+                    disc: 0
+                };
+
+                if (heat.qty > 0) {
+                    heat.driver = Pricer.heaters(1);
+                    if (heat.qty == 2) {
+                        heat.pass = Pricer.heaters(1);
+                        heat.disc = Pricer.heatDisc(2);
+                    };
+                };
+
+                order.heat = heat;
+            };
+
+            order.hasCar = function () {
+                return ((order.car.car) && (order.car.car.id));
+            };
+            order.hasLea = function () {
+                return ((order.lea.kit) && (order.lea.kit.id));
+            };
+            order.hasHeat = function () {
+                return (order.heat.qty);
+            };
+
+            order.hasProd = function () {
+                return (order.hasLea() || order.hasHeat());
+            };
+
+            data.order = order;
+        };
+
+        data.clearHeat = function () {
+            data.heaters = 0;
+            data.order.clearHeat();
+        };
+
+        data.confirmable = function () {
+            return data.order.hasProd() && data.member.complete();
         };
 
         return data;
     };
 }])
 
-.factory('LeaPrice', [function () {
-    return function (rowid) {
+.factory('Pricer', [function () {
+
+    var leaRows = function (rowid) {
         if (rowid == 1) {
             return 799.00;
         } else if (rowid == 2) {
@@ -307,6 +410,32 @@ angular.module('costco.services', []) // 'ngResource'
             return null;
         }
     };
+
+    var heaters = function (qty) {
+        if (qty == 1) {
+            return 249.00;
+        } else if (qty == 2) {
+            return 449.00;
+        } else {
+            return null;
+        }
+    };
+
+    var heatDisc = function (qty) {
+        if (qty == 1) {
+            return 0;
+        } else if (qty == 2) {
+            return (heaters(1) * 2) - heaters(1);
+        } else {
+            return null;
+        }
+    };
+
+    return {
+        leaRows: leaRows,
+        heaters: heaters,
+        heatDisc: heatDisc
+    }
 }])
 
 ;

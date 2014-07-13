@@ -308,6 +308,25 @@ body {
 
                 .make-row();
 
+                .msg {
+                    min-height: 75px;
+                    padding-top: 10px;
+                    .not-done {
+                        .text-danger;
+                        span.symbol {
+                            .glyphicon; 
+                            .glyphicon-asterisk;
+                        }
+                    }
+                    .done {
+                        .text-primary;
+                        span {
+                            .glyphicon; 
+                            .glyphicon-ok;
+                        }
+                    }
+                }
+
                 .order-info {
                     .make-md-column(7);
                     padding-right: 30px;
@@ -331,11 +350,12 @@ body {
                             }
 
                             .title {
-                                width: percentage((9 / @grid-columns));
+                                width: percentage((8 / @grid-columns));
                                 font-weight: bold;
                             }
                             .modify {
-                                width: percentage((1 / @grid-columns));
+                                width: percentage((2 / @grid-columns));
+                                .text-right;
                                 span {
                                     cursor: pointer;
                                     .text-primary;
@@ -345,6 +365,7 @@ body {
                             }
                             .remove {
                                 width: percentage((2 / @grid-columns));
+                                .text-right;
                                 span {
                                     cursor: pointer;
                                     color: rgba(0,0,0,0.5);
@@ -353,7 +374,7 @@ body {
                                 }
                             }
                             .total {
-                                width: percentage((3 / @grid-columns));
+                                width: percentage((4 / @grid-columns));
                                 .text-right;
 
                                 color: #cc201a;
@@ -437,24 +458,6 @@ body {
                         }
                     }
                     .confirm {
-                        .msg {
-                            min-height: 75px;
-                            padding-top: 10px;
-                            .not-done {
-                                .text-danger;
-                                span {
-                                    .glyphicon; 
-                                    .glyphicon-asterisk;
-                                }
-                            }
-                            .done {
-                                .text-primary;
-                                span {
-                                    .glyphicon; 
-                                    .glyphicon-ok;
-                                }
-                            }
-                        }
                         button
                         {
                             .btn;

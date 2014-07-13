@@ -2,6 +2,18 @@
     <div class="order-info">
         <h3>Confirm Your Order</h3>
 
+        <div class="msg" ng-hide="hasProd()">
+            <p class="not-done"><span class="symbol"></span>You have not selected a Roadwire product for purchase. Are you interested in
+            </p>
+            <p class="not-done text-center">
+                <a href="" ng-click="routeLea()"><span></span>Leather Seat Covers?</a>
+            </p>
+            <p class="not-done text-center">
+                <a href="" ng-click="routeHeat()"><span></span>Seat Heaters?</a>
+            </p>
+
+        </div>
+
         <div class="order-line" ng-repeat="line in lines">
             <div class="header">
                 <div class="title">{{line.title}}</div>
@@ -21,8 +33,10 @@
                     <div class="total" ng-repeat-end>
                         <span ng-if="item.total">{{item.total | currency}}</span>
                     </div>
+                    <div class="descr" ng-if="line.installed">
+                        <a href="" class="prof-inst" ng-click="whyInstall()"><span class="symbol"></span> Professional Installation Included</a>
+                    </div>
                 </div>
-
             </div>
         </div>
 
@@ -64,13 +78,21 @@
         </div>
         <div class="confirm">
             <div class="msg">
-                <p class="not-done" ng-hide="confirmable()">
-                    <span></span>
-                    You are almost done. Please fill out your Costco.com membership information so we can process your order.
-                </p>
+                <div ng-hide="confirmable()">
+                    <p class="not-done" ng-hide="hasProd()">
+                        <span class="symbol"></span>
+                        Please select your Roadwire product.
+                    </p>
+                    <p class="not-done" ng-hide="hasMember()">
+                        <span class="symbol"></span>
+                        <span ng-show="hasProd()">You are almost done.</span>
+                        Please fill out your Costco.com membership information so we can process your order.
+                    </p>
+                </div ng-hide="confirmable()">
+                
                 <p class="done" ng-show="confirmable()">
                     <span></span>
-                    You are now ready to complete you purchase on Costco.com. Thank you.
+                    You are now ready to complete your purchase on Costco.com. Thank you.
                 </p>
             </div class="msg">
             <button type="button" ng-disabled="!confirmable()" ng-click="linkToCostCo()">

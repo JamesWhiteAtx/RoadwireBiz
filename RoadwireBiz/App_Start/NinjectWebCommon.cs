@@ -11,6 +11,7 @@ namespace RoadwireBiz.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using System.Configuration;
+    using Costco.Data;
 
     public static class NinjectWebCommon 
     {
@@ -72,6 +73,8 @@ namespace RoadwireBiz.App_Start
                 }
             );
 
+            kernel.Bind<CostcoEntities>().ToSelf().InRequestScope();
+            kernel.Bind<ICcProductService>().To<CcProductService>();
         }        
     }
 }

@@ -7,13 +7,12 @@ using System.Web.Mvc;
 namespace RoadwireBiz.Controllers
 {
     [Authorize]
-    public class UtilsController : BaseController
+    public class CcAdminController : BaseController
     {
-        //
-        // GET: /Utils/
+        // GET: Costco
         public ActionResult Index()
         {
             return View();
         }
-	}
+    }
 }

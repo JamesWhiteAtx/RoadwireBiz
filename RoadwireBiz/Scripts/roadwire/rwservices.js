@@ -6,6 +6,58 @@ RoadwireBiz Roadwire Services
 
 angular.module('roadwire.services', []) // 'ngResource'
 
+.factory('NsUrl', ['$http', function ($http) {
+    return function (type) {
+        return $http.get('/netsuite/' + type, { cache: true })
+            .then(function (result) {
+                var url = result.data.url;
+                return url;
+            }, function (reason) {
+                return reason;
+            });
+    };
+}])
+
+.factory('NsUrlJsonP', ['NsUrl', function (NsUrl) {
+    return function (type) {
+        return NsUrl(type)
+            .then(function (url) {
+                return url + "&callback=JSON_CALLBACK";
+            }, function (reason) {
+                return $q.reject(reason);
+            });
+    };
+}])
+
+.factory('Selector', ['$http', '$q', 'NsUrlJsonP', function ($http, $q, NsUrlJsonP) {
+    return function (parmObj) {
+        return NsUrlJsonP('leaslctr')
+            .then(function (url) {
+                return $http.jsonp(url, { params: parmObj });
+            }, function (reason) {
+                return $q.reject(reason);
+            });
+    };
+}])
+
+.factory('CcProducts', ['$http', function ($http) {
+    return function (options) {
+        var cache = true;
+        var cd = null;
+        if (options) {
+            cache = options.cache;
+            cd = options.cd;
+        };
+        return $http.get('api/ccprods', { cache: cache })
+            .then(function (result) {
+                return result.data;
+            }, function (reason) {
+                return reason;
+            });
+    };
+}])
+
+
 .factory('LoadGglMaps', ['$http', '$window', '$q', function ($http, $window, $q) {
     return function (gglMps) {
         // thanks to Neil Soult https://gist.github.com/neilsoult/7255583

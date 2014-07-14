@@ -1,0 +1,38 @@
+﻿@*CcAdmin Index*@
+
+@section styles{
+@Styles.Render("~/Content/style")
+}
+
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Rodwire.biz", "Index", "Home", null, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#/menu">Menu</a></li>
+                <li><a href="#/products">Products</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="app-container" class="app-container" ng-app="ccAdmin" ng-controller="CcAdminCtrl">
+    <div ng-view id="page-view" class="page-view"></div>
+</div>
+
+@section scripts{
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/ui-boots")
+@*@Scripts.Render("~/bundles/angstyles")*@
+@Scripts.Render("~/bundles/rwutils")
+@Scripts.Render("~/bundles/ccadmin")
+}

@@ -3,40 +3,6 @@
 angular.module('costco.services', []) // 'ngResource'
 .value('version', '0.1')
 
-.factory('NsUrl', ['$http', function ($http) {
-    return function (type) {
-        return $http.get('/netsuite/' + type, { cache: true })
-            .then(function (result) {
-                var url = result.data.url;
-                return url;
-            }, function (reason) {
-                return reason;
-            });
-    };
-}])
-
-.factory('NsUrlJsonP', ['NsUrl', function (NsUrl) {
-    return function (type) {
-        return NsUrl(type)
-            .then(function (url) {
-                return url + "&callback=JSON_CALLBACK";
-            }, function (reason) {
-                return $q.reject(reason);
-            });
-    };
-}])
-
-.factory('Selector', ['$http', '$q', 'NsUrlJsonP', function ($http, $q, NsUrlJsonP) {
-    return function (parmObj) {
-        return NsUrlJsonP('leaslctr')
-            .then(function (url) {
-                return $http.jsonp(url, { params: parmObj });
-            }, function (reason) {
-                return $q.reject(reason);
-            });
-    };
-}])
-
 .factory('SlctLevel', ['$http', 'Selector', function ($http, Selector) {
 
     var makeSlctLevel = function(options) {

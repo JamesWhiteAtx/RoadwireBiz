@@ -1,0 +1,60 @@
+﻿{{err}}
+{{anyInvalidForms()}}
+
+<div class="container">
+
+    <button class="btn btn-large btn-primary" type="button" ng-click="reload()">
+        Reload
+    </button>
+
+    <h3>Costco Product Listing</h3>
+
+    <div class="row">
+        <div class="col-md-2"><strong>Product</strong></div>
+        <div class="col-md-6"><strong>Description</strong></div>
+        <div class="col-md-2"><strong>Price</strong></div>
+        <div class="col-md-2 text-right"><strong>Discount</strong></div>
+    </div>
+
+    <form name="prodForm" ng-repeat="p in prods" ng-controller="ProdController">
+        <div class="row">
+            <div class="col-md-2">
+                {{$index+1}})
+                <strong>
+                    <span ng-show="p.LeatherRows">{{p.LeatherRows}} Row Kit</span>
+                    <span ng-show="p.Heaters">{{p.Heaters}} Heater</span>
+                </strong>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="descr" id="descr" placeholder="Descripton"
+                       ng-model="p.Description" required />
+                <span class="text-warning" ng-show="prodForm.descr.$error.required"> Enter a description </span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" name="price" id="price" placeholder="Price"
+                       ng-model="p.Price" ng-pattern="/^\d+\.?\d*$/" required />
+                <span class="text-warning" ng-show="prodForm.price.$error.pattern"> Enter a valid number </span>
+                <span class="text-warning" ng-show="prodForm.price.$error.required"> Enter a number </span>
+            </div>
+            <div class="col-md-2 text-right">{{p.Price}}{{p.changed}} <span ng-show="p.discount()">{{p.discount() | currency}}</span> </div>
+        </div>
+    </form>
+
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-large btn-primary" type="button" ng-disabled="!prodChanges || anyInvalidForms()" ng-click="saveChanges()">
+                <i class="icon-save"></i> Save
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<h1>{{id}}</h1>
+
+<section id="container products-listing">
+
+
+</section>
+

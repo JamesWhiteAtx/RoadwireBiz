@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Costco.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="10.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FG_COSTCO_PRODUCTS">
+          <Key>
+            <PropertyRef Name="FG_PROD_ID" />
+          </Key>
+          <Property Name="FG_PROD_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FG_LEATHER_ROWS" Type="number" Precision="38" Scale="0" />
+          <Property Name="FG_SEAT_HEATERS" Type="number" Precision="38" Scale="0" />
+          <Property Name="FG_PROD_CODE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="FG_DESCRIPTION" Type="varchar2" MaxLength="500" Nullable="false" />
+          <Property Name="FG_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FG_ACTIVE_FLAG" Type="varchar2" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CostcoStoreContainer">
+          <EntitySet Name="FG_COSTCO_PRODUCTS" EntityType="Self.FG_COSTCO_PRODUCTS" Schema="SYSADM" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Costco" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CostcoProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LeatherRows" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SeatHeaters" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="CostcoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CostcoProducts" EntityType="Costco.CostcoProduct" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CostcoStoreContainer" CdmEntityContainer="CostcoEntities">
+          <EntitySetMapping Name="CostcoProducts">
+            <EntityTypeMapping TypeName="Costco.CostcoProduct">
+              <MappingFragment StoreEntitySet="FG_COSTCO_PRODUCTS">
+                <ScalarProperty Name="ID" ColumnName="FG_PROD_ID" />
+                <ScalarProperty Name="LeatherRows" ColumnName="FG_LEATHER_ROWS" />
+                <ScalarProperty Name="SeatHeaters" ColumnName="FG_SEAT_HEATERS" />
+                <ScalarProperty Name="Code" ColumnName="FG_PROD_CODE" />
+                <ScalarProperty Name="Description" ColumnName="FG_DESCRIPTION" />
+                <ScalarProperty Name="Price" ColumnName="FG_PRICE" />
+                <ScalarProperty Name="ActiveFlag" ColumnName="FG_ACTIVE_FLAG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -52,6 +52,11 @@ namespace RoadwireBiz
                 "~/Scripts/utils/controllers.js",
                 "~/Scripts/utils/services.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ccadmin").Include(
+                "~/Scripts/ccadmin/app.js",
+                "~/Scripts/ccadmin/controllers.js",
+                "~/Scripts/ccadmin/services.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/underscore").Include(
                 "~/Scripts/maps/lodash.underscore.js"));
 

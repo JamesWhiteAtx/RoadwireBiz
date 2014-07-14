@@ -167,12 +167,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CcProdsController.cs" />
+    <Compile Include="Controllers\CcAdminController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\CcProductModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -243,6 +247,9 @@
     <Content Include="Scripts\angular\route-styles.js" />
     <Content Include="Scripts\angular\ui-bootstrap-custom-tpls-0.10.0.js" />
     <Content Include="Scripts\angular\ui-bootstrap-custom-tpls-0.10.0.min.js" />
+    <Content Include="Scripts\ccadmin\app.js" />
+    <Content Include="Scripts\ccadmin\controllers.js" />
+    <Content Include="Scripts\ccadmin\services.js" />
     <Content Include="Scripts\costco\app.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -412,11 +419,20 @@
     <Content Include="Views\Test\_ViewStart.cshtml" />
     <Content Include="Views\Test\_Layout.cshtml" />
     <Content Include="Views\Costco\Partials\Heaters.cshtml" />
+    <Content Include="Views\CcAdmin\_Layout.cshtml" />
+    <Content Include="Views\CcAdmin\_ViewStart.cshtml" />
+    <Content Include="Views\CcAdmin\Index.cshtml" />
+    <Content Include="Views\CcAdmin\Partials\Menu.cshtml" />
+    <Content Include="Views\CcAdmin\Partials\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj">
       <Project>{9175dd79-8ae9-448b-b20e-c6d83b7a6f09}</Project>
       <Name>Asp.Identity.Oracle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Costco.Data\Costco.Data.csproj">
+      <Project>{31425cfb-478e-428b-abe1-195eee52dbd1}</Project>
+      <Name>Costco.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

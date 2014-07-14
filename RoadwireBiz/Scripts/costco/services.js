@@ -156,16 +156,6 @@ angular.module('costco.services', []) // 'ngResource'
     return makeSlctLevel;
 }])
 
-.factory('Share', function () {
-    var mkLvl;
-    return function () {
-        if (!mkLvl) {
-            mkLvl = { x: "1" };
-        };
-        return mkLvl;
-    };
-})
-
 .factory('SelectorList', ['SlctLevel', 'NsUrl', function (SlctLevel, NsUrl) {
 
     var defnParm = function (parm, name, prop) {
@@ -256,7 +246,7 @@ angular.module('costco.services', []) // 'ngResource'
     };
 }])
 
-.factory('WidgetData', ['SelectorList', 'Pricer', function (SelectorList, Pricer) {
+.factory('WidgetData', ['SelectorList', 'Product', function (SelectorList, Product) {
     var data;
     return function () {
         if (!data) {
@@ -313,7 +303,7 @@ angular.module('costco.services', []) // 'ngResource'
             var order = {
                 car: {},
                 lea: {},
-                heat: {}
+                htrs: {}
             };
 
             order.clearCar = function () {
@@ -322,8 +312,8 @@ angular.module('costco.services', []) // 'ngResource'
             order.clearLea = function () {
                 order.lea = {};
             };
-            order.clearHeat = function () {
-                order.heat = {};
+            order.clearHtrs = function () {
+                order.htrs = {};
             };
 
             order.loadSlctr = function () {
@@ -342,29 +332,35 @@ angular.module('costco.services', []) // 'ngResource'
                 lea.kit = car.kit;
                 lea.color = data.selector.kit.obj ? data.selector.kit.obj.leacolorname : null;
                 lea.dispUrl = data.selector.kit.obj ? data.selector.kit.obj.displayUrl : null;
-                lea.price = data.selector.ptrn.obj ? Pricer.leaRows(data.selector.ptrn.obj.rowsid) : 0;
+                lea.rows = data.selector.ptrn.obj ? data.selector.ptrn.obj.rowsid : null;
+                lea.rowsDisp = Product.leaDisp(lea.rows);
+                lea.price = Product.leaPrice(lea.rows);
 
                 order.car = car;
                 order.lea = lea;
             };
 
-            order.loadHeat = function () {
-                var heat = {
+            order.loadHtrs = function () {
+                var htrs = {
                     qty: data.heaters,
-                    driver: 0,
-                    pass: 0,
-                    disc: 0
+                    drv: null,
+                    psg: null,
+                    disc: null
                 };
 
-                if (heat.qty > 0) {
-                    heat.driver = Pricer.heaters(1);
-                    if (heat.qty == 2) {
-                        heat.pass = Pricer.heaters(1);
-                        heat.disc = Pricer.heatDisc(2);
+                var dispPrc = function (disp, price) {
+                    return { disp: disp, price: price };
+                };
+
+                if (htrs.qty > 0) {
+                    htrs.drv = dispPrc(Product.htrDisp(1), Product.htrPrice(1));
+                    if (htrs.qty == 2) {
+                        htrs.psg = dispPrc(Product.htrDisp(2), Product.htrPrice(1));
+                        htrs.disc = dispPrc(Product.htrDiscDisp(2), Product.htrDisc(2));
                     };
                 };
 
-                order.heat = heat;
+                order.htrs = htrs;
             };
 
             order.hasCar = function () {
@@ -373,20 +369,20 @@ angular.module('costco.services', []) // 'ngResource'
             order.hasLea = function () {
                 return ((order.lea.kit) && (order.lea.kit.id));
             };
-            order.hasHeat = function () {
-                return (order.heat.qty);
+            order.hasHtrs = function () {
+                return (order.htrs.qty);
             };
 
             order.hasProd = function () {
-                return (order.hasLea() || order.hasHeat());
+                return (order.hasLea() || order.hasHtrs());
             };
 
             data.order = order;
         };
 
-        data.clearHeat = function () {
+        data.clearHtrs = function () {
             data.heaters = 0;
-            data.order.clearHeat();
+            data.order.clearHtrs();
         };
 
         data.confirmable = function () {
@@ -397,9 +393,21 @@ angular.module('costco.services', []) // 'ngResource'
     };
 }])
 
-.factory('Pricer', [function () {
+.factory('Product', [function () {
 
-    var leaRows = function (rowid) {
+    var leaDisp = function (rowid) {
+        var base = 'Row Leather Seat Cover';
+        if (rowid == 1) {
+            return '1 ' + base;
+        } else if (rowid == 2) {
+            return '2 ' + base;
+        } else if (rowid == 3) {
+            return '3 ' + base;
+        } else {
+            return null;
+        }
+    };
+    var leaPrice = function (rowid) {
         if (rowid == 1) {
             return 799.00;
         } else if (rowid == 2) {
@@ -411,7 +419,16 @@ angular.module('costco.services', []) // 'ngResource'
         }
     };
 
-    var heaters = function (qty) {
+    var htrDisp = function (seq) {
+        if (seq == 1) {
+            return 'Driver Side Seat Heater';
+        } else if (seq == 2) {
+            return 'Passenger Side Seat Heater';
+        } else {
+            return null;
+        }
+    };
+    var htrPrice = function (qty) {
         if (qty == 1) {
             return 249.00;
         } else if (qty == 2) {
@@ -420,21 +437,31 @@ angular.module('costco.services', []) // 'ngResource'
             return null;
         }
     };
-
-    var heatDisc = function (qty) {
+    
+    var htrDiscDisp = function (qty) {
+        if (qty == 2) {
+            return 'Multiple Heaters Discount';
+        } else {
+            return null;
+        }
+    };
+    var htrDisc = function (qty) {
         if (qty == 1) {
             return 0;
         } else if (qty == 2) {
-            return (heaters(1) * 2) - heaters(1);
+            return (htrPrice(1) * 2) - htrPrice(2);
         } else {
             return null;
         }
     };
 
     return {
-        leaRows: leaRows,
-        heaters: heaters,
-        heatDisc: heatDisc
+        leaDisp: leaDisp,
+        leaPrice: leaPrice,
+        htrDisp: htrDisp,
+        htrPrice: htrPrice,
+        htrDiscDisp: htrDiscDisp,
+        htrDisc: htrDisc
     }
 }])
 

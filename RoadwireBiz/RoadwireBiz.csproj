@@ -214,6 +214,7 @@
     <Content Include="Content\costco\test.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Images\carbkgrnd.jpg" />
+    <Content Include="Content\Images\cc_logo.gif" />
     <Content Include="Content\Images\costco-selector.jpg" />
     <Content Include="Content\Images\img_not_avail.png" />
     <Content Include="Content\Images\leather_seats.png" />
@@ -410,6 +411,7 @@
     <Content Include="Views\UsersAdmin\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Test\_ViewStart.cshtml" />
     <Content Include="Views\Test\_Layout.cshtml" />
+    <Content Include="Views\Costco\Partials\Heaters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj">

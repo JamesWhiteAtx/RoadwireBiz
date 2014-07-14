@@ -7,20 +7,19 @@ var costco = angular.module('costco', ['ngRoute', 'routeStyles', 'ngAnimate', 'u
     'roadwire.directives', 'roadwire.services', 'costco.services', 'costco.directives'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/test', {
-            title: 'test',
-            templateUrl: '/Partial/Costco/Test',
-            controller: "TestCtrl"
-        });
-
         $routeProvider.when('/leather', {
             title: 'leather',
             templateUrl: '/Partial/Costco/Leather',
             controller: "LeaCtrl"
         });
+        $routeProvider.when('/heaters', {
+            title: 'heaters',
+            templateUrl: '/Partial/Costco/Heaters',
+            controller: "HtrCtrl"
+        });
         $routeProvider.when('/install', {
             title: 'install',
-            templateUrl: '/Partial/Costco/install',
+            templateUrl: '/Partial/Costco/Install',
             controller: "InstCtrl"
         });
         $routeProvider.when('/confirm', {

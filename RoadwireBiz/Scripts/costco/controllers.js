@@ -7,6 +7,9 @@ costco
     $scope.routeLea = function () {
         $location.path('/leather');
     };
+    $scope.routeHtr = function () {
+        $location.path('/heaters');
+    };
     $scope.routeInst = function () {
         $location.path('/install');
     };
@@ -38,7 +41,7 @@ costco
     };
 }])
 
-.controller('LeaCtrl', ['$scope', 'WidgetData', 'Pricer', function ($scope, WidgetData, Pricer) {
+.controller('LeaCtrl', ['$scope', 'WidgetData', 'Product', function ($scope, WidgetData, Product) {
     $scope.trimIsLoading = function () {
         return (($scope.trim) && ($scope.trim.isLoading))
         || (($scope.car) && ($scope.car.isLoading))
@@ -88,7 +91,7 @@ costco
 
     $scope.price = function () {
         if ($scope.ptrn && $scope.ptrn.obj) {
-            return Pricer.leaRows($scope.ptrn.obj.rowsid);
+            return Product.leaPrice($scope.ptrn.obj.rowsid);
         };
     };
 
@@ -127,6 +130,55 @@ costco
     if ($scope.make.list.length < 1) {
         $scope.make.loadLvl();
     };
+}])
+
+.controller('HtrCtrl', ['$scope', 'WidgetData', 'Product', function ($scope, WidgetData, Product) {
+
+    var dispPrc = function (disp, price) {
+        return { checked: false, disp: disp, price: price };
+    }
+
+    $scope.heater1 = dispPrc(Product.htrDisp(1), Product.htrPrice(1));
+    $scope.heater2 = dispPrc(Product.htrDisp(2), Product.htrPrice(1));
+    $scope.discount = dispPrc(Product.htrDiscDisp(2), Product.htrDisc(2) * -1);
+    
+
+    var calcHeaters = function () {
+        if ($scope.heater1.checked) {
+            if ($scope.heater2.checked) {
+                data.heaters = 2;
+            } else {
+                data.heaters = 1;
+            };
+        } else {
+            $scope.heater2.checked = false;
+            data.heaters = 0;
+        };
+        
+        $scope.total = Product.htrPrice(data.heaters);
+        $scope.heaters = data.heaters;
+    };
+
+    $scope.$watch('heater1.checked', function (newVal, oldVal) {
+        if (newVal === oldVal) { return; };
+        calcHeaters();
+    });
+    $scope.$watch('heater2.checked', function (newVal, oldVal) {
+        if (newVal === oldVal) { return; };
+        calcHeaters();
+    });
+
+    var data = WidgetData();
+
+    $scope.heaters = data.heaters;
+
+    if (data.heaters > 0) {
+        $scope.heater1.checked = true;
+        if (data.heaters > 1) {
+            $scope.heater2.checked = true;
+        };
+    };
+
 }])
 
 .controller('InstCtrl', ['$scope', 'WidgetData', 'Installers', function ($scope, WidgetData, Installers) {
@@ -184,7 +236,7 @@ costco
         delLine(idx);
     };
     var delHea = function (idx) {
-        data.clearHeat();
+        data.clearHtrs();
         delLine(idx);
     };
 
@@ -210,27 +262,27 @@ costco
 
     data = WidgetData();
 
-    if (data.selector.kitSelected()) {
+    //if (data.selector.kitSelected()) {
         data.order.loadSlctr()
-        data.order.loadHeat();
-    } else {
-        data.order.car.make = { id: '1', name: 'CODA' };
-        data.order.car.year = { id: '2', name: '2012' };
-        data.order.car.model = { id: '3', name: 'ELECTRIC' };
-        data.order.car.body = { id: '4', name: 'BODY' };
-        data.order.car.trim = { id: '5', name: 'Base' };
-        data.order.car.car = { id: '6', name: 'coda electri base' };
-        data.order.car.int = { id: '8', name: 'Green' };
+        data.order.loadHtrs();
+    //} else {
+    //    data.order.car.make = { id: '1', name: 'CODA' };
+    //    data.order.car.year = { id: '2', name: '2012' };
+    //    data.order.car.model = { id: '3', name: 'ELECTRIC' };
+    //    data.order.car.body = { id: '4', name: 'BODY' };
+    //    data.order.car.trim = { id: '5', name: 'Base' };
+    //    data.order.car.car = { id: '6', name: 'coda electri base' };
+    //    data.order.car.int = { id: '8', name: 'Green' };
 
-        data.order.lea.ptrn = { id: '7', name: '123231' };
-        data.order.lea.kit = { id: '9', name: '123232-PT' };
-        data.order.lea.color = '122 Quick Silver';
-        data.order.lea.dispUrl = 'https://system.sandbox.netsuite.com//core/media/media.nl?id=224&c=801095&h=b2c9a5bec52d11efe3b5';
-        data.order.lea.price = 1299;
+    //    data.order.lea.ptrn = { id: '7', name: '123231' };
+    //    data.order.lea.kit = { id: '9', name: '123232-PT' };
+    //    data.order.lea.color = '122 Quick Silver';
+    //    data.order.lea.dispUrl = 'https://system.sandbox.netsuite.com//core/media/media.nl?id=224&c=801095&h=b2c9a5bec52d11efe3b5';
+    //    data.order.lea.price = 1299;
 
-        data.heaters = 2;
-        data.order.loadHeat();
-    };
+    //    data.heaters = 2;
+    //    data.order.loadHtrs();
+    //};
 
     var descr = '';
 
@@ -245,9 +297,10 @@ costco
     if (data.order.hasLea()) {
         var leaLine = addLine('Leather Seat', true, data.order.lea.dispUrl, function () { $scope.routeLea(); }, delLea);
 
-        descr = objProp('', data.order.lea, 'color');
-        descr = objProp(descr, data.order.lea.ptrn);
-        leaLine.item(descr, data.order.lea.price);
+        leaLine.item(data.order.lea.rowsDisp, data.order.lea.price);
+
+        descr = objProp('Color: ', data.order.lea, 'color');
+        leaLine.item(descr);
 
         descr = objProp('Part Number: ', data.order.lea.kit);
         leaLine.item(descr);
@@ -256,20 +309,34 @@ costco
         leaLine.item(descr);
     };
 
-    if (data.order.hasHeat()) {
-        var heatLine = addLine('Seat Heaters', true, null, function () { alert('edit'); }, delHea)
-            .item('Driver Side Seat Heater', data.order.heat.driver);
+    if (data.order.hasHtrs()) {
+        var heatLine = addLine('Seat Heaters', true, null, function () { $scope.routeHtr(); }, delHea)
+            .item(data.order.htrs.drv.disp, data.order.htrs.drv.price);
 
-        if (data.order.heat.pass) {
-            heatLine.item('Passenger Side Seat Heater', data.order.heat.pass);
+        if (data.order.htrs.psg) {
+            heatLine.item(data.order.htrs.psg.disp, data.order.htrs.psg.price);
         }
-        if (data.order.heat.disc) {
-            heatLine.item('Multi Heaters Discount', data.order.heat.disc * -1);
+        if (data.order.htrs.disc) {
+            heatLine.item(data.order.htrs.disc.disp, data.order.htrs.disc.price * -1);
         }
     };
 
     calcTotal();
     
+    $scope.alerts = [];
+    var addAlert = function (quest, info, yes, addFcn) {
+        var alert = { quest: quest, info: info, yes: yes, addFcn: addFcn };
+        $scope.alerts.push(alert);
+    };
+
+    if (!data.order.hasLea()) {
+        addAlert('Interested in adding Leather Seat Covers?', 'Roadwire offers the finest leather interiors in the business. Take a look at our excellent offers!', 'Shop for Leather Seat Covers', $scope.routeLea);
+    };
+
+    if (!data.order.hasHtrs()) {
+        addAlert('Interested in adding Seat Heaters?', 'Roadwire offers the finest seat heating systems in the business. Take a look at our excellent offers!', 'Shop for Seat Heaters', $scope.routeHtr);
+    };
+
     $scope.member = data.member;
 
 }])

@@ -21,5 +21,6 @@ namespace Costco.Data
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string ActiveFlag { get; set; }
+        public string PageUrl { get; set; }
     }
 }

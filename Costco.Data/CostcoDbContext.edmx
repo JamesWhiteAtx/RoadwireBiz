@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Costco.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="10.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Costco.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="10.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FG_COSTCO_PRODUCTS">
           <Key>
             <PropertyRef Name="FG_PROD_ID" />
@@ -16,12 +16,12 @@
           <Property Name="FG_DESCRIPTION" Type="varchar2" MaxLength="500" Nullable="false" />
           <Property Name="FG_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FG_ACTIVE_FLAG" Type="varchar2" MaxLength="1" Nullable="false" />
+          <Property Name="FG_PAGE_URL" Type="varchar2" MaxLength="200" />
         </EntityType>
         <EntityContainer Name="CostcoStoreContainer">
           <EntitySet Name="FG_COSTCO_PRODUCTS" EntityType="Self.FG_COSTCO_PRODUCTS" Schema="SYSADM" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Costco" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -36,6 +36,7 @@
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ActiveFlag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="CostcoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CostcoProducts" EntityType="Costco.CostcoProduct" />
@@ -49,6 +50,7 @@
           <EntitySetMapping Name="CostcoProducts">
             <EntityTypeMapping TypeName="Costco.CostcoProduct">
               <MappingFragment StoreEntitySet="FG_COSTCO_PRODUCTS">
+                <ScalarProperty Name="PageUrl" ColumnName="FG_PAGE_URL" />
                 <ScalarProperty Name="ID" ColumnName="FG_PROD_ID" />
                 <ScalarProperty Name="LeatherRows" ColumnName="FG_LEATHER_ROWS" />
                 <ScalarProperty Name="SeatHeaters" ColumnName="FG_SEAT_HEATERS" />

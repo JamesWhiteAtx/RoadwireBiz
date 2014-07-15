@@ -3,7 +3,7 @@ RoadwireBiz CcAdmin App
 (c) 2014 Roadwire, Inc.
 */
 
-var ccAdmin = angular.module('ccAdmin', ['ngRoute', 'roadwire.services'])
+var ccAdmin = angular.module('ccAdmin', ['ngRoute', 'ngResource', 'roadwire.services'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/menu', {

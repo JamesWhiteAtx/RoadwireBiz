@@ -13,7 +13,7 @@ ccAdmin
 .controller('MenuCtrl', ['$scope', function ($scope) {
 }])
 
-.controller('ProductsCtrl', ['$scope', 'CcProducts', function ($scope, CcProducts) {
+.controller('ProductsCtrl', ['$scope', 'CcProducts', 'Product', function ($scope, CcProducts, Product) {
     var unWatches = [];
     var resetVars = function () {
         $scope.prods = null;
@@ -56,42 +56,74 @@ ccAdmin
                 unwatch();
             }
         });
-        unWatches = [];
-        load()
-            .then(function (data) {
-                var unwatch;
-                angular.forEach($scope.prods, function (prod) {
 
-                    $scope.hash[prod.Code] = prod;
-                    //var nm = 'hash.' + prod.Code;
-                    unwatch = $scope.$watch(
-                        function () { return $scope.hash[prod.Code]; },
-                        function (newValue, oldValue) {
-                            if (!angular.equals(newValue, oldValue)) {
-                                if (newValue && (!newValue.changed)) {
-                                    newValue.changed = true;
-                                    $scope.prodChanges = true;
-                                }
-                            };
-                       
-                        },
-                        true
-                    );
-                    unWatches.push(unwatch);
-                });
-            }, function (err) {
+        unWatches = [];
+
+        $scope.prods = Product.query(function () {
+
+            var unwatch;
+            angular.forEach($scope.prods, function (prod) {
+
+                $scope.hash[prod.Code] = prod;
+                unwatch = $scope.$watch(
+                    function () { return $scope.hash[prod.Code]; },
+                    function (newValue, oldValue) {
+                        if (!angular.equals(newValue, oldValue)) {
+                            if (newValue && (!newValue.changed)) {
+                                newValue.changed = true;
+                                $scope.prodChanges = true;
+                            }
+                        };
+
+                    },
+                    true
+                );
+                unWatches.push(unwatch);
             });
+
+            
+        });
+        //load()
+        //    .then(function (data) {
+        //        var unwatch;
+        //        angular.forEach($scope.prods, function (prod) {
+
+        //            $scope.hash[prod.Code] = prod;
+        //            unwatch = $scope.$watch(
+        //                function () { return $scope.hash[prod.Code]; },
+        //                function (newValue, oldValue) {
+        //                    if (!angular.equals(newValue, oldValue)) {
+        //                        if (newValue && (!newValue.changed)) {
+        //                            newValue.changed = true;
+        //                            $scope.prodChanges = true;
+        //                        }
+        //                    };
+                       
+        //                },
+        //                true
+        //            );
+        //            unWatches.push(unwatch);
+        //        });
+        //    }, function (err) {
+        //    });
     };
 
     $scope.saveChanges = function () {
         angular.forEach($scope.prods, function (prod) {
             if (prod.changed) {
-                alert(prod.Code);
+                prod.$save();
             };
         });
     }
 
+    $scope.reloadS = function () {
+        $scope.prods = Product.query(function (d) {
+            var x = d;
+        });
+    };
+
     $scope.reload();
+
 }])
 
 .controller('ProdController', ['$scope', function ($scope) {

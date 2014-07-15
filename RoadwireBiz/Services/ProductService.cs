@@ -10,7 +10,8 @@ namespace RoadwireBiz
     public interface ICcProductService
     {
         IEnumerable<CcProductModel> Listing();
-        void Update(int id, string description, decimal price);
+        void Update(CcProductModel prod);
+        void Update(int id, string description, decimal price, string pageUrl);
     }
 
     public class CcProductService : ICcProductService
@@ -25,6 +26,7 @@ namespace RoadwireBiz
         public IEnumerable<CcProductModel> Listing()
         {
             var prods = from p in _costcoEntities.CostcoProducts
+                        where p.ActiveFlag == "Y"
                         select new CcProductModel
                         {
                             ID = p.ID,
@@ -32,13 +34,20 @@ namespace RoadwireBiz
                             Description = p.Description,
                             Price = p.Price,
                             LeatherRows = p.LeatherRows,
-                            Heaters = p.SeatHeaters
+                            Heaters = p.SeatHeaters,
+                            PageUrl = p.PageUrl
                         };
 
             return prods;
         }
 
-        public void Update(int id, string description, decimal price)
+        public void Update(CcProductModel prod)
+        {
+            int id = Convert.ToInt32(prod.ID);
+            Update(id, prod.Description, prod.Price, prod.PageUrl);
+        }
+
+        public void Update(int id, string description, decimal price, string pageUrl)
         {
             var prod = (from p in _costcoEntities.CostcoProducts
                         where p.ID == id
@@ -48,6 +57,7 @@ namespace RoadwireBiz
             {
                 prod.Description = description;
                 prod.Price = price;
+                prod.PageUrl = pageUrl;
 
                 _costcoEntities.SaveChanges();
             }

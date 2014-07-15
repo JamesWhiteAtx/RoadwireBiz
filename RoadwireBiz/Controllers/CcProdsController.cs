@@ -30,8 +30,9 @@ namespace RoadwireBiz.Controllers
         }
 
         // POST api/CcProds
-        public void Post([FromBody]string value)
+        public void Post(CcProductModel prod)
         {
+            _productService.Update(prod);
         }
 
         // PUT api/CcProds/5

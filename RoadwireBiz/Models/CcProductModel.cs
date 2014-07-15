@@ -15,7 +15,9 @@ namespace RoadwireBiz.Models
     {
         public decimal ID { get; set; }
         public string Code { get; set; }
+
         public decimal? LeatherRows { get; set; }
         public decimal? Heaters { get; set; }
+        public string PageUrl { get; set; }
     }
 }

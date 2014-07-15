@@ -57,6 +57,18 @@ angular.module('roadwire.services', []) // 'ngResource'
     };
 }])
 
+.factory('Product', ['$resource', function ($resource) {
+    //return $resource('/api/ccprods/:id', { id: '@id' });
+
+    return $resource('/api/ccprods/:id', { id: '@id' }, {
+        list: {
+            isArray: true,
+            cache: true,
+            method: 'GET'
+        }
+    });
+
+} ])
 
 .factory('LoadGglMaps', ['$http', '$window', '$q', function ($http, $window, $q) {
     return function (gglMps) {

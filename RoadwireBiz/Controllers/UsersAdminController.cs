@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace RoadwireBiz.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()

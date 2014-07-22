@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoadwireBiz", "RoadwireBiz\RoadwireBiz.csproj", "{104977CB-674B-4C84-BFE1-60081EE6D355}"
 EndProject
@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 		PublishScripts\Configurations\RoadwireBiz-WAWS-dev.json = PublishScripts\Configurations\RoadwireBiz-WAWS-dev.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp.Identity.Oracle", "..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj", "{9175DD79-8AE9-448B-B20E-C6D83B7A6F09}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Costco.Data", "Costco.Data\Costco.Data.csproj", "{31425CFB-478E-428B-ABE1-195EEE52DBD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspIdOracleMock", "..\AspIdOracleMock\AspIdOracleMock\AspIdOracleMock.csproj", "{105CC2BF-33A1-4F9A-943B-4EA508C78717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +36,14 @@ Global
 		{CB8AEAAB-53E7-4A4A-83AA-6E826E564A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB8AEAAB-53E7-4A4A-83AA-6E826E564A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB8AEAAB-53E7-4A4A-83AA-6E826E564A12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9175DD79-8AE9-448B-B20E-C6D83B7A6F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9175DD79-8AE9-448B-B20E-C6D83B7A6F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9175DD79-8AE9-448B-B20E-C6D83B7A6F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9175DD79-8AE9-448B-B20E-C6D83B7A6F09}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31425CFB-478E-428B-ABE1-195EEE52DBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31425CFB-478E-428B-ABE1-195EEE52DBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31425CFB-478E-428B-ABE1-195EEE52DBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31425CFB-478E-428B-ABE1-195EEE52DBD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105CC2BF-33A1-4F9A-943B-4EA508C78717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105CC2BF-33A1-4F9A-943B-4EA508C78717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105CC2BF-33A1-4F9A-943B-4EA508C78717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105CC2BF-33A1-4F9A-943B-4EA508C78717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

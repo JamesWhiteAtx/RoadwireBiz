@@ -426,9 +426,9 @@
     <Content Include="Views\CcAdmin\Partials\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Asp.Identity.Oracle\Asp.Identity.Oracle\Asp.Identity.Oracle.csproj">
-      <Project>{9175dd79-8ae9-448b-b20e-c6d83b7a6f09}</Project>
-      <Name>Asp.Identity.Oracle</Name>
+    <ProjectReference Include="..\..\AspIdOracleMock\AspIdOracleMock\AspIdOracleMock.csproj">
+      <Project>{105cc2bf-33a1-4f9a-943b-4ea508c78717}</Project>
+      <Name>AspIdOracleMock</Name>
     </ProjectReference>
     <ProjectReference Include="..\Costco.Data\Costco.Data.csproj">
       <Project>{31425cfb-478e-428b-abe1-195eee52dbd1}</Project>
